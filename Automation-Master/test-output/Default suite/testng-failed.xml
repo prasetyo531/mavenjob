@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="testcase.checkoutLoginNoSnap">
+        <methods>
+          <include name="tearDown"/>
+          <include name="scenario_satu"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- testcase.checkoutLoginNoSnap -->
+      <class name="testcase.checkoutLoginSnap">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="scenario_satu"/>
+        </methods>
+      </class> <!-- testcase.checkoutLoginSnap -->
+      <class name="testcase.checkoutNoSnap">
+        <methods>
+          <include name="scenario_satu"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- testcase.checkoutNoSnap -->
+      <class name="testcase.checkoutDefaultAddress">
+        <methods>
+          <include name="scenario_satu"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- testcase.checkoutDefaultAddress -->
+      <class name="testcase.checkCpIp">
+        <methods>
+          <include name="setUp"/>
+          <include name="scenario_satu"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- testcase.checkCpIp -->
+      <class name="testcase.checkoutSnap">
+        <methods>
+          <include name="setUp"/>
+          <include name="scenario_dua"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- testcase.checkoutSnap -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
