@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+	tools { 
+        maven 'MAVEN_HOME' 
+        jdk 'JAVA_HOME' 
+    }
+    stages {
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                ''' 
+            }
+        }
+
+       stage ('Build') {
+            steps {
+		sh 'cd /Users/mac/.jenkins/workspace/pipeline-script@script'
+		sh '-Dfile=Automation-Master.jar" "-DgroupId=Automation-Master" "-DartifactId=mavenjob" "-Dversion=0.0.1-SNAPSHOT" "-Dpackaging=jar install' 
+            }
+            post {
+                success {
+                    junit 'target/surefire-reports/**/*.xml' 
+                }
+            }
+        }
+    }
+}
