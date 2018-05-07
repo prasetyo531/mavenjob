@@ -16,10 +16,10 @@ pipeline {
 
        stage ('Build') {
             steps {
-		sh 'cd /Users/mac/Documents/Automation/mavenjob/Automation-Master'
-		sh 'pwd'
-		sh 'mvn -Dfile=/Users/mac/Documents/Automation/mavenjob/Automation-Master/pipelinemaven.jar" "-DgroupId=Automation-Master" "-DartifactId=mavenjob" "-Dversion=1.0.0-SNAPSHOT" "-Dpackaging=jar install' 
-            }
+		 dir('Automation-Master') {
+            sh ‘mvn test'
+        }
+		}
             post {
                 success {
                     junit 'target/surefire-reports/**/*.xml' 
