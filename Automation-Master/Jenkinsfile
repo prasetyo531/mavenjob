@@ -17,7 +17,8 @@ pipeline {
        stage ('Build') {
             steps {
 		sh 'cd /Users/mac/.jenkins/workspace/pipeline-script@script'
-		sh '-Dfile=/Users/mac/Documents/Automation/mavenjob/Automation-Master/pipelinemaven.jar" "-DgroupId=Automation-Master" "-DartifactId=mavenjob" "-Dversion=0.0.1-SNAPSHOT" "-Dpackaging=jar install' 
+		sh 'pwd'
+		sh '-Dfile=/Users/mac/Documents/Automation/mavenjob/Automation-Master/pipelinemaven.jar" "-DgroupId=Automation-Master" "-DartifactId=mavenjob" "-Dversion=1.0.0-SNAPSHOT" "-Dpackaging=jar install' 
             }
             post {
                 success {
