@@ -17,7 +17,7 @@ pipeline {
        stage ('Build') {
             steps {
 		 dir('Automation-Master') {
-            sh 'mvn test'
+            sh 'mvn clean install'
         }
 		}
             post {
