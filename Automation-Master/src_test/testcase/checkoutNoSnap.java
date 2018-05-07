@@ -72,7 +72,7 @@ public class checkoutNoSnap extends controller {
 		CheckoutPage checkout = new CheckoutPage(driver);
 		
 		prop= new Properties();
-		FileInputStream fis=new FileInputStream("//Users//mac//Downloads//kerja//fabelio//automatio-fabelio-branch1//automatio-fabelio-branch1//Automation-Master//src_controller//resources/data.properties");
+		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");
 		prop.load(fis);
 		String testenv=prop.getProperty("testlocation");
 		
