@@ -17,14 +17,10 @@ pipeline {
        stage ('Build') {
             steps {
 		 dir('Automation-Master') {
-            sh 'mvn clean install -U'
+            sh 'mvn test'
         }
 		}
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml' 
-                }
-            }
+         
         }
     }
 }
