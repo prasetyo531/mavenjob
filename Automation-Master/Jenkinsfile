@@ -16,7 +16,7 @@ pipeline {
 
        stage ('Build') {
             steps {
-		 dir('Automation-Master') {
+		 dir('/Users/mac/.jenkins/workspace/pipeline-script/Automation-Master') {
             sh 'mvn test'
         }
 		}
