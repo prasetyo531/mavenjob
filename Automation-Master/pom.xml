@@ -32,6 +32,7 @@
             <suiteXmlFile>/Users/mac/Documents/Automation/mavenjob/Automation-Master/testng.xml</suiteXmlFile>
           </suiteXmlFiles>
         <useSystemClassLoader>false</useSystemClassLoader>
+        <forkMode>never</forkMode>
         </configuration>
       </plugin>
     </plugins>
