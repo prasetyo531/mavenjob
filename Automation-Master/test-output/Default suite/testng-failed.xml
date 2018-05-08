@@ -10,41 +10,6 @@
           <include name="scenario_satu"/>
         </methods>
       </class> <!-- testcase.checkoutLoginSnap -->
-      <class name="testcase.checkoutLoginNoSnap">
-        <methods>
-          <include name="tearDown"/>
-          <include name="scenario_satu"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- testcase.checkoutLoginNoSnap -->
-      <class name="testcase.checkoutSnap">
-        <methods>
-          <include name="setUp"/>
-          <include name="scenario_dua"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- testcase.checkoutSnap -->
-      <class name="testcase.checkCpIp">
-        <methods>
-          <include name="setUp"/>
-          <include name="scenario_satu"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- testcase.checkCpIp -->
-      <class name="testcase.checkoutDefaultAddress">
-        <methods>
-          <include name="scenario_satu"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- testcase.checkoutDefaultAddress -->
-      <class name="testcase.checkoutNoSnap">
-        <methods>
-          <include name="scenario_satu"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- testcase.checkoutNoSnap -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

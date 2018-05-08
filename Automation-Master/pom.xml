@@ -29,7 +29,7 @@
         <version>2.20</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>/Users/mac/.jenkins/workspace/pipeline-script/Automation-Master/testng.xml</suiteXmlFile>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
           </suiteXmlFiles>
         <useSystemClassLoader>false</useSystemClassLoader>
         <forkMode>never</forkMode>
