@@ -120,170 +120,170 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	    asser.assertbelienable();
 		
 	    //click beli sekarang
-	    main = prod.clickbeli();
-		((JavascriptExecutor)driver).executeScript("arguments[0].click();", main);
-			
-		ExtractJSLogs();//grab console errror
-
-	    asser.assertbeliclicked();
-	    
-	    //click cart notification 
-	    asser.assertcartnotif();
-	    prod.clickcartnotif().click();
-	    
-	    //CART PAGE
-	    asser.assertuntiltotal();
-	    asser.getlinksku();
-	    
-	    asser.checkproductqtycart(); //check qty product in cart element
-			
-		asser.assertsubtotal(); //verify subtotal and total on cart summary should display
-		asser.asserttotal();
-		
-		cpage.lanjutkanCart().click(); //click lanjutkan
-		
-		//CHECKOUT PAGE
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		asser.waitgoogle();
-		
-		checkout.emailId().sendKeys(email); // isi email
-		
-		asser.waitcheckbtnemail(); //check btn email clickable
-		
-		main = driver.findElement(By.xpath("//*[@id='btn-checkemail']")); //next after fill email
-	    ((JavascriptExecutor)driver).executeScript("arguments[0].click();", main);
-	    
-	    asser.waitcheckbtnpassword(); //wait check button passwor
-	    
-	    checkout.password().sendKeys(password, Keys.ENTER); //fill password
-	    
-	    asser.waitbtnpasswordenable(); //wait button password enable
-	    
-	    //next section 1
-	    main = driver.findElement(By.id("next-step"));
-	    ((JavascriptExecutor)driver).executeScript("arguments[0].click();", main);
-		
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
-		asser.checkdefaultaddress();  //check default addresss
-		
-		checkout.addAddress().click(); //add new address
-
-		asser.waitpopupaddress(); //wait pop up address
-		
-			if(driver.findElement(By.cssSelector("aside.modal-popup:nth-child(2) > div:nth-child(2)"))!= null){ // isi address
-				System.out.println("Element input addresss is Present");
-	    		}else{
-	    			System.out.println("Element input addresss is Missing");
-	    		}
-			
-			main = driver.findElement(By.cssSelector("aside.modal-popup:nth-child(2)"));
-			main = driver.findElement(By.cssSelector("aside.modal-popup:nth-child(2) > div:nth-child(2)"));
-			main = driver.findElement(By.cssSelector("aside.modal-popup:nth-child(2) > div:nth-child(2) > div:nth-child(2)"));
-			main = driver.findElement(By.cssSelector("#address-form-popup"));
-			
-			checkout.firstname().sendKeys("existing");
-			checkout.lastname().sendKeys("login");
-			checkout.address1().sendKeys("TESTING 1");
-			checkout.address2().sendKeys("TESTING 2");
-			
-			checkout.regionId().sendKeys("D", Keys.ENTER); //state-province 
-			
-			(new WebDriverWait(driver, 6)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("select[name='city_id']")));
-			main = this.driver.findElement(By.cssSelector("select[name='city_id']"));
-	        main.findElement(By.cssSelector("option[value='2']")).click(); // Kota Jakarta Utara
-			
-	        (new WebDriverWait(driver, 6)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("select[name='subdistrict_id']")));
-	        main = this.driver.findElement(By.cssSelector("select[name='subdistrict_id']"));
-	        main.findElement(By.cssSelector("option[value='10']")).click(); // Kelapa Gading
-			
-	        driver.findElement(By.cssSelector("input[name='telephone']")).sendKeys("0000001");
-	        
-	        //save address
-	        (new WebDriverWait(driver, 10)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='action primary']")));
-	        driver.findElement(By.cssSelector("button[class='action primary']")).click();
-	        
-	        (new WebDriverWait(driver, 2)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#btn-next-address > div:nth-child(1) > button:nth-child(1)")));
-			
-	        //next section 2
-	        main = driver.findElement(By.cssSelector("div[class='page-wrapper']"));
-	        main = driver.findElement(By.cssSelector("main[id='maincontent']"));
-	        main = driver.findElement(By.cssSelector("div[id='checkout']"));
-	        main = driver.findElement(By.cssSelector("div[class='aw-onestep aw-onestep-main']"));
-	        main = driver.findElement(By.cssSelector("ul[class='aw-onestep-groups']"));
-	        main = driver.findElement(By.cssSelector("li[id='section-shipping-address']"));
-	        main = driver.findElement(By.cssSelector("div[class='group-content section-shipping-address showHide']"));
-	        main = driver.findElement(By.cssSelector("div[class='onestep-shipping-address']"));
-	        main = driver.findElement(By.cssSelector("div[id='btn-next-address']"));
-	        main = driver.findElement(By.cssSelector("div[class='primary']")); 
-	        main = driver.findElement(By.cssSelector("button[class='button action continue primary']")); 
-	        
-	        asser.waitbtnnextsec2();
-	        
-	        main = driver.findElement(By.cssSelector("#btn-next-address > div:nth-child(1) > button:nth-child(1)"));
-	        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", main);
-	        
-	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	        
-	        if( driver.findElement(By.id("discount-code")).isDisplayed()){ //check discount code
-	        	System.out.println("Element Voucher is Visible");
-	        	}else{
-	        	System.out.println("Element Voucher is InVisible");
-	        	}
-	
-	        //edd
-			(new WebDriverWait(driver, 40)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#btn-next-orderreview > div > button")));
-	        String edd = driver.findElement(By.cssSelector("#section-order-review > div.group-content.section-order-review > div.onestep-order-review > div.aw-sidebar-product-card > div.aw-sidebar-product-description-container > div.aw-sidebar-product-description.row > div.aw-sidebar-product-name.col-lg-4.col-12 > span:nth-child(3) > small > span:nth-child(2)")).getText();
-		    System.out.println(edd);
-	        
-	        //click next section 3
-	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	        
-	        (new WebDriverWait(driver, 40)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("#btn-next-orderreview > div > button")));
-	        main = driver.findElement(By.cssSelector("#btn-next-orderreview > div:nth-child(1) > button:nth-child(1)"));
-	        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", main);
-	        
-			//get dom section 4
-	        main = driver.findElement(By.cssSelector("div[class='page-wrapper']"));
-	        main = driver.findElement(By.cssSelector("main[id='maincontent']"));
-	        main = driver.findElement(By.cssSelector("div[id='checkout']"));
-	        main = driver.findElement(By.cssSelector("div[class='aw-onestep aw-onestep-main']"));
-	        main = driver.findElement(By.cssSelector("ul[class='aw-onestep-groups']"));
-	        main = driver.findElement(By.cssSelector("li[id='section-payment-method']"));
-	        main = driver.findElement(By.cssSelector("div[class='group-content section-payment-method']"));
-	        main = driver.findElement(By.cssSelector("div[data-bind='if:isAddressSelected']"));
-	        main = driver.findElement(By.cssSelector("div[class='payment-methods-box']"));
-	        main = driver.findElement(By.cssSelector("div[class='row']"));
-	        supp.waitSeconds(2);
-	        //(new WebDriverWait(driver, 15)).until(ExpectedConditions.visibilityOf(checkout.snap()));
-	        checkout.snap().click(); //select payment method is snap
-			(new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.aw-onestep-sidebar-block:nth-child(3) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > th:nth-child(1)")));
-			
-			//get dom place order
-		    main = driver.findElement(By.cssSelector("div[class='page-wrapper']"));
-		    main = driver.findElement(By.cssSelector("main[id='maincontent']"));
-		    main = driver.findElement(By.cssSelector("div[id='checkout']"));
-		    main = driver.findElement(By.cssSelector("div[class='aw-onestep aw-onestep-main']"));
-		    main = driver.findElement(By.cssSelector("ul[class='aw-onestep-groups']"));
-		    main = driver.findElement(By.cssSelector("li[id='section-payment-method']"));
-		    main = driver.findElement(By.cssSelector("div[class='group-content section-payment-method']"));
-		    main = driver.findElement(By.cssSelector("div[data-bind='if:isAddressSelected']"));
-		    main = driver.findElement(By.cssSelector("div[class='aw-onestep-sidebar-block aw-sidebar-summary']"));
-		    main = driver.findElement(By.cssSelector("div[class='aw-onestep-sidebar-block_content']"));
-		     
-		    asser.assertsection4();
-		    
-		    main = driver.findElement(By.cssSelector("div[class='page-wrapper']"));
-		    main = driver.findElement(By.cssSelector("main[id='maincontent']"));
-		    main = driver.findElement(By.cssSelector("div[id='checkout']"));
-		    main = driver.findElement(By.cssSelector("div[class='aw-onestep aw-onestep-main']"));
-		    main = driver.findElement(By.cssSelector("ul[class='aw-onestep-groups']"));
-		    main = driver.findElement(By.cssSelector("li[id='section-payment-method']"));
-		    main = driver.findElement(By.cssSelector("div[class='group-content section-payment-method']"));
-		    main = driver.findElement(By.cssSelector("div[data-bind='if:isAddressSelected']"));
-		    main = driver.findElement(By.cssSelector("div[class='actions-toolbar']"));
-		    
-		    asser.waitplaceorder();
+//	    main = prod.clickbeli();
+//		((JavascriptExecutor)driver).executeScript("arguments[0].click();", main);
+//			
+//		ExtractJSLogs();//grab console errror
+//
+//	    asser.assertbeliclicked();
+//	    
+//	    //click cart notification 
+//	    asser.assertcartnotif();
+//	    prod.clickcartnotif().click();
+//	    
+//	    //CART PAGE
+//	    asser.assertuntiltotal();
+//	    asser.getlinksku();
+//	    
+//	    asser.checkproductqtycart(); //check qty product in cart element
+//			
+//		asser.assertsubtotal(); //verify subtotal and total on cart summary should display
+//		asser.asserttotal();
+//		
+//		cpage.lanjutkanCart().click(); //click lanjutkan
+//		
+//		//CHECKOUT PAGE
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		asser.waitgoogle();
+//		
+//		checkout.emailId().sendKeys(email); // isi email
+//		
+//		asser.waitcheckbtnemail(); //check btn email clickable
+//		
+//		main = driver.findElement(By.xpath("//*[@id='btn-checkemail']")); //next after fill email
+//	    ((JavascriptExecutor)driver).executeScript("arguments[0].click();", main);
+//	    
+//	    asser.waitcheckbtnpassword(); //wait check button passwor
+//	    
+//	    checkout.password().sendKeys(password, Keys.ENTER); //fill password
+//	    
+//	    asser.waitbtnpasswordenable(); //wait button password enable
+//	    
+//	    //next section 1
+//	    main = driver.findElement(By.id("next-step"));
+//	    ((JavascriptExecutor)driver).executeScript("arguments[0].click();", main);
+//		
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		
+//		asser.checkdefaultaddress();  //check default addresss
+//		
+//		checkout.addAddress().click(); //add new address
+//
+//		asser.waitpopupaddress(); //wait pop up address
+//		
+//			if(driver.findElement(By.cssSelector("aside.modal-popup:nth-child(2) > div:nth-child(2)"))!= null){ // isi address
+//				System.out.println("Element input addresss is Present");
+//	    		}else{
+//	    			System.out.println("Element input addresss is Missing");
+//	    		}
+//			
+//			main = driver.findElement(By.cssSelector("aside.modal-popup:nth-child(2)"));
+//			main = driver.findElement(By.cssSelector("aside.modal-popup:nth-child(2) > div:nth-child(2)"));
+//			main = driver.findElement(By.cssSelector("aside.modal-popup:nth-child(2) > div:nth-child(2) > div:nth-child(2)"));
+//			main = driver.findElement(By.cssSelector("#address-form-popup"));
+//			
+//			checkout.firstname().sendKeys("existing");
+//			checkout.lastname().sendKeys("login");
+//			checkout.address1().sendKeys("TESTING 1");
+//			checkout.address2().sendKeys("TESTING 2");
+//			
+//			checkout.regionId().sendKeys("D", Keys.ENTER); //state-province 
+//			
+//			(new WebDriverWait(driver, 6)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("select[name='city_id']")));
+//			main = this.driver.findElement(By.cssSelector("select[name='city_id']"));
+//	        main.findElement(By.cssSelector("option[value='2']")).click(); // Kota Jakarta Utara
+//			
+//	        (new WebDriverWait(driver, 6)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("select[name='subdistrict_id']")));
+//	        main = this.driver.findElement(By.cssSelector("select[name='subdistrict_id']"));
+//	        main.findElement(By.cssSelector("option[value='10']")).click(); // Kelapa Gading
+//			
+//	        driver.findElement(By.cssSelector("input[name='telephone']")).sendKeys("0000001");
+//	        
+//	        //save address
+//	        (new WebDriverWait(driver, 10)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[class='action primary']")));
+//	        driver.findElement(By.cssSelector("button[class='action primary']")).click();
+//	        
+//	        (new WebDriverWait(driver, 2)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#btn-next-address > div:nth-child(1) > button:nth-child(1)")));
+//			
+//	        //next section 2
+//	        main = driver.findElement(By.cssSelector("div[class='page-wrapper']"));
+//	        main = driver.findElement(By.cssSelector("main[id='maincontent']"));
+//	        main = driver.findElement(By.cssSelector("div[id='checkout']"));
+//	        main = driver.findElement(By.cssSelector("div[class='aw-onestep aw-onestep-main']"));
+//	        main = driver.findElement(By.cssSelector("ul[class='aw-onestep-groups']"));
+//	        main = driver.findElement(By.cssSelector("li[id='section-shipping-address']"));
+//	        main = driver.findElement(By.cssSelector("div[class='group-content section-shipping-address showHide']"));
+//	        main = driver.findElement(By.cssSelector("div[class='onestep-shipping-address']"));
+//	        main = driver.findElement(By.cssSelector("div[id='btn-next-address']"));
+//	        main = driver.findElement(By.cssSelector("div[class='primary']")); 
+//	        main = driver.findElement(By.cssSelector("button[class='button action continue primary']")); 
+//	        
+//	        asser.waitbtnnextsec2();
+//	        
+//	        main = driver.findElement(By.cssSelector("#btn-next-address > div:nth-child(1) > button:nth-child(1)"));
+//	        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", main);
+//	        
+//	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//	        
+//	        if( driver.findElement(By.id("discount-code")).isDisplayed()){ //check discount code
+//	        	System.out.println("Element Voucher is Visible");
+//	        	}else{
+//	        	System.out.println("Element Voucher is InVisible");
+//	        	}
+//	
+//	        //edd
+//			(new WebDriverWait(driver, 40)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#btn-next-orderreview > div > button")));
+//	        String edd = driver.findElement(By.cssSelector("#section-order-review > div.group-content.section-order-review > div.onestep-order-review > div.aw-sidebar-product-card > div.aw-sidebar-product-description-container > div.aw-sidebar-product-description.row > div.aw-sidebar-product-name.col-lg-4.col-12 > span:nth-child(3) > small > span:nth-child(2)")).getText();
+//		    System.out.println(edd);
+//	        
+//	        //click next section 3
+//	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//	        
+//	        (new WebDriverWait(driver, 40)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("#btn-next-orderreview > div > button")));
+//	        main = driver.findElement(By.cssSelector("#btn-next-orderreview > div:nth-child(1) > button:nth-child(1)"));
+//	        ((JavascriptExecutor)driver).executeScript("arguments[0].click();", main);
+//	        
+//			//get dom section 4
+//	        main = driver.findElement(By.cssSelector("div[class='page-wrapper']"));
+//	        main = driver.findElement(By.cssSelector("main[id='maincontent']"));
+//	        main = driver.findElement(By.cssSelector("div[id='checkout']"));
+//	        main = driver.findElement(By.cssSelector("div[class='aw-onestep aw-onestep-main']"));
+//	        main = driver.findElement(By.cssSelector("ul[class='aw-onestep-groups']"));
+//	        main = driver.findElement(By.cssSelector("li[id='section-payment-method']"));
+//	        main = driver.findElement(By.cssSelector("div[class='group-content section-payment-method']"));
+//	        main = driver.findElement(By.cssSelector("div[data-bind='if:isAddressSelected']"));
+//	        main = driver.findElement(By.cssSelector("div[class='payment-methods-box']"));
+//	        main = driver.findElement(By.cssSelector("div[class='row']"));
+//	        supp.waitSeconds(2);
+//	        //(new WebDriverWait(driver, 15)).until(ExpectedConditions.visibilityOf(checkout.snap()));
+//	        checkout.snap().click(); //select payment method is snap
+//			(new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.aw-onestep-sidebar-block:nth-child(3) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > th:nth-child(1)")));
+//			
+//			//get dom place order
+//		    main = driver.findElement(By.cssSelector("div[class='page-wrapper']"));
+//		    main = driver.findElement(By.cssSelector("main[id='maincontent']"));
+//		    main = driver.findElement(By.cssSelector("div[id='checkout']"));
+//		    main = driver.findElement(By.cssSelector("div[class='aw-onestep aw-onestep-main']"));
+//		    main = driver.findElement(By.cssSelector("ul[class='aw-onestep-groups']"));
+//		    main = driver.findElement(By.cssSelector("li[id='section-payment-method']"));
+//		    main = driver.findElement(By.cssSelector("div[class='group-content section-payment-method']"));
+//		    main = driver.findElement(By.cssSelector("div[data-bind='if:isAddressSelected']"));
+//		    main = driver.findElement(By.cssSelector("div[class='aw-onestep-sidebar-block aw-sidebar-summary']"));
+//		    main = driver.findElement(By.cssSelector("div[class='aw-onestep-sidebar-block_content']"));
+//		     
+//		    asser.assertsection4();
+//		    
+//		    main = driver.findElement(By.cssSelector("div[class='page-wrapper']"));
+//		    main = driver.findElement(By.cssSelector("main[id='maincontent']"));
+//		    main = driver.findElement(By.cssSelector("div[id='checkout']"));
+//		    main = driver.findElement(By.cssSelector("div[class='aw-onestep aw-onestep-main']"));
+//		    main = driver.findElement(By.cssSelector("ul[class='aw-onestep-groups']"));
+//		    main = driver.findElement(By.cssSelector("li[id='section-payment-method']"));
+//		    main = driver.findElement(By.cssSelector("div[class='group-content section-payment-method']"));
+//		    main = driver.findElement(By.cssSelector("div[data-bind='if:isAddressSelected']"));
+//		    main = driver.findElement(By.cssSelector("div[class='actions-toolbar']"));
+//		    
+//		    asser.waitplaceorder();
 		    
 		    //click place order
 //		    checkout.placeOrder().click();

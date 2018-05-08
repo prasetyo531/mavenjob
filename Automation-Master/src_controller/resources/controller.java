@@ -65,7 +65,7 @@ public class controller {
 	public static final RemoteWebDriver getDriver(String browser) throws IOException {
 		
 		prop= new Properties();
-		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//Workbook1.xls");
+		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");
 		
 		prop.load(fis);
 		String url1=prop.getProperty("machine1");
@@ -76,7 +76,7 @@ public class controller {
 	public static final RemoteWebDriver getDriver2(String browser2) throws IOException {
 		
 		prop= new Properties();
-		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//Workbook1.xls");
+		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");
 		
 		prop.load(fis);
 		String url2=prop.getProperty("machine2");
@@ -87,7 +87,7 @@ public class controller {
 	public static final RemoteWebDriver getDriver3(String browser3) throws IOException {
 		
 		prop= new Properties();
-		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//Workbook1.xls");
+		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");
 		
 		prop.load(fis);
 		String url3=prop.getProperty("machine3");
