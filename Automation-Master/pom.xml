@@ -29,10 +29,9 @@
         <version>2.20</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>/Users/mac/Documents/Automation/mavenjob/Automation-Master/pom.xml</suiteXmlFile>
+            <suiteXmlFile>/Users/mac/Documents/Automation/mavenjob/Automation-Master/testng.xml</suiteXmlFile>
           </suiteXmlFiles>
         <useSystemClassLoader>false</useSystemClassLoader>
-        <forkMode>never</forkMode>
         </configuration>
       </plugin>
     </plugins>
