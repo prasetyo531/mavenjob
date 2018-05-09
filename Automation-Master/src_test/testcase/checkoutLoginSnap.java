@@ -1,21 +1,14 @@
 package testcase;
 
-import static org.testng.Assert.assertTrue;
-
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.logging.LogEntries;
@@ -25,23 +18,21 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import net.jsourcerer.webdriver.jserrorcollector.JavaScriptError;
 
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
-import resources.support;
-import resources.controller;
 import pageObjects.AssertElement;
-import pageObjects.CategoryPage;
-import pageObjects.ProductPage;
 import pageObjects.CartPage;
+import pageObjects.CategoryPage;
 import pageObjects.CheckoutPage;
+import pageObjects.ProductPage;
+import resources.controller;
+import resources.support;
 
 public class checkoutLoginSnap extends controller {
 	
