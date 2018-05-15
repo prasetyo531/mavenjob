@@ -47,8 +47,7 @@ import pageObjects.login;
 import resources.controller;
 import resources.support;
 
-public class addProduct extends controller {
-
+public class addProductEditStep extends controller {
 	
 public static Logger log =LogManager.getLogger(support.class.getName());
 	
@@ -201,7 +200,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        onfocusProductName.sendKeys("testing");
        onfocusProductName.build().perform();
        
-       
        WebElement focusProductShade= productpage.insertProductShade(); //xpath megamenu nya  
        Actions onfocusProductShade = new Actions(driver);
        onfocusProductShade.moveToElement(focusProductShade).click();
@@ -223,11 +221,30 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        productpage.inputPrice().click();
        productpage.inputPrice().sendKeys("100000");
        productpage.inputDescription().click();
-       productpage.inputDescription().sendKeys("huba huba");
+       
+       WebElement focusProductDesc= productpage.inputDescription(); //xpath megamenu nya  
+       Actions onfocusProductDesc = new Actions(driver);
+       onfocusProductDesc.moveToElement(focusProductDesc).click();
+       onfocusProductDesc.sendKeys("description of test");
+       onfocusProductDesc.build().perform();
+       
+       //productpage.inputDescription().sendKeys("huba huba");
+       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       
+       //edit step 1
+       productpage.editStep1().click();
+       productpage.nextStep1().click();
+       
+       //edit step 2
+       productpage.editStep2().click();
+       productpage.nextStep2().click();
+       
+       //edit step 3
+       productpage.editStep3().click();
+       productpage.nextStep3().click();
+       
        productpage.clickSubmit().click();
        
-		
-		
 	}
 	
 	@AfterMethod
@@ -272,4 +289,5 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		     filepath.close();
 		     return Testdata;
 		     }
+
 }

@@ -85,6 +85,7 @@ public class addproductpage {
 	}
 	
 	//=================================STEP 2======================================//
+	
 	public WebElement selectBrand(){
 		
 		return driver.findElement(brandname);
@@ -116,6 +117,7 @@ public class addproductpage {
 	}
 	
 	//=================================STEP 3======================================//
+	
 	public WebElement chooseRating(){
 		
 		return driver.findElement(rating);
@@ -136,12 +138,13 @@ public class addproductpage {
 		return driver.findElement(writereview);
 	}
 	
-	public WebElement Nextstep3(){
+	public WebElement nextStep3(){
 		
 		return driver.findElement(nextstep3);
 	}
 	
 	//=================================STEP 4======================================//
+	
 	public WebElement selectCurency(){
 		
 		return driver.findElement(matauang);
@@ -167,5 +170,21 @@ public class addproductpage {
 		return driver.findElement(submit);
 	}
 	
+	//=================================edit step======================================//
+	
+	public WebElement editStep1(){
+		
+		return driver.findElement(header1);
+	}
+	
+	public WebElement editStep2(){
+		
+		return driver.findElement(header2);
+	}
+	
+	public WebElement editStep3(){
+		
+		return driver.findElement(header3);
+	}
 	
 }

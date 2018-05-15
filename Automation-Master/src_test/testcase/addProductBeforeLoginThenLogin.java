@@ -47,8 +47,7 @@ import pageObjects.login;
 import resources.controller;
 import resources.support;
 
-public class addProductLoggedIn extends controller {
-
+public class addProductBeforeLoginThenLogin extends controller {
 	
 public static Logger log =LogManager.getLogger(support.class.getName());
 	
@@ -71,7 +70,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		
 		support supp= new support();
 		homepage home = new homepage(driver);
-		login log = new login(driver);
+		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
 		
 		AssertElement asser = new AssertElement(driver);
@@ -102,16 +101,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
-		home.clickLogin().click();
-		UrlLogin = driver.getCurrentUrl();
-		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/" );
-		
-		log.fillusername().sendKeys("putwid");
-		log.fillpassword().sendKeys("tester123");
-		log.clickbuttonlogin().click();
-		
-		asser.loggedin();
-		
 		WebElement getmenu= home.getAddProduct(); //xpath megamenu nya  
 		Actions act = new Actions(driver);
 		act.moveToElement(getmenu).perform();
@@ -119,6 +108,20 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.addproducttodisplay();
 		WebElement clickElement= home.clickAddProduct(); //xpath sub megamenu nya
 		act.moveToElement(clickElement).click().perform();
+		
+		UrlLogin = driver.getCurrentUrl();
+		Assert.assertEquals(UrlLogin, "http://account.femaledaily.com/" );	
+		
+		//login
+		logpro.fillusername().sendKeys("putwid");
+		logpro.fillpassword().sendKeys("tester123");
+		logpro.clickbuttonlogin().click();
+		
+		asser.loggedin();
+		
+		//get add product again
+		act.moveToElement(getmenu).perform();
+		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		System.out.println(UrlLogin);
@@ -216,7 +219,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        productpage.choosePackagequality().click();
        productpage.chooseRepurchase().click();
        productpage.inputWritereview().sendKeys("review by qa, barang barang barang barang barang barang barang barang barang barang barang barang barang bagus barang bagus barang bagus barang bagus barang bagus barang bagus barang bagus barang bagus barang bagus barang bagus barang bagus barang bagus barang bagus barang bagus barang bagus barang bagus");
-       productpage.Nextstep3().click();
+       productpage.nextStep3().click();
        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
        
        //step 4
@@ -225,9 +228,11 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        productpage.inputDescription().click();
        productpage.inputDescription().sendKeys("huba huba");
        productpage.clickSubmit().click();
-       
 		
 		
+		
+		
+
 	}
 	
 	@AfterMethod
@@ -272,4 +277,5 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		     filepath.close();
 		     return Testdata;
 		     }
+	
 }

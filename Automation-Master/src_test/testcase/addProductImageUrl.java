@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -47,8 +48,7 @@ import pageObjects.login;
 import resources.controller;
 import resources.support;
 
-public class addProduct extends controller {
-
+public class addProductImageUrl extends controller {
 	
 public static Logger log =LogManager.getLogger(support.class.getName());
 	
@@ -119,56 +119,28 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.addproducttodisplay();
 		WebElement clickElement= home.clickAddProduct(); //xpath sub megamenu nya
 		act.moveToElement(clickElement).click().perform();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		System.out.println(UrlLogin);
 		
 		//step 1
-		productpage.clickUploadPhoto().click();
+		WebElement focusInputUrl= productpage.insertUrl(); //insert invalid url
+	    Actions onfocusInputUrl = new Actions(driver);
+	    onfocusInputUrl.moveToElement(focusInputUrl).click();
+	    onfocusInputUrl.sendKeys("https://i.kinja-img.com/kampret/image/upload/s--nncnCKWW--/c_scale,f_auto,fl_progressive,q_80,w_800/17hyh5lm9yhjvjpg.jpg");
+	    onfocusInputUrl.build().perform();
+	    
+	    productpage.clickShowLinkImage().click();
+	    
+	    (new WebDriverWait(driver, 15)).until(ExpectedConditions.alertIsPresent()); //find alert
+	    Alert alert = driver.switchTo().alert();
+        System.out.println(alert.getText());
+        alert.accept();
+	    
+	    onfocusInputUrl.moveToElement(focusInputUrl).click();	//insert valid url
+	    onfocusInputUrl.sendKeys("https://i.kinja-img.com/gawker-media/image/upload/s--nncnCKWW--/c_scale,f_auto,fl_progressive,q_80,w_800/17hyh5lm9yhjvjpg.jpg");
+	    onfocusInputUrl.build().perform();
 		
-		File file1 = new File("/Users/mac/Documents/multimedia/background/product-test.jpg");
-        StringSelection stringSelection1= new StringSelection(file1.getAbsolutePath());
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection1, null);
-		
-        Robot robot1 = new Robot();
-        
-        // Cmd + Tab is needed since it launches a Java app and the browser looses focus
-       
-       robot1.keyPress(KeyEvent.VK_META);
-       robot1.keyPress(KeyEvent.VK_TAB);
-       robot1.keyRelease(KeyEvent.VK_META);
-       robot1.keyRelease(KeyEvent.VK_TAB);
-       robot1.delay(800);
-       //Open Goto window
-       robot1.keyPress(KeyEvent.VK_META);
-       robot1.keyPress(KeyEvent.VK_SHIFT);
-       robot1.keyPress(KeyEvent.VK_G);
-       robot1.keyRelease(KeyEvent.VK_META);
-       robot1.keyRelease(KeyEvent.VK_SHIFT);
-       robot1.keyRelease(KeyEvent.VK_G);
-       //Paste the clipboard value
-       robot1.keyPress(KeyEvent.VK_META);
-       robot1.keyPress(KeyEvent.VK_V);
-       robot1.keyRelease(KeyEvent.VK_META);
-       robot1.keyRelease(KeyEvent.VK_V);
-       //Press Enter key to close the Goto window and Upload window
-       robot1.keyPress(KeyEvent.VK_ENTER);
-       robot1.keyRelease(KeyEvent.VK_ENTER);
-       robot1.delay(800);
-       robot1.keyPress(KeyEvent.VK_ENTER);
-       robot1.keyRelease(KeyEvent.VK_ENTER);
-       Thread.sleep(7000);
-       
-       Actions crop = new Actions(driver);
-       WebElement trycrop = driver.findElementByCssSelector("#modal-crop-showed > div > div.ReactCrop.ReactCrop--fixed-aspect > img");
-
-       //Move to the desired co-ordinates of the image element, In the code below I am staring from bottom left corner of the image
-       crop.moveToElement(productpage.findCropArea(),0,0);
-
-       //locate the co-ordinates of image you want to move by and perform the click   and hold which mimics the crop action 
-       crop.clickAndHold().moveByOffset(196,238).release().build().perform();
-       
-       productpage.cropPicture().click();
+		productpage.clickShowLinkImage().click();
        
 //       JavascriptExecutor js = (JavascriptExecutor) driver;
 //       js.executeScript("window.scrollBy(0,1000)");
@@ -201,7 +173,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        onfocusProductName.sendKeys("testing");
        onfocusProductName.build().perform();
        
-       
        WebElement focusProductShade= productpage.insertProductShade(); //xpath megamenu nya  
        Actions onfocusProductShade = new Actions(driver);
        onfocusProductShade.moveToElement(focusProductShade).click();
@@ -223,13 +194,20 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        productpage.inputPrice().click();
        productpage.inputPrice().sendKeys("100000");
        productpage.inputDescription().click();
-       productpage.inputDescription().sendKeys("huba huba");
-       productpage.clickSubmit().click();
        
-		
-		
+       WebElement focusProductDesc= productpage.inputDescription(); //xpath megamenu nya  
+       Actions onfocusProductDesc = new Actions(driver);
+       onfocusProductDesc.moveToElement(focusProductDesc).click();
+       onfocusProductDesc.sendKeys("description of test");
+       onfocusProductDesc.build().perform();
+       
+       //productpage.inputDescription().sendKeys("huba huba");
+       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       
+       productpage.clickSubmit().click();
+
 	}
-	
+     
 	@AfterMethod
 	public void tearDown() {
 		if(driver!=null) {
