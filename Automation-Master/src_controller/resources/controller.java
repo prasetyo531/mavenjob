@@ -13,7 +13,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import net.jsourcerer.webdriver.jserrorcollector.JavaScriptError;
+//import net.jsourcerer.webdriver.jserrorcollector.JavaScriptError;
 
 
 public class controller {
@@ -62,12 +62,12 @@ public class controller {
 		case "firefox":
 			System.out.println("Opening firefox driver");
 			FirefoxProfile profile = new FirefoxProfile();
-			try {
-				JavaScriptError.addExtension(profile);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			try {
+//				JavaScriptError.addExtension(profile);
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			
 			return DesiredCapabilities.firefox();
 		case "chrome":
