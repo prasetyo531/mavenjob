@@ -86,6 +86,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		main = driver.findElement(By.cssSelector("ul[id='ui-id-1']"));
 		main = driver.findElement(By.cssSelector("li[class='level0 nav-1 first level-top parent ui-menu-item']"));
 		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ui-id-2']/span[2]")));
+		
 		WebElement getmenu= driver.findElement(By.xpath("//*[@id='ui-id-2']/span[2]")); //xpath megamenu nya
 		  
 		Actions act = new Actions(driver);
@@ -93,7 +94,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		
 		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Sofa L")));
 
-		WebElement clickElement= driver.findElement(By.linkText("Sofa L"));//xpath sub megamenu nya
+		WebElement clickElement= driver.findElement(By.linkText("Add Product"));//xpath sub megamenu nya
 		act.moveToElement(clickElement).click().perform();
 		
 		asser.assertcatheader();

@@ -39,16 +39,13 @@ import pageObjects.login;
 import resources.controller;
 import resources.support;
 
-public class addProduct extends controller {
-
+public class addProductBeforeLogin extends controller {
 	
 public static Logger log =LogManager.getLogger(support.class.getName());
 	
 	public static RemoteWebDriver driver= null;
 	public static WebElement main= null;
 	public static Properties prop=null;
-	
-	public String UrlLogin = driver.getCurrentUrl();
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -93,17 +90,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
-		home.clickLogin().click();
-		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/" );
-		
-		log.fillusername().sendKeys("putwid");
-		log.fillpassword().sendKeys("tester123");
-		log.clickbuttonlogin().click();
-		
-		asser.loggedin();
-		
-		
-		
 		WebElement getmenu= home.getAddProduct(); //xpath megamenu nya  
 		Actions act = new Actions(driver);
 		act.moveToElement(getmenu).perform();
@@ -112,11 +98,10 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		WebElement clickElement= home.clickAddProduct(); //xpath sub megamenu nya
 		act.moveToElement(clickElement).click().perform();
 		
-		System.out.println(UrlLogin);
+		String Url = driver.getCurrentUrl();
+		System.out.println(Url);
 		
-		//Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/" );	
-		
-		
+		Assert.assertEquals(Url, "http://account.femaledaily.com/" );	
 		
 		
 	}
@@ -164,3 +149,4 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		     return Testdata;
 		     }
 }
+

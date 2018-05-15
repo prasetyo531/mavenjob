@@ -23,6 +23,28 @@ public class AssertElement {
 		
 	}
 
+	//female daily
+	//homepage
+	public void javascriptletmejoin(){
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-3828308350 modal-join-content-right']")));
+	}
+	
+	public void waithomepagemodal(){
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-1928955982']")));
+	}
+	
+	public void addproducttodisplay(){
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Add Product")));
+	}
+	
+	public void loggedin(){
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#__next > div > div > div.jsx-550002916.gbheader > div.jsx-550002916.gbheader-right > div.gbheader-userprofile")));
+	}
+	
+	
+	
+	
+	
 	
 	//CATEGORY PAGE
 	public void getdatasku(){
