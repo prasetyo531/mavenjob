@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="34695" started-at="2018-05-15T06:02:02Z" finished-at="2018-05-15T06:02:37Z">
+  <suite name="Suite" duration-ms="63322" started-at="2018-05-15T09:58:31Z" finished-at="2018-05-15T09:59:35Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="34695" started-at="2018-05-15T06:02:02Z" finished-at="2018-05-15T06:02:37Z">
-      <class name="testcase.addProductBeforeLogin">
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:testcase.addProductBeforeLogin@4232c52b]" name="setUp" is-config="true" duration-ms="1818" started-at="2018-05-15T13:02:02Z" finished-at="2018-05-15T13:02:04Z">
+    <test name="Test" duration-ms="63322" started-at="2018-05-15T09:58:31Z" finished-at="2018-05-15T09:59:35Z">
+      <class name="testcase.addProductLoggedIn">
+        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:testcase.addProductLoggedIn@4232c52b]" name="setUp" is-config="true" duration-ms="1712" started-at="2018-05-15T16:58:31Z" finished-at="2018-05-15T16:58:33Z">
           <params>
             <param index="0">
               <value>
@@ -18,7 +18,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="scenario_satu(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testcase.addProductBeforeLogin@4232c52b]" name="scenario_satu" duration-ms="32618" started-at="2018-05-15T13:02:04Z" data-provider="existingCust" finished-at="2018-05-15T13:02:37Z">
+        <test-method status="PASS" signature="scenario_satu(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testcase.addProductLoggedIn@4232c52b]" name="scenario_satu" duration-ms="61357" started-at="2018-05-15T16:58:33Z" data-provider="existingCust" finished-at="2018-05-15T16:59:35Z">
           <params>
             <param index="0">
               <value>
@@ -41,50 +41,14 @@
               </value>
             </param>
           </params>
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [http://account.femaledaily.com/] but found [http://femaledaily.net/]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [http://account.femaledaily.com/] but found [http://femaledaily.net/]
-	at org.testng.Assert.fail(Assert.java:93)
-	at org.testng.Assert.failNotEquals(Assert.java:512)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:134)
-	at org.testng.Assert.assertEquals(Assert.java:115)
-	at org.testng.Assert.assertEquals(Assert.java:189)
-	at org.testng.Assert.assertEquals(Assert.java:199)
-	at testcase.addProductBeforeLogin.scenario_satu(addProductBeforeLogin.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:661)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-	at org.testng.TestRunner.privateRun(TestRunner.java:744)
-	at org.testng.TestRunner.run(TestRunner.java:602)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:380)
-	at org.testng.SuiteRunner.access$000(SuiteRunner.java:39)
-	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:414)
-	at org.testng.internal.thread.ThreadUtil$1.call(ThreadUtil.java:52)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-	at java.lang.Thread.run(Thread.java:748)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- scenario_satu -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testcase.addProductBeforeLogin@4232c52b]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-05-15T13:02:37Z" finished-at="2018-05-15T13:02:37Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testcase.addProductLoggedIn@4232c52b]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-05-15T16:59:35Z" finished-at="2018-05-15T16:59:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testcase.addProductBeforeLogin -->
+      </class> <!-- testcase.addProductLoggedIn -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>
