@@ -5,15 +5,8 @@
   <name>mavenselenium</name>
   <description>mavenseleniumjenkins</description>
   <build>
-    <sourceDirectory>src</sourceDirectory>
-    <resources>
-      <resource>
-        <directory>src</directory>
-        <excludes>
-          <exclude>**/*.java</exclude>
-        </excludes>
-      </resource>
-    </resources>
+    <sourceDirectory>src_controller</sourceDirectory>
+    <testSourceDirectory>src_test</testSourceDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -29,7 +22,7 @@
         <version>2.21.0</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>/Users/mac/.jenkins/workspace/mavenjob/Automation-Master/testng.xml</suiteXmlFile>
+            <suiteXmlFile>/Users/mac/Documents/Automation/mavenjob/Automation-Master/testng.xml</suiteXmlFile>
           </suiteXmlFiles>
         <useSystemClassLoader>false</useSystemClassLoader>
         </configuration>
