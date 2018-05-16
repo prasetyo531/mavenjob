@@ -42,6 +42,28 @@ public class AssertElement {
 	}
 	
 	
+	//product detail
+	public void getdataaproductlist(){
+		
+	List<WebElement> myList=driver.findElements(By.xpath("//*[@id='top-page']/div[3]/div[2]/div[2]")); //get price from array, xpath sampe atributes yg mau diambil
+	List<String> url=new ArrayList<>();
+
+	for(int i=0; i<myList.size(); i++){
+
+	url.add(myList.get(i).getAttribute("href"));	//loading text of each element in to array all_elements_text
+	if (myList.get(i).getAttribute("href") != null){	//if there is null, will not printed
+
+	System.out.println(myList.get(i).getAttribute("href"));	//to print directly
+		}
+	 }
+	}
+	
+	
+	
+	//product detail
+	public void waitPageDetail(){
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div > div")));
+	}
 	
 	
 	

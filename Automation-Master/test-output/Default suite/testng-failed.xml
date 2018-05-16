@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="testcase.checkoutLoginSnap">
+      <class name="testcase.hoverProductListGuest">
         <methods>
-          <include name="setUp"/>
           <include name="tearDown"/>
           <include name="scenario_satu"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- testcase.checkoutLoginSnap -->
+      </class> <!-- testcase.hoverProductListGuest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

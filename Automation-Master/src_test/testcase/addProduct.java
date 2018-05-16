@@ -44,19 +44,24 @@ import pageObjects.ProductPage;
 import pageObjects.addproductpage;
 import pageObjects.homepage;
 import pageObjects.login;
+import pageObjects.productdetail;
+import pageObjects.productlist;
 import resources.controller;
 import resources.support;
 
 public class addProduct extends controller {
-
 	
-public static Logger log =LogManager.getLogger(support.class.getName());
+	String productName = "testing";
+	String brandName = "wardah";
+	
+	public static Logger log =LogManager.getLogger(support.class.getName());
 	
 	public static RemoteWebDriver driver= null;
 	public static WebElement main= null;
 	public static Properties prop=null;
 	
 	public String UrlLogin = null;
+	public String UrlPageDetail = null;
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -73,6 +78,8 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		homepage home = new homepage(driver);
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
+		productlist prodlist = new productlist(driver);
+		productdetail proddet = new productdetail(driver);;
 		
 		AssertElement asser = new AssertElement(driver);
 		CategoryPage cat = new CategoryPage(driver);
@@ -198,7 +205,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        WebElement focusProductName= productpage.insertProductName(); //xpath megamenu nya  
        Actions onfocusProductName = new Actions(driver);
        onfocusProductName.moveToElement(focusProductName).click();
-       onfocusProductName.sendKeys("testing");
+       onfocusProductName.sendKeys(productName);
        onfocusProductName.build().perform();
        
        
@@ -226,8 +233,28 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        productpage.inputDescription().sendKeys("huba huba");
        productpage.clickSubmit().click();
        
-		
-		
+       asser.waitPageDetail();
+       
+       UrlPageDetail = driver.getCurrentUrl();
+       System.out.println(UrlPageDetail);
+       if (UrlPageDetail.contains("/edp/wardah/")) {//asert contain expected text
+    	   System.out.println("pass");
+       } else {
+    	   System.out.println("fail");
+       }
+       
+       String breadcrumb = proddet.findBreadcrumb().getText();
+       System.out.println(breadcrumb);
+       assertTrue(driver.findElement(By.cssSelector("#top-page > div.jsx-2093859422.contain-cover > div")).getText().contains("EDP"));
+       
+       String pname = proddet.findProductName().getText();
+       System.out.println(pname);
+       assertTrue(proddet.findProductName().getText().contains(pname));
+       
+       String bname = proddet.findBrandName().getText();
+       System.out.println(bname);
+       assertTrue(proddet.findBrandName().getText().contains(bname));
+	
 	}
 	
 	@AfterMethod
