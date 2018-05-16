@@ -1,5 +1,7 @@
 package testcase;
 
+import static org.testng.Assert.assertTrue;
+
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
@@ -47,7 +49,7 @@ import pageObjects.productlist;
 import resources.controller;
 import resources.support;
 
-public class productListVitaminSerum extends controller {
+public class filterByMultipleBrand extends controller {
 	
 public static Logger log =LogManager.getLogger(support.class.getName());
 	
@@ -55,7 +57,10 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	public static WebElement main= null;
 	public static Properties prop=null;
 	
-	public String UrlAfterCat = null;
+	public String UrlLogin = null;
+	public String UrlBeforeBrand = null;
+	public String UrlAfterBrand = null;
+	public String UrlAfterMultipleBrand = null;
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -103,30 +108,50 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
-		WebElement getmenu= home.getMenuHair(); //xpath megamenu nya
+		WebElement getmenu= home.getMenuBody(); //xpath megamenu nya
 		Actions act = new Actions(driver);
 		act.moveToElement(getmenu).perform();
 		
-		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Vitamin & Serum")));
+		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Hand Cream")));
 
-		WebElement clickElement= driver.findElement(By.linkText("Vitamin & Serum"));//xpath sub megamenu nya
+		WebElement clickElement= driver.findElement(By.linkText("Hand Cream"));//xpath sub megamenu nya
 		act.moveToElement(clickElement).click().perform();
+		
+		UrlBeforeBrand = driver.getCurrentUrl();
+		
+		Assert.assertEquals(UrlBeforeBrand, "http://reviews.femaledaily.net/hand-foot/hand-cream?brand=&order=popular&page=1" );	
 		
 		asser.getDataProductList();
 		
-		prodlist.clickBalm().click();
+		prodlist.clickBrand100Pure().click();
 		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.ctg-list-item")));
 		Thread.sleep(2000);
 		System.out.println("                                                                                             ");
 		asser.getDataProductList();
 		
-		UrlAfterCat = driver.getCurrentUrl();
+		UrlAfterBrand = driver.getCurrentUrl();
 		
-		Assert.assertEquals(UrlAfterCat, "http://reviews.femaledaily.net/vitamin/balm?brand=&order=popular&page=1");	
+		Assert.assertEquals(UrlAfterBrand, "http://reviews.femaledaily.net/hand-foot/hand-cream?brand=2564&order=popular&page=1" );	
 		
+		WebElement focusbrand= prodlist.clickSearchBrand(); //xpath megamenu nya  
+	    Actions onfocussearch = new Actions(driver);
+		onfocussearch.moveToElement(focusbrand).click();
+		onfocussearch.sendKeys("A'kin");
+		onfocussearch.build().perform();
+		
+		prodlist.clickAkin().click();
+		
+		Thread.sleep(2000);
+		System.out.println("                                                                                             ");
+		asser.getDataProductList();
+		
+		UrlAfterMultipleBrand = driver.getCurrentUrl();
+		
+		Assert.assertEquals(UrlAfterMultipleBrand, "http://reviews.femaledaily.net/hand-foot/hand-cream?brand=2564,2187&order=popular&page=1" );	
+
 		
 	}
-
+	
 	@AfterMethod
 	public void tearDown() {
 		if(driver!=null) {
@@ -169,5 +194,5 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		     filepath.close();
 		     return Testdata;
 		     }
-	
-}
+	}
+

@@ -59,6 +59,7 @@ public class hoverProductListLoggedIn extends controller {
 	public static Properties prop=null;
 	
 	public String UrlLogin = null;
+	public String UrlAfterBrand = null;
 	public String UrlPageDetail = null;
 	
 	@BeforeTest
@@ -143,6 +144,10 @@ public class hoverProductListLoggedIn extends controller {
 		proddet.clickAddReview().click();
 		
 		asser.waitReviewForm();
+		
+		UrlAfterBrand = driver.getCurrentUrl();
+		
+		Assert.assertEquals(UrlAfterBrand, "http://reviews.femaledaily.net/hand-foot/hand-cream?brand=2564&order=popular&page=1" );	
 		
 	}
 

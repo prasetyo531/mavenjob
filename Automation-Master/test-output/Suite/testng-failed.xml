@@ -4,13 +4,13 @@
   <test name="Test(failed)" parallel="tests">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="testcase.productListVitaminSerum">
+      <class name="testcase.filterByMultipleBrand">
         <methods>
-          <include name="scenario_satu" invocation-numbers="0"/>
           <include name="tearDown"/>
           <include name="setUp"/>
+          <include name="scenario_satu" invocation-numbers="0"/>
         </methods>
-      </class> <!-- testcase.productListVitaminSerum -->
+      </class> <!-- testcase.filterByMultipleBrand -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
