@@ -118,7 +118,7 @@ public class hoverProductListLoggedIn extends controller {
 		asser.loggedin();
 		
 		//homepage
-		WebElement getmenu= home.getMenu(); //xpath megamenu nya
+		WebElement getmenu= home.getMenuBody(); //xpath megamenu nya
 		Actions act = new Actions(driver);
 		act.moveToElement(getmenu).perform();
 		

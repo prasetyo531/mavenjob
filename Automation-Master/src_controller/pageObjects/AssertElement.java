@@ -45,7 +45,7 @@ public class AssertElement {
 	//product list
 	public void getDataProductList(){
 		
-	List<WebElement> myList=driver.findElements(By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.ctg-list-item")); //get price from array, xpath sampe atributes yg mau diambil
+	List<WebElement> myList=driver.findElements(By.xpath("//div[@class='jsx-1103970675 product-card-catalog']//a")); //get price from array, xpath sampe atributes yg mau diambil
 	List<String> url=new ArrayList<>();
 
 	for(int i=0; i<myList.size(); i++){

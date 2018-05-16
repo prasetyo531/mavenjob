@@ -117,7 +117,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.loggedin();
 		
 		//homepage
-		WebElement getmenu= home.getMenu(); //xpath megamenu nya
+		WebElement getmenu= home.getMenuBody(); //xpath megamenu nya
 		Actions act = new Actions(driver);
 		act.moveToElement(getmenu).perform();
 		

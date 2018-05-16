@@ -13,7 +13,9 @@ public class homepage {
 	By clickaddproduct=By.linkText("Add Product");
 	By clicklogin=By.cssSelector("#__next > div > div > div.jsx-550002916.gbheader > div.jsx-550002916.gbheader-right > div.jsx-1624868303.gbheader-login");
 	By searchelement=By.cssSelector("#__next > div > div > div.jsx-746878661.gtmenu > div.jsx-746878661.gtmenu-search-input > form > input");
-	By menuHair=By.cssSelector("#__next > div > div > div.jsx-746878661.gtmenu > div.jsx-746878661.gtmenu-menu-main > div.jsx-746878661.gtmenu-menu-left > div > div > div:nth-child(2) > a");
+	By menuBody=By.cssSelector("#__next > div > div > div.jsx-746878661.gtmenu > div.jsx-746878661.gtmenu-menu-main > div.jsx-746878661.gtmenu-menu-left > div > div > div:nth-child(2) > a");
+	By menuHair=By.cssSelector("#__next > div > div > div.jsx-746878661.gtmenu > div.jsx-746878661.gtmenu-menu-main > div.jsx-746878661.gtmenu-menu-left > div > div > div:nth-child(1) > a");
+	
 	
 	
 	public homepage(RemoteWebDriver driver) {
@@ -28,7 +30,12 @@ public class homepage {
 		return driver.findElement(joinletter);
 	}
 	
-	public WebElement getMenu(){
+	public WebElement getMenuBody(){
+		
+		return driver.findElement(menuBody);
+	}
+	
+	public WebElement getMenuHair(){
 		
 		return driver.findElement(menuHair);
 	}
