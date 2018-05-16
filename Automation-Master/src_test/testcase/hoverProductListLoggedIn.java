@@ -1,7 +1,5 @@
 package testcase;
 
-import static org.testng.Assert.assertTrue;
-
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
@@ -49,7 +47,10 @@ import pageObjects.productlist;
 import resources.controller;
 import resources.support;
 
-public class hoverProductListGuest extends controller {
+public class hoverProductListLoggedIn extends controller {
+	
+	String productName = "testing";
+	String brandName = "wardah";
 	
 	public static Logger log =LogManager.getLogger(support.class.getName());
 	
@@ -58,6 +59,7 @@ public class hoverProductListGuest extends controller {
 	public static Properties prop=null;
 	
 	public String UrlLogin = null;
+	public String UrlPageDetail = null;
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -75,7 +77,7 @@ public class hoverProductListGuest extends controller {
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
 		productlist prodlist = new productlist(driver);
-		productdetail proddet = new productdetail(driver);
+		productdetail proddet = new productdetail(driver);;
 		
 		AssertElement asser = new AssertElement(driver);
 		CategoryPage cat = new CategoryPage(driver);
@@ -105,6 +107,17 @@ public class hoverProductListGuest extends controller {
 		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
+		home.clickLogin().click();
+		UrlLogin = driver.getCurrentUrl();
+		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/" );
+		
+		logpro.fillusername().sendKeys("putwid");
+		logpro.fillpassword().sendKeys("tester123");
+		logpro.clickbuttonlogin().click();
+		
+		asser.loggedin();
+		
+		//homepage
 		WebElement getmenu= home.getMenu(); //xpath megamenu nya
 		Actions act = new Actions(driver);
 		act.moveToElement(getmenu).perform();
@@ -129,12 +142,10 @@ public class hoverProductListGuest extends controller {
 		
 		proddet.clickAddReview().click();
 		
-		UrlLogin = driver.getCurrentUrl();
+		asser.waitReviewForm();
 		
-		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/" );	
-	
 	}
-	
+
 	@AfterMethod
 	public void tearDown() {
 		if(driver!=null) {
@@ -176,6 +187,7 @@ public class hoverProductListGuest extends controller {
 		       }
 		     filepath.close();
 		     return Testdata;
-		     }
+	
+	}
 	
 }

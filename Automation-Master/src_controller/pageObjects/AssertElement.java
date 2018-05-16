@@ -42,10 +42,10 @@ public class AssertElement {
 	}
 	
 	
-	//product detail
-	public void getdataaproductlist(){
+	//product list
+	public void getDataProductList(){
 		
-	List<WebElement> myList=driver.findElements(By.xpath("//*[@id='top-page']/div[3]/div[2]/div[2]")); //get price from array, xpath sampe atributes yg mau diambil
+	List<WebElement> myList=driver.findElements(By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.ctg-list-item")); //get price from array, xpath sampe atributes yg mau diambil
 	List<String> url=new ArrayList<>();
 
 	for(int i=0; i<myList.size(); i++){
@@ -65,7 +65,13 @@ public class AssertElement {
 		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div > div")));
 	}
 	
+	public void waitReviewForm(){
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#form-add-review")));
+	}
 	
+	public void waitReviewSubmitted(){
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div:nth-child(1) > div")));
+	}
 	
 	
 	//CATEGORY PAGE
