@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="42772" started-at="2018-05-17T04:43:20Z" finished-at="2018-05-17T04:44:03Z">
+  <suite name="Suite" duration-ms="45598" started-at="2018-05-17T05:49:01Z" finished-at="2018-05-17T05:49:46Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="42772" started-at="2018-05-17T04:43:20Z" finished-at="2018-05-17T04:44:03Z">
-      <class name="testcase.browseProductAnotherPage">
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:testcase.browseProductAnotherPage@4232c52b]" name="setUp" is-config="true" duration-ms="1692" started-at="2018-05-17T11:43:20Z" finished-at="2018-05-17T11:43:21Z">
+    <test name="Test" duration-ms="45598" started-at="2018-05-17T05:49:01Z" finished-at="2018-05-17T05:49:46Z">
+      <class name="testcase.sortingProductList">
+        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:testcase.sortingProductList@4232c52b]" name="setUp" is-config="true" duration-ms="2253" started-at="2018-05-17T12:49:01Z" finished-at="2018-05-17T12:49:03Z">
           <params>
             <param index="0">
               <value>
@@ -18,7 +18,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="scenario_satu(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testcase.browseProductAnotherPage@4232c52b]" name="scenario_satu" duration-ms="40841" started-at="2018-05-17T11:43:22Z" data-provider="existingCust" finished-at="2018-05-17T11:44:03Z">
+        <test-method status="PASS" signature="scenario_satu(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testcase.sortingProductList@4232c52b]" name="scenario_satu" duration-ms="43061" started-at="2018-05-17T12:49:03Z" data-provider="existingCust" finished-at="2018-05-17T12:49:46Z">
           <params>
             <param index="0">
               <value>
@@ -44,11 +44,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- scenario_satu -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testcase.browseProductAnotherPage@4232c52b]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-05-17T11:44:03Z" finished-at="2018-05-17T11:44:03Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testcase.sortingProductList@4232c52b]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-05-17T12:49:46Z" finished-at="2018-05-17T12:49:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testcase.browseProductAnotherPage -->
+      </class> <!-- testcase.sortingProductList -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

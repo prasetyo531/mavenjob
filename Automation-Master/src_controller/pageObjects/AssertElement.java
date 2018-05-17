@@ -58,6 +58,25 @@ public class AssertElement {
 	 }
 	}
 	
+	public void waitSortOption(){
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > div")));
+	}
+	
+	public void getDataProductRating(){
+		
+		List<WebElement> myList=driver.findElements(By.xpath("//div[@class='jsx-1103970675 product-card-catalog']//div//h3//span")); //get price from array, xpath sampe atributes yg mau diambil
+		List<String> url=new ArrayList<>();
+
+		for(int i=0; i<myList.size(); i++){
+
+		url.add(myList.get(i).getAttribute("class"));	//loading text of each element in to array all_elements_text
+		if (myList.get(i).getAttribute("class") != null){	//if there is null, will not printed
+
+		System.out.println(myList.get(i).getAttribute("class"));	//to print directly
+			}
+		 }
+		}
+	
 	
 	//product detail
 	public void waitPageDetail(){
