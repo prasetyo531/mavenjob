@@ -59,7 +59,6 @@ public class AssertElement {
 	}
 	
 	
-	
 	//product detail
 	public void waitPageDetail(){
 		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div > div")));

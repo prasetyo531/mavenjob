@@ -1,7 +1,5 @@
 package testcase;
 
-import static org.testng.Assert.assertTrue;
-
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
@@ -49,7 +47,7 @@ import pageObjects.productlist;
 import resources.controller;
 import resources.support;
 
-public class filterByMultipleBrand extends controller {
+public class browseProductAnotherPage extends controller {
 	
 public static Logger log =LogManager.getLogger(support.class.getName());
 	
@@ -57,10 +55,13 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	public static WebElement main= null;
 	public static Properties prop=null;
 	
-	public String UrlLogin = null;
-	public String UrlBeforeBrand = null;
-	public String UrlAfterBrand = null;
-	public String UrlAfterMultipleBrand = null;
+	public String UrlPage1 = null;
+	public String UrlAfterPage3 = null;
+	public String UrlAfterPrev3 = null;
+	public String UrlAfterNext2 = null;
+	public String firstProduct = null;
+	public String MatchProduct = null;
+	
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -117,38 +118,36 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		WebElement clickElement= driver.findElement(By.linkText("Hand Cream"));//xpath sub megamenu nya
 		act.moveToElement(clickElement).click().perform();
 		
-		UrlBeforeBrand = driver.getCurrentUrl();
-		
-		Assert.assertEquals(UrlBeforeBrand, "http://reviews.femaledaily.net/hand-foot/hand-cream?brand=&order=popular&page=1");	
+		UrlPage1 = driver.getCurrentUrl();
+		Assert.assertEquals(UrlPage1, "http://reviews.femaledaily.net/hand-foot/hand-cream?brand=&order=popular&page=1" );
 		
 		asser.getDataProductList();
 		
-		prodlist.clickBrand100Pure().click();
-		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.ctg-list-item")));
+		prodlist.clickPage3().click();
 		Thread.sleep(2000);
-		System.out.println("                                                                                             ");
-		asser.getDataProductList();
+		UrlAfterPage3 = driver.getCurrentUrl();
+		Assert.assertEquals(UrlAfterPage3, "http://reviews.femaledaily.net/hand-foot/hand-cream?brand=&order=popular&page=3");
 		
-		UrlAfterBrand = driver.getCurrentUrl();
+		firstProduct = productlist.findProduct1().getAttribute("href");
+		System.out.println("link of the first product is:- " +firstProduct);
 		
-		Assert.assertEquals(UrlAfterBrand, "http://reviews.femaledaily.net/hand-foot/hand-cream?brand=2564&order=popular&page=1" );	
+		prodlist.clickPrevPage().click();
+		UrlAfterPrev3 = driver.getCurrentUrl();
+		Assert.assertEquals(UrlAfterPrev3, "http://reviews.femaledaily.net/hand-foot/hand-cream?brand=&order=popular&page=2");
 		
-		WebElement focusbrand= prodlist.clickSearchBrand(); //xpath megamenu nya  
-	    Actions onfocussearch = new Actions(driver);
-		onfocussearch.moveToElement(focusbrand).click();
-		onfocussearch.sendKeys("A'kin");
-		onfocussearch.build().perform();
-		
-		prodlist.clickAkin().click();
-		
+		prodlist.clickNextPage().click();
 		Thread.sleep(2000);
-		System.out.println("                                                                                             ");
-		asser.getDataProductList();
+		UrlAfterNext2 = driver.getCurrentUrl();
+		Assert.assertEquals(UrlAfterNext2, "http://reviews.femaledaily.net/hand-foot/hand-cream?brand=&order=popular&page=4");
 		
-		UrlAfterMultipleBrand = driver.getCurrentUrl();
+		JavascriptExecutor js = ((JavascriptExecutor) driver);
+		js.executeScript("window.scrollTo(900, document.body.scrollHeight);");
 		
-		Assert.assertEquals(UrlAfterMultipleBrand, "http://reviews.femaledaily.net/hand-foot/hand-cream?brand=2564,2187&order=popular&page=1" );	
-
+		prodlist.toTop().click();
+		
+		MatchProduct = productlist.findProduct1().getAttribute("href");
+		Assert.assertEquals(MatchProduct, "http://reviews.femaledaily.net/hand-foot/hand-cream/nature-republic/hand-and-nature-hand-cream?tab=reviews&cat=&cat_id=0&age_range=&skin_type=&skin_tone=&skin_undertone=&hair_texture=&hair_type=&order=newest&page=1");
+		
 		
 	}
 	
@@ -194,5 +193,5 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		     filepath.close();
 		     return Testdata;
 		     }
-	}
 
+}
