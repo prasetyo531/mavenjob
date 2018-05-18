@@ -49,9 +49,7 @@ import pageObjects.productlist;
 import resources.controller;
 import resources.support;
 
-public class hoverProductAlreadyReviewed extends controller {
-	
-public static Logger log =LogManager.getLogger(support.class.getName());
+public class filterReviewAge extends controller {
 	
 	public static RemoteWebDriver driver= null;
 	public static WebElement main= null;
@@ -59,6 +57,8 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	
 	public String UrlLogin = null;
 	public String UrlPageDetail = null;
+	public String ActiveFilterAge = null;
+	
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -76,7 +76,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
 		productlist prodlist = new productlist(driver);
-		productdetail proddet = new productdetail(driver);
+		productdetail proddet = new productdetail(driver);;
 		
 		AssertElement asser = new AssertElement(driver);
 		CategoryPage cat = new CategoryPage(driver);
@@ -121,9 +121,9 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		Actions act = new Actions(driver);
 		act.moveToElement(getmenu).perform();
 		
-		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Hand Cream")));
+		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Vitamin & Serum")));
 
-		WebElement clickElement= driver.findElement(By.linkText("Hand Cream"));//xpath sub megamenu nya
+		WebElement clickElement= driver.findElement(By.linkText("Vitamin & Serum"));//xpath sub megamenu nya
 		act.moveToElement(clickElement).click().perform();
 		
 		asser.getDataProductList();
@@ -139,23 +139,14 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		
 		asser.waitPageDetail();
 		
-		String ButtonBeforeReview = proddet.clickAddReview().getText();
-		Assert.assertEquals(ButtonBeforeReview, "ADD REVIEW" );
-		proddet.clickAddReview().click();
+		proddet.clickFilterByAge().click();
+		proddet.chooseAge25till29().click();
+		Thread.sleep(2000);
 		
-		asser.waitReviewForm();
+		//need verify again
 		
-		proddet.fillFieldReview().sendKeys("back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one");
-		proddet.chooseRating().click();
-		proddet.chooseProductPrice().click();
-		proddet.choosePackageQuality().click();
-		proddet.chooseRepurchaseThisProduct().click();
-		proddet.clickSubmitReview().click();
-		
-		asser.waitReviewSubmitted();
-		
-		String ButtonAfterReview = proddet.clickAddReview().getText();
-		Assert.assertEquals(ButtonAfterReview, "EDIT REVIEW" );
+		ActiveFilterAge =  driver.getCurrentUrl();
+		Assert.assertEquals(ActiveFilterAge, "http://reviews.femaledaily.net/treatment-color/vitamin/loreal-paris/smooth-intense-anti-frizz-serum?tab=reviews&cat=&cat_id=0&age_range=3&skin_type=&skin_tone=&skin_undertone=&hair_texture=&hair_type=&order=newest&page=1");
 		
 		
 		
@@ -205,4 +196,5 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	
 	}
 	
+
 }

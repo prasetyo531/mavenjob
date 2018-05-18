@@ -15,6 +15,7 @@ public class homepage {
 	By searchelement=By.cssSelector("#__next > div > div > div.jsx-746878661.gtmenu > div.jsx-746878661.gtmenu-search-input > form > input");
 	By menuBody=By.cssSelector("#__next > div > div > div.jsx-746878661.gtmenu > div.jsx-746878661.gtmenu-menu-main > div.jsx-746878661.gtmenu-menu-left > div > div > div:nth-child(2) > a");
 	By menuHair=By.cssSelector("#__next > div > div > div.jsx-746878661.gtmenu > div.jsx-746878661.gtmenu-menu-main > div.jsx-746878661.gtmenu-menu-left > div > div > div:nth-child(1) > a");
+	By findaddreview=By.cssSelector("#__next > div > div > div.jsx-1787593642.home-content > div.jsx-1787593642.home-column.margin-bottom-30 > div.jsx-1787593642.home-one-quarter > div.jsx-1787593642.home-reviews-content > button");
 	
 	
 	
@@ -60,6 +61,11 @@ public class homepage {
 	public WebElement clickSearch(){
 		
 		return driver.findElement(searchelement);
+	}
+	
+	public WebElement clickAddReviewHomepage(){
+		
+		return driver.findElement(findaddreview);
 	}
 
 }

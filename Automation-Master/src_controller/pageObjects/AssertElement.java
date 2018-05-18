@@ -79,6 +79,21 @@ public class AssertElement {
 	
 	
 	//product detail
+	public void getDataWavyLIst(){
+		
+		List<WebElement> myList=driver.findElements(By.xpath("//div")); //get price from array, xpath sampe atributes yg mau diambil
+		List<String> url=new ArrayList<>();
+
+		for(int i=0; i<myList.size(); i++){
+
+		url.add(myList.get(i).getAttribute("class"));	//loading text of each element in to array all_elements_text
+		if (myList.get(i).getAttribute("class") != null){	//if there is null, will not printed
+
+		System.out.println(myList.get(i).getAttribute("class"));	//to print directly
+			}
+		 }
+		}
+	
 	public void waitPageDetail(){
 		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div > div")));
 	}
@@ -89,6 +104,11 @@ public class AssertElement {
 	
 	public void waitReviewSubmitted(){
 		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div:nth-child(1) > div")));
+	}
+	
+	//product review desc page
+	public void waitPageReviewDesc(){
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[4]/div/div[2]/div/div[2]/div/div[1]")));
 	}
 	
 	

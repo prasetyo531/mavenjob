@@ -4,13 +4,13 @@
   <test name="Test(failed)" parallel="tests">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="testcase.browseProductAnotherPage">
+      <class name="testcase.commentLastAddedProduct">
         <methods>
           <include name="tearDown"/>
-          <include name="setUp"/>
           <include name="scenario_satu" invocation-numbers="0"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- testcase.browseProductAnotherPage -->
+      </class> <!-- testcase.commentLastAddedProduct -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

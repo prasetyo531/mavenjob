@@ -17,14 +17,25 @@ public RemoteWebDriver driver=null;
 	By getEdEReviewButton=By.cssSelector("#top-page > div.jsx-2921700402.pd-item > div.jsx-2921700402.pd-itemcol2 > button");
 	
 	By getWishlistButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
-	By getTriedtButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
-	By getFilterBitutton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
-	By getFilterHairButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
-	By getSortButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
+	By getTriedButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
+	By getFilterHairButton=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.tab-review-cover-filter > div > div:nth-child(1)");
+	By hairTypeWavy=By.cssSelector("#myDropdown1 > div:nth-child(1) > a.jsx-3197642051.drop-selected");
+	By hairTextureThick=By.cssSelector("#myDropdown1 > div:nth-child(2) > a:nth-child(2)");
+	By getFilterAgeButton=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.tab-review-cover-filter > div > div:nth-child(2)");
+	By age25till29=By.cssSelector("#myDropdown2 > a:nth-child(4)");
+	By getSortButton=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.tab-review-cover-filter > div > div:nth-child(3)");
+	By sortOldest=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.tab-review-cover-filter > div > div:nth-child(3) > div > div > a:nth-child(2)");
 	By getProfileButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
 	By getReviewDescButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
-	By getpagination=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
+	By getPage3=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-557237353.paging > div.jsx-557237353.paging-number > div.jsx-557237353.paging-list-number > a:nth-child(3)");
+	By getPrevPageButton=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-557237353.paging > div.jsx-557237353.paging-number > a:nth-child(1)");
+	By getNextPageButton=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-557237353.paging > div.jsx-557237353.paging-number > a:nth-child(3)");
 	By getbacktotopButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
+	By getComment=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div > div > div.card-review-new-single-bottom > div > div > div.jsx-2508623835.cardrv-bottom1");
+	
+	//element review people
+	By commentReview=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div > div > div.card-review-new-single-bottom > div > div > div.jsx-2508623835.cardrv-bottom1");
+	
 	
 	//element form review
 	By getFieldReview=By.cssSelector("#form-add-review > div.jsx-4114744673.ar-form > textarea");
@@ -32,8 +43,17 @@ public RemoteWebDriver driver=null;
 	By getProductPriceExpensive=By.cssSelector("#form-add-review > div.jsx-4114744673.ar-clicked-cv > div.jsx-4114744673.ar-clicked > div.jsx-4114744673.ar-col1 > div.jsx-4114744673.ar-btn-txt > button:nth-child(3)");
 	By getPackageQuality=By.cssSelector("#form-add-review > div.jsx-4114744673.ar-clicked-cv > div.jsx-4114744673.ar-clicked > div.jsx-4114744673.ar-col2 > div:nth-child(2) > button:nth-child(4)");
 	By getPurchase=By.cssSelector("#form-add-review > div.jsx-4114744673.ar-clicked-cv > div.jsx-4114744673.ar-clicked > div.jsx-4114744673.ar-col2 > div:nth-child(4) > button.jsx-4114744673.right");
-	By getButtonSubmitReview=By.cssSelector("#form-add-review > div.jsx-4114744673.ar-clicked-cv > div.jsx-4114744673.ar-bottom > div.jsx-4114744673.ar-submit > input");
-
+	By getButtonSubmitReview=By.cssSelector("#form-add-review > div.jsx-4114744673.ar-clicked-cv > div.jsx-4114744673.ar-bottom > div.jsx-4114744673.ar-submit");
+	By detailDesc=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div:nth-child(1) > div > div.card-review-new-detail > div.card-review-new-coment");
+	
+	
+	
+	//element descr review
+	By getBrandNameInReviewDetail=By.cssSelector("body > div:nth-child(7) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-3475087559.modal-review-cv > div.jsx-3475087559.modal-review-detail > div.jsx-3475087559.modal-review-brand-name > a");
+	By getCommentField=By.cssSelector("body > div:nth-child(7) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-1569223425.addcomment-container > div.jsx-1311756822.addcomment-txtx-container > form > textarea");
+	By getButtonPost=By.cssSelector("body > div:nth-child(7) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-1569223425.addcomment-container > div.jsx-1311756822.addcomment-txtx-container > form > div > input.jsx-1311756822.addcomment-btn-post");
+	By getButtonCancel=By.cssSelector("body > div:nth-child(8) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-1569223425.addcomment-container > div.jsx-1311756822.addcomment-txtx-container > form > div > input.jsx-1311756822.addcomment-btn-cancel");
+	By closeModalDesc=By.cssSelector("body > div:nth-child(8) > div > div.jsx-3475087559.modal-review > div > img"); 
 	
 	public productdetail(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
@@ -60,6 +80,17 @@ public RemoteWebDriver driver=null;
 	public WebElement findBrandName(){
 		
 		return driver.findElement(getBrandName);
+	}
+	
+	public WebElement clickBrandInRevDesc(){
+		
+		return driver.findElement(getBrandNameInReviewDetail);
+	}
+	
+	
+	public WebElement findReviewDesc(){
+		
+		return driver.findElement(getReviewDescButton);
 	}
 	
 	//element review form
@@ -91,6 +122,80 @@ public RemoteWebDriver driver=null;
 	public WebElement clickSubmitReview(){
 		
 		return driver.findElement(getButtonSubmitReview);
+	}
+	
+	public WebElement getDetailDesc(){
+		
+		return driver.findElement(detailDesc);
+	}
+	
+	//element review description
+	public WebElement clickFilterHairProDet(){
+		
+		return driver.findElement(getBrandNameInReviewDetail);
+	}
+	
+	//filter sort
+	public WebElement clickFilterAgeProDet(){
+		
+		return driver.findElement(getSortButton);
+	}
+	
+	public WebElement chooseSortOledest(){
+		
+		return driver.findElement(sortOldest);
+	}
+	
+	//filterby hair
+	public WebElement clickFilterByHair(){
+		
+		return driver.findElement(getFilterHairButton);
+	}
+	
+	public WebElement chooseWafy(){
+		
+		return driver.findElement(hairTypeWavy);
+	}
+	
+	public WebElement chooseThick(){
+		
+		return driver.findElement(hairTextureThick);
+	}
+	
+	//filterby age
+	public WebElement clickFilterByAge(){
+		
+		return driver.findElement(getFilterAgeButton);
+	}
+	
+	public WebElement chooseAge25till29(){
+		
+		return driver.findElement(age25till29);
+	}
+	
+	public WebElement clickComment(){
+		
+		return driver.findElement(getComment);
+	}
+	
+	public WebElement findCommentField(){
+		
+		return driver.findElement(getCommentField);
+	}
+	
+	public WebElement clickPostComment(){
+		
+		return driver.findElement(getButtonPost);
+	}
+	
+	public WebElement clickCancelComment(){
+		
+		return driver.findElement(getButtonCancel);
+	}
+	
+	public WebElement closeModal(){
+		
+		return driver.findElement(closeModalDesc);
 	}
 
 }

@@ -49,7 +49,7 @@ import pageObjects.productlist;
 import resources.controller;
 import resources.support;
 
-public class hoverProductAlreadyReviewed extends controller {
+public class addReview extends controller{
 	
 public static Logger log =LogManager.getLogger(support.class.getName());
 	
@@ -76,7 +76,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
 		productlist prodlist = new productlist(driver);
-		productdetail proddet = new productdetail(driver);
+		productdetail proddet = new productdetail(driver);;
 		
 		AssertElement asser = new AssertElement(driver);
 		CategoryPage cat = new CategoryPage(driver);
@@ -121,9 +121,9 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		Actions act = new Actions(driver);
 		act.moveToElement(getmenu).perform();
 		
-		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Hand Cream")));
+		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Bath Treatment")));
 
-		WebElement clickElement= driver.findElement(By.linkText("Hand Cream"));//xpath sub megamenu nya
+		WebElement clickElement= driver.findElement(By.linkText("Bath Treatment"));//xpath sub megamenu nya
 		act.moveToElement(clickElement).click().perform();
 		
 		asser.getDataProductList();
@@ -157,10 +157,8 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		String ButtonAfterReview = proddet.clickAddReview().getText();
 		Assert.assertEquals(ButtonAfterReview, "EDIT REVIEW" );
 		
-		
-		
 	}
-
+	
 	@AfterMethod
 	public void tearDown() {
 		if(driver!=null) {
@@ -204,5 +202,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		     return Testdata;
 	
 	}
-	
+
+
 }

@@ -49,9 +49,12 @@ import pageObjects.productlist;
 import resources.controller;
 import resources.support;
 
-public class hoverProductAlreadyReviewed extends controller {
+public class viewListProductByBrand extends controller {
 	
-public static Logger log =LogManager.getLogger(support.class.getName());
+	String productName = "testing";
+	String brandName = "wardah";
+	
+	public static Logger log =LogManager.getLogger(support.class.getName());
 	
 	public static RemoteWebDriver driver= null;
 	public static WebElement main= null;
@@ -76,7 +79,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
 		productlist prodlist = new productlist(driver);
-		productdetail proddet = new productdetail(driver);
+		productdetail proddet = new productdetail(driver);;
 		
 		AssertElement asser = new AssertElement(driver);
 		CategoryPage cat = new CategoryPage(driver);
@@ -106,17 +109,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
-		home.clickLogin().click();
-		UrlLogin = driver.getCurrentUrl();
-		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/" );
-		
-		logpro.fillusername().sendKeys("putwid");
-		logpro.fillpassword().sendKeys("tester123");
-		logpro.clickbuttonlogin().click();
-		
-		asser.loggedin();
-		
-		//homepage
 		WebElement getmenu= home.getMenuBody(); //xpath megamenu nya
 		Actions act = new Actions(driver);
 		act.moveToElement(getmenu).perform();
@@ -139,24 +131,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		
 		asser.waitPageDetail();
 		
-		String ButtonBeforeReview = proddet.clickAddReview().getText();
-		Assert.assertEquals(ButtonBeforeReview, "ADD REVIEW" );
-		proddet.clickAddReview().click();
-		
-		asser.waitReviewForm();
-		
-		proddet.fillFieldReview().sendKeys("back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one");
-		proddet.chooseRating().click();
-		proddet.chooseProductPrice().click();
-		proddet.choosePackageQuality().click();
-		proddet.chooseRepurchaseThisProduct().click();
-		proddet.clickSubmitReview().click();
-		
-		asser.waitReviewSubmitted();
-		
-		String ButtonAfterReview = proddet.clickAddReview().getText();
-		Assert.assertEquals(ButtonAfterReview, "EDIT REVIEW" );
-		
+		proddet.findBrandName().click();
 		
 		
 	}
@@ -202,7 +177,5 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		       }
 		     filepath.close();
 		     return Testdata;
-	
-	}
-	
+		     }
 }
