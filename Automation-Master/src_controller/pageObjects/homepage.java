@@ -10,6 +10,7 @@ public class homepage {
 	
 	By joinletter=By.cssSelector("body > div:nth-child(6) > div > div > div.jsx-3828308350.modal-join-content-right > p:nth-child(3) > a");
 	By pointaddproduct=By.cssSelector("#__next > div > div > div.jsx-550002916.gbheader > div.jsx-550002916.gbheader-right > div.gbheader-add-area");
+	By pointloginlogout=By.cssSelector("#__next > div > div > div.jsx-1986071017.gbheader > div.jsx-1986071017.gbheader-right > div.gbheader-userprofile");
 	By clickaddproduct=By.linkText("Add Product");
 	By clicklogin=By.cssSelector("#__next > div > div > div.jsx-550002916.gbheader > div.jsx-550002916.gbheader-right > div.jsx-1624868303.gbheader-login");
 	By searchelement=By.cssSelector("#__next > div > div > div.jsx-746878661.gtmenu > div.jsx-746878661.gtmenu-search-input > form > input");
@@ -66,6 +67,11 @@ public class homepage {
 	public WebElement clickAddReviewHomepage(){
 		
 		return driver.findElement(findaddreview);
+	}
+	
+	public WebElement pointUserHeader(){
+		
+		return driver.findElement(pointloginlogout);
 	}
 
 }
