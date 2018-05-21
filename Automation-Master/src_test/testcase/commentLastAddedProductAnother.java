@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -132,57 +133,16 @@ public class commentLastAddedProductAnother {
 		System.out.println(UrlLogin);
 		
 		//step 1
-		productpage.clickUploadPhoto().click();
-		
-		File file1 = new File("/Users/mac/Documents/multimedia/background/product-test.jpg");
-        StringSelection stringSelection1= new StringSelection(file1.getAbsolutePath());
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection1, null);
-		
-        Robot robot1 = new Robot();
-        
-        // Cmd + Tab is needed since it launches a Java app and the browser looses focus
-       
-       robot1.keyPress(KeyEvent.VK_META);
-       robot1.keyPress(KeyEvent.VK_TAB);
-       robot1.keyRelease(KeyEvent.VK_META);
-       robot1.keyRelease(KeyEvent.VK_TAB);
-       robot1.delay(800);
-       //Open Goto window
-       robot1.keyPress(KeyEvent.VK_META);
-       robot1.keyPress(KeyEvent.VK_SHIFT);
-       robot1.keyPress(KeyEvent.VK_G);
-       robot1.keyRelease(KeyEvent.VK_META);
-       robot1.keyRelease(KeyEvent.VK_SHIFT);
-       robot1.keyRelease(KeyEvent.VK_G);
-       //Paste the clipboard value
-       robot1.keyPress(KeyEvent.VK_META);
-       robot1.keyPress(KeyEvent.VK_V);
-       robot1.keyRelease(KeyEvent.VK_META);
-       robot1.keyRelease(KeyEvent.VK_V);
-       //Press Enter key to close the Goto window and Upload window
-       robot1.keyPress(KeyEvent.VK_ENTER);
-       robot1.keyRelease(KeyEvent.VK_ENTER);
-       robot1.delay(800);
-       robot1.keyPress(KeyEvent.VK_ENTER);
-       robot1.keyRelease(KeyEvent.VK_ENTER);
-       Thread.sleep(7000);
-       
-       Actions crop = new Actions(driver);
-       WebElement trycrop = driver.findElementByCssSelector("#modal-crop-showed > div > div.ReactCrop.ReactCrop--fixed-aspect > img");
-
-       //Move to the desired co-ordinates of the image element, In the code below I am staring from bottom left corner of the image
-       crop.moveToElement(productpage.findCropArea(),0,0);
-
-       //locate the co-ordinates of image you want to move by and perform the click   and hold which mimics the crop action 
-       crop.clickAndHold().moveByOffset(196,238).release().build().perform();
-       
-       productpage.cropPicture().click();
-       
-//       JavascriptExecutor js = (JavascriptExecutor) driver;
-//       js.executeScript("window.scrollBy(0,1000)");
-       
-       productpage.nextStep1().click();
-       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		WebElement focusInputUrl= productpage.insertUrl(); //insert invalid url
+	    Actions onfocusInputUrl = new Actions(driver);
+	    onfocusInputUrl.moveToElement(focusInputUrl).click();
+	    onfocusInputUrl.sendKeys("https://blog.adioma.com/wp-content/uploads/2014/10/How-Steve-Jobs-Started-apple-founder-infographic-700x466.jpg");
+	    onfocusInputUrl.build().perform();
+	    
+	    productpage.clickShowLinkImage().click();
+	    
+		productpage.nextStep1().click();
+	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
        
        //step 2
        WebElement focusbrand= productpage.selectBrand(); //xpath megamenu nya  
@@ -257,12 +217,17 @@ public class commentLastAddedProductAnother {
        assertTrue(proddet.findBrandName().getText().contains(bname));
        
        //proccess comment
-//       proddet.clickComment().click();
-//       asser.waitPageReviewDesc();
-//       proddet.findCommentField().sendKeys("comment 1");
-//       Thread.sleep(2000);
-//       
-//       proddet.clickPostComment().click();
+       proddet.clickComment().click();
+       asser.waitPageReviewDesc();
+       proddet.findCommentField().sendKeys("comment 1");
+       Thread.sleep(2000);
+       
+       proddet.clickPostComment().click();
+       Thread.sleep(2000);
+       
+       WebElement getCloseProDesc= proddet.closeModal();
+       Actions actCloseProDesc = new Actions(driver);
+       actCloseProDesc.moveToElement(getCloseProDesc).click().build().perform();
        
 //       main = driver.findElement(By.cssSelector("div[class='jsx-3475087559']"));
 //       main = driver.findElement(By.cssSelector("div[class='jsx-3475087559 modal-review']"));
@@ -277,8 +242,36 @@ public class commentLastAddedProductAnother {
 //       proddet.clickPostComment().click();
        
        //logout
+       WebElement getLogin= home.pointUserLoginHeader(); //xpath megamenu nya  
+       Actions actLogin = new Actions(driver);
+       actLogin.moveToElement(getLogin).perform();
+		
+       (new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Logout")));
+       WebElement clickLoginLogout1= driver.findElement(By.linkText("Logout"));//xpath sub megamenu nya
+       actLogin.moveToElement(clickLoginLogout1).click().perform();
        
+       asser.waitPageDetail();
        
+       //login again
+       proddet.clickLoginProdDet().click();
+       UrlLogin = driver.getCurrentUrl();
+       Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/" );
+		
+       logpro.fillusername().sendKeys("qapras");
+       logpro.fillpassword().sendKeys("test123");
+       logpro.clickbuttonlogin().click();
+		
+       asser.loggedInAfterLogout();
+       
+       proddet.clickComment().click();
+//       proddet.clickAddComment().click();
+//       
+       asser.waitPageReviewDesc();
+       proddet.clickAddComment().click();
+       proddet.findNextCommentField().sendKeys("comment 2");
+       Thread.sleep(2000);
+      
+       proddet.clickPostNextComment().click();
 	
 	}
 	

@@ -69,9 +69,10 @@ public class homepage {
 		return driver.findElement(findaddreview);
 	}
 	
-	public WebElement pointUserHeader(){
+	public WebElement pointUserLoginHeader(){
 		
 		return driver.findElement(pointloginlogout);
 	}
+	
 
 }

@@ -4,7 +4,7 @@
   <test name="Test">
   <parameter name="browser" value="chrome"/>
         <classes>
-      <class name="testcase.commentLastAddedProduct"/>
+      <class name="testcase.commentLastAddedProductAnother"/>
      </classes>
   </test>
 </suite> <!-- Suite -->

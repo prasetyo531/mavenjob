@@ -42,6 +42,11 @@ public class AssertElement {
 	}
 	
 	
+	//myaccount element
+	public void loggedInAfterLogout(){
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#__next > div > div > div.jsx-1986071017.gbheader > div.jsx-1986071017.gbheader-right > div.gbheader-userprofile")));
+	}
+	
 	//product list
 	public void getDataProductList(){
 		
@@ -109,8 +114,9 @@ public class AssertElement {
 	//product review desc page
 	public void waitPageReviewDesc(){
 		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[4]/div/div[2]/div/div[2]/div/div[1]")));
+		
 	}
-	
+
 	
 	//CATEGORY PAGE
 	public void getdatasku(){

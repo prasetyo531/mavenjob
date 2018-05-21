@@ -32,10 +32,10 @@ public RemoteWebDriver driver=null;
 	By getNextPageButton=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-557237353.paging > div.jsx-557237353.paging-number > a:nth-child(3)");
 	By getbacktotopButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
 	By getComment=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div > div > div.card-review-new-single-bottom > div > div > div.jsx-2508623835.cardrv-bottom1");
+	By getCommentDouble=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div:nth-child(2) > div > div.card-review-new-single-bottom > div > div > div.jsx-2508623835.cardrv-bottom1");
 	
 	//element review people
 	By commentReview=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div > div > div.card-review-new-single-bottom > div > div > div.jsx-2508623835.cardrv-bottom1");
-	
 	
 	//element form review
 	By getFieldReview=By.cssSelector("#form-add-review > div.jsx-4114744673.ar-form > textarea");
@@ -46,14 +46,18 @@ public RemoteWebDriver driver=null;
 	By getButtonSubmitReview=By.cssSelector("#form-add-review > div.jsx-4114744673.ar-clicked-cv > div.jsx-4114744673.ar-bottom > div.jsx-4114744673.ar-submit");
 	By detailDesc=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div:nth-child(1) > div > div.card-review-new-detail > div.card-review-new-coment");
 	
-	
+	//element login
+	By clickloginProdDetail=By.cssSelector("#__next > div > div > div.jsx-1986071017.gbheader > div.jsx-1986071017.gbheader-right > div.jsx-3923003960.gbheader-login");
 	
 	//element descr review
 	By getBrandNameInReviewDetail=By.cssSelector("body > div:nth-child(7) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-3475087559.modal-review-cv > div.jsx-3475087559.modal-review-detail > div.jsx-3475087559.modal-review-brand-name > a");
+	By getAddComment=By.cssSelector("body > div:nth-child(6) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-1569223425.addcomment-container > div > div > h3");
 	By getCommentField=By.cssSelector("body > div:nth-child(7) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-1569223425.addcomment-container > div.jsx-1311756822.addcomment-txtx-container > form > textarea");
+	By getNextCommentField=By.cssSelector("body > div:nth-child(6) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-1569223425.addcomment-container > div.jsx-1311756822.addcomment-txtx-container > form > textarea");
 	By getButtonPost=By.cssSelector("body > div:nth-child(7) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-1569223425.addcomment-container > div.jsx-1311756822.addcomment-txtx-container > form > div > input.jsx-1311756822.addcomment-btn-post");
+	By getButtonNextPost=By.cssSelector("body > div:nth-child(6) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-1569223425.addcomment-container > div.jsx-1311756822.addcomment-txtx-container > form > div > input.jsx-1311756822.addcomment-btn-post");
 	By getButtonCancel=By.cssSelector("body > div:nth-child(8) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-1569223425.addcomment-container > div.jsx-1311756822.addcomment-txtx-container > form > div > input.jsx-1311756822.addcomment-btn-cancel");
-	By closeModalDesc=By.cssSelector("body > div:nth-child(8) > div > div.jsx-3475087559.modal-review > div > img"); 
+	By closeModalDesc=By.xpath("/html/body/div[4]/div/div[2]/div/img");
 	
 	public productdetail(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
@@ -178,16 +182,37 @@ public RemoteWebDriver driver=null;
 		return driver.findElement(getComment);
 	}
 	
+	public WebElement clickCommentDouble(){
+		
+		return driver.findElement(getCommentDouble);
+	}
+	
+	public WebElement clickAddComment(){
+		
+		return driver.findElement(getAddComment);
+	}
+	
 	public WebElement findCommentField(){
 		
 		return driver.findElement(getCommentField);
 	}
 	
+	public WebElement findNextCommentField(){
+		
+		return driver.findElement(getNextCommentField);
+	}
+	
+	//post comment
 	public WebElement clickPostComment(){
 		
 		return driver.findElement(getButtonPost);
 	}
 	
+	public WebElement clickPostNextComment(){
+		
+		return driver.findElement(getButtonNextPost);
+	}
+
 	public WebElement clickCancelComment(){
 		
 		return driver.findElement(getButtonCancel);
@@ -196,6 +221,11 @@ public RemoteWebDriver driver=null;
 	public WebElement closeModal(){
 		
 		return driver.findElement(closeModalDesc);
+	}
+	
+	public WebElement clickLoginProdDet(){
+		
+		return driver.findElement(clickloginProdDetail);
 	}
 
 }

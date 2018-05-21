@@ -279,6 +279,11 @@ public class commentLastAddedProduct {
 	
 	}
 	
+	 public void getLastUrlAddedProduct() {
+  	   
+     }
+     
+	
 	@AfterMethod
 	public void tearDown() {
 		if(driver!=null) {
