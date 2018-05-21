@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="67034" started-at="2018-05-21T07:22:14Z" finished-at="2018-05-21T07:23:21Z">
+  <suite name="Suite" duration-ms="53381" started-at="2018-05-21T12:35:57Z" finished-at="2018-05-21T12:36:51Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="67034" started-at="2018-05-21T07:22:14Z" finished-at="2018-05-21T07:23:21Z">
-      <class name="testcase.commentLastAddedProductAnother">
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:testcase.commentLastAddedProductAnother@184f6be2]" name="setUp" is-config="true" duration-ms="1828" started-at="2018-05-21T14:22:14Z" finished-at="2018-05-21T14:22:16Z">
+    <test name="Test" duration-ms="53381" started-at="2018-05-21T12:35:57Z" finished-at="2018-05-21T12:36:51Z">
+      <class name="testcase.loadPreviousComment">
+        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:testcase.loadPreviousComment@4232c52b]" name="setUp" is-config="true" duration-ms="1994" started-at="2018-05-21T19:35:57Z" finished-at="2018-05-21T19:35:59Z">
           <params>
             <param index="0">
               <value>
@@ -18,7 +18,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="scenario_satu(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testcase.commentLastAddedProductAnother@184f6be2]" name="scenario_satu" duration-ms="64967" started-at="2018-05-21T14:22:16Z" data-provider="existingCust" finished-at="2018-05-21T14:23:21Z">
+        <test-method status="PASS" signature="scenario_satu(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testcase.loadPreviousComment@4232c52b]" name="scenario_satu" duration-ms="51094" started-at="2018-05-21T19:35:59Z" data-provider="existingCust" finished-at="2018-05-21T19:36:51Z">
           <params>
             <param index="0">
               <value>
@@ -44,11 +44,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- scenario_satu -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testcase.commentLastAddedProductAnother@184f6be2]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-05-21T14:23:21Z" finished-at="2018-05-21T14:23:21Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testcase.loadPreviousComment@4232c52b]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-05-21T19:36:51Z" finished-at="2018-05-21T19:36:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testcase.commentLastAddedProductAnother -->
+      </class> <!-- testcase.loadPreviousComment -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

@@ -22,6 +22,7 @@ public static RemoteWebDriver driver=null;
 	static By href=By.xpath("//div[@class='jsx-1103970675 product-card-catalog']//a");
 	
 	By hoverProductList=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.ctg-list-item > div:nth-child(1) > a > img");
+	By productHimalayan=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.ctg-list-item > div:nth-child(5) > a > img");
 	By sortoption=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
 	By sorthighestrating=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > div > a:nth-child(3)");
 	By foundAddReviewButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.ctg-list-item > div:nth-child(1) > a > div > button");
@@ -62,6 +63,11 @@ public static RemoteWebDriver driver=null;
 	public WebElement pointAddReviewProdList(){
 		
 		return driver.findElement(hoverProductList);
+	}
+	
+	public WebElement pointProdHimalayan(){
+		
+		return driver.findElement(productHimalayan);
 	}
 	
 	public WebElement foundAddReviewProdList(){

@@ -50,7 +50,7 @@ import resources.controller;
 import resources.support;
 
 
-public class commentLastAddedProduct {
+public class commentLastAddedProduct extends controller {
 	
 	String productName = "testing";
 	String brandName = "wardah";

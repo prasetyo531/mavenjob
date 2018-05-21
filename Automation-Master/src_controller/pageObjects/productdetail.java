@@ -22,17 +22,27 @@ public RemoteWebDriver driver=null;
 	By hairTypeWavy=By.cssSelector("#myDropdown1 > div:nth-child(1) > a.jsx-3197642051.drop-selected");
 	By hairTextureThick=By.cssSelector("#myDropdown1 > div:nth-child(2) > a:nth-child(2)");
 	By getFilterAgeButton=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.tab-review-cover-filter > div > div:nth-child(2)");
+	
 	By age25till29=By.cssSelector("#myDropdown2 > a:nth-child(4)");
+	By age30till34=By.cssSelector("#myDropdown2 > a:nth-child(5)");
+	
+	By getFilterSkinButton=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.tab-review-cover-filter > div > div:nth-child(1)");
+	By getOily=By.cssSelector("#myDropdown1 > div > a:nth-child(5)");
+	By getFilterAgeButton2=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.tab-review-cover-filter > div > div:nth-child(2) > button");
+	
+	
 	By getSortButton=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.tab-review-cover-filter > div > div:nth-child(3)");
+	By mostLike=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.tab-review-cover-filter > div > div:nth-child(3) > div > div > a:nth-child(3)");
 	By sortOldest=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.tab-review-cover-filter > div > div:nth-child(3) > div > div > a:nth-child(2)");
 	By getProfileButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
 	By getReviewDescButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
-	By getPage3=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-557237353.paging > div.jsx-557237353.paging-number > div.jsx-557237353.paging-list-number > a:nth-child(3)");
+	By getPage3=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-557237353.paging > div.jsx-557237353.paging-number > div.jsx-557237353.paging-list-number > a:nth-child(3) > span");
 	By getPrevPageButton=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-557237353.paging > div.jsx-557237353.paging-number > a:nth-child(1)");
 	By getNextPageButton=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-557237353.paging > div.jsx-557237353.paging-number > a:nth-child(3)");
 	By getbacktotopButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
 	By getComment=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div > div > div.card-review-new-single-bottom > div > div > div.jsx-2508623835.cardrv-bottom1");
 	By getCommentDouble=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div:nth-child(2) > div > div.card-review-new-single-bottom > div > div > div.jsx-2508623835.cardrv-bottom1");
+	By getCommentPage3=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div:nth-child(1) > div > div.card-review-new-single-bottom > div > div > div.jsx-2508623835.cardrv-bottom1 > a");
 	
 	//element review people
 	By commentReview=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div > div > div.card-review-new-single-bottom > div > div > div.jsx-2508623835.cardrv-bottom1");
@@ -133,6 +143,11 @@ public RemoteWebDriver driver=null;
 		return driver.findElement(detailDesc);
 	}
 	
+	public WebElement getReviewInPage3(){
+		
+		return driver.findElement(getCommentPage3);
+	}
+	
 	//element review description
 	public WebElement clickFilterHairProDet(){
 		
@@ -148,6 +163,22 @@ public RemoteWebDriver driver=null;
 	public WebElement chooseSortOledest(){
 		
 		return driver.findElement(sortOldest);
+	}
+	
+	public WebElement chooseMostLike(){
+		
+		return driver.findElement(mostLike);
+	}
+	
+	//filter by skin
+	public WebElement clickFilterBySkin(){
+		
+		return driver.findElement(getFilterSkinButton);
+	}
+	
+	public WebElement chooseSkinOily(){
+		
+		return driver.findElement(getOily);
 	}
 	
 	//filterby hair
@@ -175,6 +206,11 @@ public RemoteWebDriver driver=null;
 	public WebElement chooseAge25till29(){
 		
 		return driver.findElement(age25till29);
+	}
+	
+	public WebElement chooseAge30till34(){
+		
+		return driver.findElement(age30till34);
 	}
 	
 	public WebElement clickComment(){
@@ -212,7 +248,7 @@ public RemoteWebDriver driver=null;
 		
 		return driver.findElement(getButtonNextPost);
 	}
-
+	
 	public WebElement clickCancelComment(){
 		
 		return driver.findElement(getButtonCancel);
@@ -226,6 +262,22 @@ public RemoteWebDriver driver=null;
 	public WebElement clickLoginProdDet(){
 		
 		return driver.findElement(clickloginProdDetail);
+	}
+	
+	//pagination
+	public WebElement clickPage3(){
+		
+		return driver.findElement(getPage3);
+	}
+	
+	public WebElement clickPrevPageProdDet(){
+		
+		return driver.findElement(getPrevPageButton);
+	}
+	
+	public WebElement clickNextPageProdDet(){
+		
+		return driver.findElement(getNextPageButton);
 	}
 
 }

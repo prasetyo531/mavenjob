@@ -51,7 +51,7 @@ import resources.controller;
 import resources.support;
 
 
-public class commentLastAddedProductAnother {
+public class commentLastAddedProductAnother extends controller {
 	
 	String productName = "testing";
 	String brandName = "wardah";
@@ -317,5 +317,4 @@ public class commentLastAddedProductAnother {
 		     filepath.close();
 		     return Testdata;
 		     }
-
 }
