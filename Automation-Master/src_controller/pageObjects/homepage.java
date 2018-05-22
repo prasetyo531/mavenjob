@@ -20,7 +20,6 @@ public class homepage {
 	By findaddreview=By.cssSelector("#__next > div > div > div.jsx-1787593642.home-content > div.jsx-1787593642.home-column.margin-bottom-30 > div.jsx-1787593642.home-one-quarter > div.jsx-1787593642.home-reviews-content > button");
 	
 	
-	
 	public homepage(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
 		
