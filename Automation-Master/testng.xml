@@ -4,7 +4,7 @@
   <test name="Test">
   <parameter name="browser" value="chrome"/>
         <classes>
-      <class name="testcase.loadPreviousComment"/>
+      <class name="testcase.viewProfileReviewer"/>
      </classes>
   </test>
 </suite> <!-- Suite -->

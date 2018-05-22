@@ -34,7 +34,10 @@ public RemoteWebDriver driver=null;
 	By getSortButton=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.tab-review-cover-filter > div > div:nth-child(3)");
 	By mostLike=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.tab-review-cover-filter > div > div:nth-child(3) > div > div > a:nth-child(3)");
 	By sortOldest=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.tab-review-cover-filter > div > div:nth-child(3) > div > div > a:nth-child(2)");
-	By getProfileButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
+	By getReviewerButtonInReview=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div:nth-child(1) > div > div.card-review-new-detail > div.card-review-new-detail-row1 > div.card-review-new-userdet > div.card-review-new-username");
+	By getReviewerButtonInReviewDesc=By.cssSelector("body > div:nth-child(9) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-1569223425.cardrv-item-comment-modal > div.jsx-1569223425.cardrv-contain > div > div > div.card-review-modal-detail > div.card-review-modal-detail-row1 > div.card-review-modal-user > div.card-review-modal-user-info");
+	By getNameReviewer=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-2790062022.prodlist-review-cover > div:nth-child(1) > div > div.card-review-new-detail > div.card-review-new-detail-row1 > div.card-review-new-userdet > div.card-review-new-username > span:nth-child(1)");
+	By getNameReviewerRevDesc=By.cssSelector("body > div:nth-child(7) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-1569223425.cardrv-item-comment-modal > div.jsx-1569223425.cardrv-contain > div > div > div.card-review-modal-detail > div.card-review-modal-detail-row1 > div.card-review-modal-user > div.card-review-modal-user-info > a");
 	By getReviewDescButton=By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.sorter-cover > div > button");
 	By getPage3=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-557237353.paging > div.jsx-557237353.paging-number > div.jsx-557237353.paging-list-number > a:nth-child(3) > span");
 	By getPrevPageButton=By.cssSelector("#top-page > div.jsx-2790062022.cover-tabrev > div.jsx-557237353.paging > div.jsx-557237353.paging-number > a:nth-child(1)");
@@ -68,6 +71,7 @@ public RemoteWebDriver driver=null;
 	By getButtonNextPost=By.cssSelector("body > div:nth-child(6) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-1569223425.addcomment-container > div.jsx-1311756822.addcomment-txtx-container > form > div > input.jsx-1311756822.addcomment-btn-post");
 	By getButtonCancel=By.cssSelector("body > div:nth-child(8) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-1569223425.addcomment-container > div.jsx-1311756822.addcomment-txtx-container > form > div > input.jsx-1311756822.addcomment-btn-cancel");
 	By closeModalDesc=By.xpath("/html/body/div[4]/div/div[2]/div/img");
+	By getLoadMoreCommentButton=By.cssSelector("body > div:nth-child(8) > div > div.jsx-3475087559.modal-review > div > div.jsx-3475087559.modal-feed-scroll > div > div.jsx-1569223425.cardrv-content > div.jsx-2578519810.cardrv-coment-list-modal > div.jsx-2578519810.cardrv-coment-loadmore");
 	
 	public productdetail(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
@@ -264,6 +268,11 @@ public RemoteWebDriver driver=null;
 		return driver.findElement(clickloginProdDetail);
 	}
 	
+	public WebElement clickLoadMoreCommentButton(){
+		
+		return driver.findElement(getLoadMoreCommentButton);
+	}
+	
 	//pagination
 	public WebElement clickPage3(){
 		
@@ -279,5 +288,26 @@ public RemoteWebDriver driver=null;
 		
 		return driver.findElement(getNextPageButton);
 	}
+	
+	//reviewer profile
+	public WebElement clickReviewerProdDet(){
+		
+		return driver.findElement(getReviewerButtonInReview);
+	}
+	
+	public WebElement clickReviewerRevDesc(){
+		
+		return driver.findElement(getReviewerButtonInReviewDesc);
+	}
+	
+	public WebElement clickNameReviewer(){
+		
+		return driver.findElement(getNameReviewer);
+	}
+
+	public WebElement clickNameReviewerRevDesc(){
+	
+	return driver.findElement(getNameReviewerRevDesc);
+}
 
 }

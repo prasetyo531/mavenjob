@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -50,8 +49,7 @@ import pageObjects.productlist;
 import resources.controller;
 import resources.support;
 
-
-public class loadPreviousComment extends controller {
+public class viewProfileReviewer extends controller {
 	
 	String productName = "testing";
 	String brandName = "wardah";
@@ -62,12 +60,10 @@ public class loadPreviousComment extends controller {
 	public static WebElement main= null;
 	public static Properties prop=null;
 	
-	public String UrlLogin = null;
-	public String UrlPageDetail = null;
-	public String UrlProdDetPage3 = null;
-	public String UrlProdDetPagePrev = null;
-	public String UrlProdDetPageNext = null;
+	public String UrlReviewerProdDetail = null;
+	public String UrlReviewerReviewDesc = null;
 	
+	public String nameReviewer = null;
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -75,7 +71,7 @@ public class loadPreviousComment extends controller {
 		System.out.println("*******************");
 		driver = controller.getDriver(browser);
 		
-		}
+	}
 	
 	@Test(dataProvider="existingCust")
 	public void scenario_satu(String email,String password,String alamat,String telepon) throws Exception {
@@ -85,7 +81,7 @@ public class loadPreviousComment extends controller {
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
 		productlist prodlist = new productlist(driver);
-		productdetail proddet = new productdetail(driver);
+		productdetail proddet = new productdetail(driver);;
 		
 		AssertElement asser = new AssertElement(driver);
 		CategoryPage cat = new CategoryPage(driver);
@@ -115,62 +111,41 @@ public class loadPreviousComment extends controller {
 		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
-		home.clickLogin().click();
-		UrlLogin = driver.getCurrentUrl();
-		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/" );
-		
-		logpro.fillusername().sendKeys("putwid");
-		logpro.fillpassword().sendKeys("tester123");
-		logpro.clickbuttonlogin().click();
-		
-		asser.loggedin();
-		
-		//homepage
-		WebElement getmenu= home.getMenuSkincare(); //xpath megamenu nya
+		WebElement getmenu= home.getMenuBody(); //xpath megamenu nya
 		Actions act = new Actions(driver);
 		act.moveToElement(getmenu).perform();
 		
-		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Wash-Off")));
+		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Hand Cream")));
 
-		WebElement clickElement= driver.findElement(By.linkText("Wash-Off"));//xpath sub megamenu nya
+		WebElement clickElement= driver.findElement(By.linkText("Hand Cream"));//xpath sub megamenu nya
 		act.moveToElement(clickElement).click().perform();
 		
 		asser.getDataProductList();
 		
-		WebElement getaddreview= prodlist.pointProdHimalayan();
+		WebElement getaddreview= prodlist.pointAddReviewProdList();
 		Actions act2 = new Actions(driver);
 		act2.moveToElement(getaddreview).perform();
 		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("ADD REVIEW")));
 		WebElement clickElemen2= driver.findElement(By.linkText("ADD REVIEW"));//xpath sub megamenu nya
 		act.moveToElement(clickElemen2).click().perform();
 		
-		proddet.clickFilterBySkin().click();
-		proddet.chooseSkinOily().click();
-		Thread.sleep(2000);
+		prodlist.foundAddReviewProdList().click();
 		
-		proddet.clickFilterByAge().click();
-		proddet.chooseAge30till34().click();
-		Thread.sleep(2000);
+		asser.waitPageDetail();
 		
-		proddet.clickFilterAgeProDet().click();
-		proddet.chooseMostLike().click();
+		//get name reviewer
+		nameReviewer= proddet.clickNameReviewer().getText();
+		System.out.println(nameReviewer);
+		proddet.clickReviewerProdDet().click();
 		Thread.sleep(2000);
+		UrlReviewerProdDetail = driver.getCurrentUrl();
+		System.out.println(UrlReviewerProdDetail);
+		Assert.assertTrue(UrlReviewerProdDetail.contains("reviews.femaledaily.net/user/"+nameReviewer));
 		
-		proddet.clickComment().click();
-	    asser.waitPageReviewDesc();
-	    
-	    Thread.sleep(2000);
-	    
-	    main = driver.findElement(By.cssSelector("div[class='jsx-3475087559']"));
-	    main = driver.findElement(By.cssSelector("div[class='jsx-3475087559 modal-review']"));
-	    main = driver.findElement(By.cssSelector("div[class='jsx-3475087559 modal-feed-scroll']"));
-	    
-	    JavascriptExecutor js = ((JavascriptExecutor) driver);
-	    js.executeScript("window.scrollTo(1306,1158, document.body.scrollHeight);");
-	    
-	    proddet.clickLoadMoreCommentButton().click();
+		
 		
 	}
+
 	
 	@AfterMethod
 	public void tearDown() {
@@ -214,5 +189,6 @@ public class loadPreviousComment extends controller {
 		     filepath.close();
 		     return Testdata;
 		     }
-
+	
 }
+

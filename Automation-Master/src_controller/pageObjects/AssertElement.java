@@ -30,7 +30,7 @@ public class AssertElement {
 	}
 	
 	public void waithomepagemodal(){
-		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-1928955982']")));
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-1787593642 home-content']")));
 	}
 	
 	public void addproducttodisplay(){
