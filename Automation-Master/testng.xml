@@ -4,7 +4,7 @@
   <test name="Test">
   <parameter name="browser" value="chrome"/>
         <classes>
-      <class name="testcase.viewProfileReviewer"/>
+      <class name="testcase.createAccountUsingRegisteredUsername"/>
      </classes>
   </test>
 </suite> <!-- Suite -->

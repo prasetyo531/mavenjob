@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="46062" started-at="2018-05-22T06:56:50Z" finished-at="2018-05-22T06:57:36Z">
+  <suite name="Suite" duration-ms="45222" started-at="2018-05-24T04:15:22Z" finished-at="2018-05-24T04:16:07Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="46062" started-at="2018-05-22T06:56:50Z" finished-at="2018-05-22T06:57:36Z">
-      <class name="testcase.viewProfileReviewer">
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:testcase.viewProfileReviewer@4232c52b]" name="setUp" is-config="true" duration-ms="2033" started-at="2018-05-22T13:56:50Z" finished-at="2018-05-22T13:56:52Z">
+    <test name="Test" duration-ms="45222" started-at="2018-05-24T04:15:22Z" finished-at="2018-05-24T04:16:07Z">
+      <class name="testcase.createAccountUsingRegisteredUsername">
+        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:testcase.createAccountUsingRegisteredUsername@4232c52b]" name="setUp" is-config="true" duration-ms="2068" started-at="2018-05-24T11:15:22Z" finished-at="2018-05-24T11:15:24Z">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="scenario_satu(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testcase.viewProfileReviewer@4232c52b]" name="scenario_satu" duration-ms="43799" started-at="2018-05-22T13:56:53Z" data-provider="existingCust" finished-at="2018-05-22T13:57:36Z">
+        <test-method status="PASS" signature="scenario_satu(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testcase.createAccountUsingRegisteredUsername@4232c52b]" name="scenario_satu" duration-ms="42892" started-at="2018-05-24T11:15:24Z" data-provider="existingCust" finished-at="2018-05-24T11:16:07Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[myjne002@gmail.com]]>
+                <![CDATA[randomrandom01@gmail.com]]>
               </value>
             </param>
             <param index="1">
@@ -32,23 +32,23 @@
             </param>
             <param index="2">
               <value>
-                <![CDATA[fabelio test 1]]>
+                <![CDATA[test123]]>
               </value>
             </param>
             <param index="3">
               <value>
-                <![CDATA[000000001]]>
+                <![CDATA[qapras]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- scenario_satu -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testcase.viewProfileReviewer@4232c52b]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-05-22T13:57:36Z" finished-at="2018-05-22T13:57:36Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testcase.createAccountUsingRegisteredUsername@4232c52b]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-05-24T11:16:07Z" finished-at="2018-05-24T11:16:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testcase.viewProfileReviewer -->
+      </class> <!-- testcase.createAccountUsingRegisteredUsername -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

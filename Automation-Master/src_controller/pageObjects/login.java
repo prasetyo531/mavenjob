@@ -27,6 +27,8 @@ public class login {
 	
 	By clicklogin=By.cssSelector("#__next > div > div > div.jsx-550002916.gbheader > div.jsx-550002916.gbheader-right > div.jsx-1624868303.gbheader-login");
 	
+	By warningRegister=By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div.jsx-3296557956.register-warning > p");
+	
 	public login(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
 		
@@ -49,5 +51,50 @@ public class login {
 		return driver.findElement(buttonlogin);
 	}
 	
+	//register page
+	public WebElement clickCreateAccount(){
+		
+		return driver.findElement(createaccount);
+	}
 	
+	public WebElement fillEmail(){
+		
+		return driver.findElement(emailReg);
+	}
+	
+	public WebElement fillUsername(){
+		
+		return driver.findElement(usernameReg);
+	}
+	
+	public WebElement fillPassword(){
+		
+		return driver.findElement(passwordReg);
+	}
+	
+	public WebElement fillConfirmPasword(){
+		
+		return driver.findElement(confirmPasswordReg);
+	}
+	
+	public WebElement tickAggrement(){
+		
+		return driver.findElement(checklistAgree);
+	}
+	
+	public WebElement syaratKondisi(){
+		
+		return driver.findElement(syaratKondisi);
+	}
+	
+	public WebElement clickCreateAccountRe(){
+		
+		return driver.findElement(createAccountRegisterPage);
+	}
+	
+	public WebElement getWarningRegister(){
+		
+		return driver.findElement(warningRegister);
+	}
 }
+

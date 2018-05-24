@@ -30,7 +30,7 @@ public class AssertElement {
 	}
 	
 	public void waithomepagemodal(){
-		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-1787593642 home-content']")));
+		(new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-1787593642 home-content']")));
 	}
 	
 	public void addproducttodisplay(){
@@ -115,6 +115,23 @@ public class AssertElement {
 	public void waitPageReviewDesc(){
 		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[4]/div/div[2]/div/div[2]/div/div[1]")));
 		
+	}
+	
+	//reviewer profile page
+	public void waitProfileTop(){
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div > div.jsx-265933352.proftop-cover")));
+		
+	}
+	
+	//register warning
+	public void waitWarningRegister(){
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div.jsx-3296557956.register-warning > p")));
+		
+	}
+	
+	//register success
+	public void registerIsSuccess(){
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#skin-type > div.jsx-1967182530.completing-list-container")));
 	}
 
 	

@@ -49,7 +49,7 @@ import pageObjects.productlist;
 import resources.controller;
 import resources.support;
 
-public class viewProfileReviewer extends controller {
+public class createAccountUsingRegisteredEmail extends controller {
 	
 	String productName = "testing";
 	String brandName = "wardah";
@@ -60,10 +60,12 @@ public class viewProfileReviewer extends controller {
 	public static WebElement main= null;
 	public static Properties prop=null;
 	
-	public String UrlReviewerProdDetail = null;
-	public String UrlReviewerReviewDesc = null;
-	
-	public String nameReviewer = null;
+	public String UrlLogin = null;
+	public String UrlPageDetail = null;
+	public String emailCreator = null;
+	public String usernameCreator = null;
+	public String passCreator = null;
+	public String conPassCreator = null;
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -74,7 +76,7 @@ public class viewProfileReviewer extends controller {
 	}
 	
 	@Test(dataProvider="existingCust")
-	public void scenario_satu(String email,String password,String alamat,String telepon) throws Exception {
+	public void scenario_satu(String email,String password,String confirm_password,String username) throws Exception {
 		
 		support supp= new support();
 		homepage home = new homepage(driver);
@@ -111,41 +113,22 @@ public class viewProfileReviewer extends controller {
 		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
-		WebElement getmenu= home.getMenuBody(); //xpath megamenu nya
-		Actions act = new Actions(driver);
-		act.moveToElement(getmenu).perform();
+		//login page
+		home.clickLogin().click();
+		UrlLogin = driver.getCurrentUrl();
+		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/");
 		
-		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Hand Cream")));
-
-		WebElement clickElement= driver.findElement(By.linkText("Hand Cream"));//xpath sub megamenu nya
-		act.moveToElement(clickElement).click().perform();
+		logpro.clickCreateAccount().click();
 		
-		asser.getDataProductList();
-		
-		WebElement getaddreview= prodlist.pointAddReviewProdList();
-		Actions act2 = new Actions(driver);
-		act2.moveToElement(getaddreview).perform();
-		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("ADD REVIEW")));
-		WebElement clickElemen2= driver.findElement(By.linkText("ADD REVIEW"));//xpath sub megamenu nya
-		act.moveToElement(clickElemen2).click().perform();
-		
-		prodlist.foundAddReviewProdList().click();
-		
-		asser.waitPageDetail();
-		
-		//get name reviewer
-		nameReviewer= proddet.clickNameReviewer().getText();
-		System.out.println(nameReviewer);
-		proddet.clickReviewerProdDet().click();
-		asser.waitProfileTop();
-		UrlReviewerProdDetail = driver.getCurrentUrl();
-		System.out.println(UrlReviewerProdDetail);
-		Assert.assertTrue(UrlReviewerProdDetail.contains("reviews.femaledaily.net/user/"+nameReviewer));
-		
-		
-		
+		//register page
+		logpro.fillEmail().sendKeys(email);
+		logpro.fillUsername().sendKeys(username);
+		logpro.fillPassword().sendKeys(password);
+		logpro.fillConfirmPasword().sendKeys(confirm_password);
+		logpro.tickAggrement().click();
+		logpro.clickCreateAccountRe().click();
+	
 	}
-
 	
 	@AfterMethod
 	public void tearDown() {
@@ -168,7 +151,7 @@ public class viewProfileReviewer extends controller {
 		FileInputStream filepath = new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//Workbook1.xls");
 
 		Workbook wb = Workbook.getWorkbook(filepath);
-		Sheet sheet = wb.getSheet("existing");
+		Sheet sheet = wb.getSheet("email already registered");
 
 		int row = sheet.getRows();
 		System.out.println("number of rows"+row);
@@ -189,6 +172,4 @@ public class viewProfileReviewer extends controller {
 		     filepath.close();
 		     return Testdata;
 		     }
-	
 }
-
