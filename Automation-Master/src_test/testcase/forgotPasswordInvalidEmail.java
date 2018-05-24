@@ -49,9 +49,13 @@ import pageObjects.productlist;
 import resources.controller;
 import resources.support;
 
-public class addReview extends controller{
+
+public class forgotPasswordInvalidEmail extends controller {
 	
-public static Logger log =LogManager.getLogger(support.class.getName());
+	String productName = "testing";
+	String brandName = "wardah";
+	
+	public static Logger log =LogManager.getLogger(support.class.getName());
 	
 	public static RemoteWebDriver driver= null;
 	public static WebElement main= null;
@@ -59,6 +63,11 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	
 	public String UrlLogin = null;
 	public String UrlPageDetail = null;
+	public String emailCreator = null;
+	public String usernameCreator = null;
+	public String passCreator = null;
+	public String conPassCreator = null;
+	public String messageErrorForgotPass = null;
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -69,7 +78,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	}
 	
 	@Test(dataProvider="existingCust")
-	public void scenario_satu(String email,String password,String alamat,String telepon) throws Exception {
+	public void scenario_satu(String email,String password,String confirm_password,String username) throws Exception {
 		
 		support supp= new support();
 		homepage home = new homepage(driver);
@@ -106,56 +115,22 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
+		//login page
 		home.clickLogin().click();
 		UrlLogin = driver.getCurrentUrl();
 		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/");
 		
-		logpro.fillusername().sendKeys("putwid");
-		logpro.fillpassword().sendKeys("tester123");
-		logpro.clickbuttonlogin().click();
+		logpro.clickForgotPassword().click();
 		
-		asser.loggedin();
+		logpro.fillEmailForgotPass().sendKeys("wkwkkww@gmail.com");
+		Thread.sleep(2000);
+		logpro.clicButtonSendEmailForgotPassword().click();
 		
-		//homepage
-		WebElement getmenu= home.getMenuBody(); //xpath megamenu nya
-		Actions act = new Actions(driver);
-		act.moveToElement(getmenu).perform();
+		Thread.sleep(2000);
+		messageErrorForgotPass = logpro.GetWarningMessage().getText();
+		Assert.assertEquals(messageErrorForgotPass, "Email Not Found");
 		
-		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Bath Treatment")));
-
-		WebElement clickElement= driver.findElement(By.linkText("Bath Treatment"));//xpath sub megamenu nya
-		act.moveToElement(clickElement).click().perform();
 		
-		asser.getDataProductList();
-		
-		WebElement getaddreview= prodlist.pointAddReviewProdList();
-		Actions act2 = new Actions(driver);
-		act2.moveToElement(getaddreview).perform();
-		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("ADD REVIEW")));
-		WebElement clickElemen2= driver.findElement(By.linkText("ADD REVIEW"));//xpath sub megamenu nya
-		act.moveToElement(clickElemen2).click().perform();
-		
-		prodlist.foundAddReviewProdList().click();
-		
-		asser.waitPageDetail();
-		
-		String ButtonBeforeReview = proddet.clickAddReview().getText();
-		Assert.assertEquals(ButtonBeforeReview, "ADD REVIEW" );
-		proddet.clickAddReview().click();
-		
-		asser.waitReviewForm();
-		
-		proddet.fillFieldReview().sendKeys("back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one");
-		proddet.chooseRating().click();
-		proddet.chooseProductPrice().click();
-		proddet.choosePackageQuality().click();
-		proddet.chooseRepurchaseThisProduct().click();
-		proddet.clickSubmitReview().click();
-		
-		asser.waitReviewSubmitted();
-		
-		String ButtonAfterReview = proddet.clickAddReview().getText();
-		Assert.assertEquals(ButtonAfterReview, "EDIT REVIEW" );
 		
 	}
 	
@@ -180,7 +155,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		FileInputStream filepath = new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//Workbook1.xls");
 
 		Workbook wb = Workbook.getWorkbook(filepath);
-		Sheet sheet = wb.getSheet("existing");
+		Sheet sheet = wb.getSheet("confirm password different");
 
 		int row = sheet.getRows();
 		System.out.println("number of rows"+row);
@@ -200,8 +175,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		       }
 		     filepath.close();
 		     return Testdata;
+		     }
 	
-	}
-
-
 }

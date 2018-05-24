@@ -9,6 +9,7 @@ public class homepage {
 	public RemoteWebDriver driver=null;
 	
 	By joinletter=By.cssSelector("body > div:nth-child(7) > div > div > div.jsx-3828308350.modal-join-content-right > p:nth-child(3) > a");
+	By joinletterReviewPage=By.cssSelector("body > div:nth-child(6) > div > div > div.jsx-3828308350.modal-join-content-right > p:nth-child(3) > a");
 	By pointaddproduct=By.cssSelector("#__next > div > div > div.jsx-550002916.gbheader > div.jsx-550002916.gbheader-right > div.gbheader-add-area");
 	By pointloginlogout=By.cssSelector("#__next > div > div > div.jsx-1986071017.gbheader > div.jsx-1986071017.gbheader-right > div.gbheader-userprofile");
 	By clickaddproduct=By.linkText("Add Product");
@@ -20,6 +21,9 @@ public class homepage {
 	By findaddreview=By.cssSelector("#__next > div > div > div.jsx-1787593642.home-content > div.jsx-1787593642.home-column.margin-bottom-30 > div.jsx-1787593642.home-one-quarter > div.jsx-1787593642.home-reviews-content > button");
 	
 	
+	//menu
+	By MenuReview=By.linkText("REVIEWS");
+	
 	public homepage(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
 		
@@ -30,6 +34,16 @@ public class homepage {
 	public WebElement letmejoinletter(){
 		
 		return driver.findElement(joinletter);
+	}
+	
+	public WebElement letmejoinletter2(){
+		
+		return driver.findElement(joinletterReviewPage);
+	}
+	
+	public WebElement clickMenuReview(){
+		
+		return driver.findElement(MenuReview);
 	}
 	
 	public WebElement getMenuBody(){

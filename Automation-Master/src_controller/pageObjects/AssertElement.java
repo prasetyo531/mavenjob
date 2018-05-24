@@ -47,6 +47,32 @@ public class AssertElement {
 		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#__next > div > div > div.jsx-1986071017.gbheader > div.jsx-1986071017.gbheader-right > div.gbheader-userprofile")));
 	}
 	
+	//reviews page
+	public void waitNewestReview(){
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div:nth-child(2)")));
+	}
+	
+	public void getDataNewestReviewList(){
+		
+		List<WebElement> myList=driver.findElements(By.xpath("//div[@class='jsx-1569223425 cardrv-content']//div//div//div//a")); //get price from array, xpath sampe atributes yg mau diambil
+		List<String> url=new ArrayList<>();
+
+		for(int i=0; i<myList.size(); i++){
+
+		url.add(myList.get(i).getAttribute("href"));	//loading text of each element in to array all_elements_text
+		if (myList.get(i).getAttribute("href") != null){	//if there is null, will not printed
+
+		System.out.println(myList.get(i).getAttribute("href"));	//to print directly
+			}
+		 }
+		}
+	
+	public void waitPopularProductReviewsPage(){
+		(new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div.jsx-2292723732.add-review-item-container > div.jsx-2292723732.cardsi-list")));
+	}
+	
+	
+	
 	//product list
 	public void getDataProductList(){
 		
@@ -134,6 +160,10 @@ public class AssertElement {
 		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#skin-type > div.jsx-1967182530.completing-list-container")));
 	}
 
+	//forgot password success
+	public void forgotPasswordSuccess(){
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#__next > div > div > div.jsx-3767551361._1jmxl8o.forgot-password")));
+	}
 	
 	//CATEGORY PAGE
 	public void getdatasku(){

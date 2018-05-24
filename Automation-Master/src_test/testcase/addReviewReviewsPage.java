@@ -1,7 +1,5 @@
 package testcase;
 
-import static org.testng.Assert.assertTrue;
-
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
@@ -46,10 +44,11 @@ import pageObjects.homepage;
 import pageObjects.login;
 import pageObjects.productdetail;
 import pageObjects.productlist;
+import pageObjects.reviewsPage;
 import resources.controller;
 import resources.support;
 
-public class addReview extends controller{
+public class addReviewReviewsPage extends controller {
 	
 public static Logger log =LogManager.getLogger(support.class.getName());
 	
@@ -57,7 +56,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	public static WebElement main= null;
 	public static Properties prop=null;
 	
-	public String UrlLogin = null;
+	public String UrlReviewsPage = null;
 	public String UrlPageDetail = null;
 	
 	@BeforeTest
@@ -76,7 +75,8 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
 		productlist prodlist = new productlist(driver);
-		productdetail proddet = new productdetail(driver);;
+		productdetail proddet = new productdetail(driver);
+		reviewsPage revpage = new reviewsPage(driver);
 		
 		AssertElement asser = new AssertElement(driver);
 		CategoryPage cat = new CategoryPage(driver);
@@ -90,10 +90,10 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		String testenv=prop.getProperty("testlocation");
 		
 		if(testenv.equalsIgnoreCase("prod")){
-        	driver.navigate().to("http://femaledaily.com/");  //https://dev.uangteman.com/a/NHeHv
+        	driver.navigate().to("http://reviews.femaledaily.com/");  //https://dev.uangteman.com/a/NHeHv
              driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         	} else {
-        		driver.navigate().to("http://femaledaily.net/");  //https://dev.uangteman.com/a/NHeHv
+        		driver.navigate().to("http://reviews.femaledaily.net/");  //https://dev.uangteman.com/a/NHeHv
                 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         	}
 		
@@ -102,13 +102,11 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		System.out.println(strPageTitle);
 	
 		//on browser
-		asser.waithomepagemodal();
-		asser.javascriptletmejoin();
+		asser.waitNewestReview();
+		asser.javascriptletmejoin();  
 		home.letmejoinletter().click();
 		
 		home.clickLogin().click();
-		UrlLogin = driver.getCurrentUrl();
-		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/");
 		
 		logpro.fillusername().sendKeys("putwid");
 		logpro.fillpassword().sendKeys("tester123");
@@ -116,49 +114,29 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		
 		asser.loggedin();
 		
-		//homepage
-		WebElement getmenu= home.getMenuBody(); //xpath megamenu nya
-		Actions act = new Actions(driver);
-		act.moveToElement(getmenu).perform();
+		//homepage	
+		asser.waitNewestReview();
 		
-		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Bath Treatment")));
-
-		WebElement clickElement= driver.findElement(By.linkText("Bath Treatment"));//xpath sub megamenu nya
-		act.moveToElement(clickElement).click().perform();
+		asser.getDataNewestReviewList();
 		
-		asser.getDataProductList();
+		revpage.clickAddReview().click();
 		
-		WebElement getaddreview= prodlist.pointAddReviewProdList();
-		Actions act2 = new Actions(driver);
-		act2.moveToElement(getaddreview).perform();
-		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("ADD REVIEW")));
-		WebElement clickElemen2= driver.findElement(By.linkText("ADD REVIEW"));//xpath sub megamenu nya
-		act.moveToElement(clickElemen2).click().perform();
+		asser.waitPopularProductReviewsPage();
 		
-		prodlist.foundAddReviewProdList().click();
-		
-		asser.waitPageDetail();
-		
-		String ButtonBeforeReview = proddet.clickAddReview().getText();
-		Assert.assertEquals(ButtonBeforeReview, "ADD REVIEW" );
-		proddet.clickAddReview().click();
+		driver.findElement(By.linkText("Gentle Skin Cleanser"));
 		
 		asser.waitReviewForm();
 		
-		proddet.fillFieldReview().sendKeys("back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one back at one");
-		proddet.chooseRating().click();
-		proddet.chooseProductPrice().click();
-		proddet.choosePackageQuality().click();
-		proddet.chooseRepurchaseThisProduct().click();
-		proddet.clickSubmitReview().click();
 		
-		asser.waitReviewSubmitted();
 		
-		String ButtonAfterReview = proddet.clickAddReview().getText();
-		Assert.assertEquals(ButtonAfterReview, "EDIT REVIEW" );
+		
+		
+		
+		
+		
 		
 	}
-	
+
 	@AfterMethod
 	public void tearDown() {
 		if(driver!=null) {
@@ -202,6 +180,5 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		     return Testdata;
 	
 	}
-
-
+	
 }

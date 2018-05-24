@@ -12,6 +12,9 @@ public class login {
 	By password=By.cssSelector("#__next > div > div > div.jsx-1965109485._1jmxl8o.login > form > div:nth-child(3) > input");
 	By rememberme=By.cssSelector("#__next > div > div > div.jsx-1965109485._1jmxl8o.login > form > div.jsx-1965109485.remember-forgot > div.jsx-1965109485.remember-forgot-left > div > span");
 	By forgotPassword=By.cssSelector("#__next > div > div > div.jsx-1965109485._1jmxl8o.login > form > div.jsx-1965109485.remember-forgot > div.jsx-1965109485.remember-forgot-right > p > a");
+	By emailForgotPassword=By.cssSelector("#__next > div > div > div.jsx-1521555844._1jmxl8o.forgot-password > form > div.jsx-483501933.desktop-taste-input > input");
+	By sendEmailForgotPass=By.cssSelector("#__next > div > div > div.jsx-1521555844._1jmxl8o.forgot-password > form > div.jsx-1521555844.forgot-password-button-login > div > input");
+	By warningMesssage=By.cssSelector("#__next > div > div > div.jsx-1521555844._1jmxl8o.forgot-password > form > div.jsx-1521555844.forgot-password-warning > p");
 	By buttonlogin=By.cssSelector("#__next > div > div > div.jsx-1965109485._1jmxl8o.login > form > div.jsx-1965109485.login-button-login > div > input");
 	By buttonloginFb=By.cssSelector("#__next > div > div > div.jsx-1965109485._1jmxl8o.login > form > div.jsx-1965109485.login-button-login-facebook > div > input");
 	
@@ -44,6 +47,16 @@ public class login {
 	public WebElement fillpassword(){
 		
 		return driver.findElement(password);
+	}
+	
+	public WebElement clickForgotPassword(){
+		
+		return driver.findElement(forgotPassword);
+	}
+	
+	public WebElement clicButtonSendEmailForgotPassword(){
+		
+		return driver.findElement(sendEmailForgotPass);
 	}
 	
 	public WebElement clickbuttonlogin(){
@@ -96,5 +109,15 @@ public class login {
 		
 		return driver.findElement(warningRegister);
 	}
+	
+	public WebElement fillEmailForgotPass(){
+		
+		return driver.findElement(emailForgotPassword);
+	}
+	
+	public WebElement GetWarningMessage(){
+		
+		return driver.findElement(warningMesssage);
+	}	
 }
 

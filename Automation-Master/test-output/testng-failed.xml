@@ -4,13 +4,13 @@
   <test name="Test(failed)" parallel="tests">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="testcase.createAccountPasswordLess6">
+      <class name="testcase.forgotPasswordInvalidEmail">
         <methods>
+          <include name="setUp"/>
           <include name="scenario_satu" invocation-numbers="0"/>
           <include name="tearDown"/>
-          <include name="setUp"/>
         </methods>
-      </class> <!-- testcase.createAccountPasswordLess6 -->
+      </class> <!-- testcase.forgotPasswordInvalidEmail -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
