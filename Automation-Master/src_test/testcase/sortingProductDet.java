@@ -2,6 +2,11 @@ package testcase;
 
 import static org.testng.Assert.assertTrue;
 
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
@@ -10,7 +15,10 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.logging.LogEntries;
@@ -37,18 +45,29 @@ import pageObjects.ProductPage;
 import pageObjects.addproductpage;
 import pageObjects.homepage;
 import pageObjects.login;
+import pageObjects.productdetail;
+import pageObjects.productlist;
 import resources.controller;
 import resources.support;
 
-public class addProductBeforeLogin extends controller {
+
+public class sortingProductDet extends controller {
 	
-public static Logger log =LogManager.getLogger(support.class.getName());
+	String productName = "testing";
+	String brandName = "wardah";
+	
+	public static Logger log =LogManager.getLogger(support.class.getName());
 	
 	public static RemoteWebDriver driver= null;
 	public static WebElement main= null;
 	public static Properties prop=null;
 	
 	public String UrlLogin = null;
+	public String UrlPageDetail = null;
+	public String UrlProdDetPage3 = null;
+	public String UrlProdDetPagePrev = null;
+	public String UrlProdDetPageNext = null;
+	
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -56,7 +75,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		System.out.println("*******************");
 		driver = controller.getDriver(browser);
 		
-	}
+		}
 	
 	@Test(dataProvider="existingCust")
 	public void scenario_satu(String email,String password,String alamat,String telepon) throws Exception {
@@ -65,6 +84,8 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		homepage home = new homepage(driver);
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
+		productlist prodlist = new productlist(driver);
+		productdetail proddet = new productdetail(driver);
 		
 		AssertElement asser = new AssertElement(driver);
 		CategoryPage cat = new CategoryPage(driver);
@@ -94,18 +115,60 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
-		WebElement getmenu= home.getAddProduct(); //xpath megamenu nya  
+		home.clickLogin().click();
+		UrlLogin = driver.getCurrentUrl();
+		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/" );
+		
+		logpro.fillusername().sendKeys("putwid");
+		logpro.fillpassword().sendKeys("tester123");
+		logpro.clickbuttonlogin().click();
+		
+		asser.loggedin();
+		
+		//homepage
+		WebElement getmenu= home.getMenuSkincare(); //xpath megamenu nya
 		Actions act = new Actions(driver);
 		act.moveToElement(getmenu).perform();
 		
-		asser.addproducttodisplay();
-		WebElement clickElement= home.clickAddProduct(); //xpath sub megamenu nya
+		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Wash-Off")));
+
+		WebElement clickElement= driver.findElement(By.linkText("Wash-Off"));//xpath sub megamenu nya
 		act.moveToElement(clickElement).click().perform();
 		
-		UrlLogin = driver.getCurrentUrl();
+		asser.getDataProductList();
 		
-		Assert.assertEquals(UrlLogin, "http://account.femaledaily.com/" );	
+		WebElement getaddreview= prodlist.pointProdHimalayan();
+		Actions act2 = new Actions(driver);
+		act2.moveToElement(getaddreview).perform();
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("ADD REVIEW")));
+		WebElement clickElemen2= driver.findElement(By.linkText("ADD REVIEW"));//xpath sub megamenu nya
+		act.moveToElement(clickElemen2).click().perform();
 		
+		proddet.clickFilterBySkin().click();
+		proddet.chooseSkinOily().click();
+		Thread.sleep(2000);
+		
+		proddet.clickFilterByAge().click();
+		proddet.chooseAge30till34().click();
+		Thread.sleep(2000);
+		
+		proddet.clickSortProDett().click();
+		proddet.chooseMostLike().click();
+		Thread.sleep(2000);
+		
+		proddet.clickComment().click();
+	    asser.waitPageReviewDesc();
+	    
+	    Thread.sleep(2000);
+	    
+	    main = driver.findElement(By.cssSelector("div[class='jsx-3475087559']"));
+	    main = driver.findElement(By.cssSelector("div[class='jsx-3475087559 modal-review']"));
+	    main = driver.findElement(By.cssSelector("div[class='jsx-3475087559 modal-feed-scroll']"));
+	    
+	    JavascriptExecutor js = ((JavascriptExecutor) driver);
+	    js.executeScript("window.scrollTo(1306,1158, document.body.scrollHeight);");
+	    
+	    proddet.clickLoadMoreCommentButton().click();
 		
 	}
 	
@@ -113,7 +176,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	public void tearDown() {
 		if(driver!=null) {
 			System.out.println("Closing browser");
-			driver.close();
+			//driver.close();
 		}
 	}
 	
@@ -151,5 +214,5 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		     filepath.close();
 		     return Testdata;
 		     }
-}
 
+}

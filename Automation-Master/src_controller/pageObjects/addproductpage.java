@@ -10,11 +10,11 @@ public class addproductpage {
 	
 	//step1
 	By uploadphoto=By.cssSelector("#top-page > div.jsx-434510772 > div.jsx-434510772.ap-accord > form > div.jsx-434510772.ap-section1 > div.jsx-434510772.ap-image-action > div.jsx-434510772.ap-btn-upload > button");
-	By inserturlphoto=By.cssSelector("#top-page > div.jsx-434510772 > div.jsx-434510772.ap-accord > form > div.jsx-434510772.ap-section1 > div.jsx-434510772.ap-image-action > div.jsx-434510772.ap-image-url");
+	By inserturlphoto=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-accord > form > div.jsx-3686042703.ap-section1 > div.jsx-3686042703.ap-image-action > div.jsx-3686042703.ap-image-url > input");
 	By croparea=By.cssSelector("#modal-crop-showed > div > div.ReactCrop.ReactCrop--fixed-aspect > img");
 	By crop=By.cssSelector("#modal-crop-showed > div > div.jsx-434510772.modal-crop-button > button.jsx-434510772.modal-button.crop-button");
-	By show=By.cssSelector("#top-page > div.jsx-434510772 > div.jsx-434510772.ap-accord > form > div.jsx-434510772.ap-section1 > div.jsx-434510772.ap-image-action > div.jsx-434510772.ap-image-url > button");
-	By nextstep1=By.cssSelector("#top-page > div.jsx-434510772 > div.jsx-434510772.ap-accord > form > div.jsx-434510772.ap-btn-next > input");
+	By show=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-accord > form > div.jsx-3686042703.ap-section1 > div.jsx-3686042703.ap-image-action > div.jsx-3686042703.ap-image-url > button");
+	By nextstep1=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-accord > form > div.jsx-3686042703.ap-btn-next > input");
 	
 	//step2
 	By brandname=By.cssSelector("#react-select-2--value > div.Select-placeholder");

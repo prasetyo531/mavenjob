@@ -45,6 +45,7 @@ import pageObjects.ProductPage;
 import pageObjects.addproductpage;
 import pageObjects.homepage;
 import pageObjects.login;
+import resources.ConnectDB;
 import resources.controller;
 import resources.support;
 
@@ -70,6 +71,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	public void scenario_satu(String email,String password,String alamat,String telepon) throws Exception {
 		
 		support supp= new support();
+		ConnectDB db=new ConnectDB();
 		homepage home = new homepage(driver);
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
@@ -111,6 +113,12 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		logpro.clickbuttonlogin().click();
 		
 		asser.loggedin();
+		
+		db.connectSSH();
+		db.connectToDataBase("staging_fdwp");
+		
+		Thread.sleep(5000);
+		
 		
 		WebElement getmenu= home.getAddProduct(); //xpath megamenu nya  
 		Actions act = new Actions(driver);

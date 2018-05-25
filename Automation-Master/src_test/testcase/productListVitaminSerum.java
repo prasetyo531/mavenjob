@@ -87,10 +87,10 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		String testenv=prop.getProperty("testlocation");
 		
 		if(testenv.equalsIgnoreCase("prod")){
-        	driver.navigate().to("http://femaledaily.com/");  //https://dev.uangteman.com/a/NHeHv
+        	driver.navigate().to("http://femaledaily.com/");  
              driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         	} else {
-        		driver.navigate().to("http://femaledaily.net/");  //https://dev.uangteman.com/a/NHeHv
+        		driver.navigate().to("http://femaledaily.net/");  
                 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         	}
 		
@@ -115,6 +115,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.getDataProductList();
 		
 		prodlist.clickBalm().click();
+		
 		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div.jsx-2784532334.ctg-cover > div.jsx-2784532334.ctg-right > div.jsx-2784532334.ctg-list-item")));
 		Thread.sleep(2000);
 		System.out.println("                                                                                             ");

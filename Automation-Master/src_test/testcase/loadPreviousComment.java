@@ -152,7 +152,7 @@ public class loadPreviousComment extends controller {
 		proddet.chooseAge30till34().click();
 		Thread.sleep(2000);
 		
-		proddet.clickFilterAgeProDet().click();
+		proddet.clickSortProDett().click();
 		proddet.chooseMostLike().click();
 		Thread.sleep(2000);
 		

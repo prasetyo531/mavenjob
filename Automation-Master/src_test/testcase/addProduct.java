@@ -48,6 +48,7 @@ import pageObjects.productdetail;
 import pageObjects.productlist;
 import resources.controller;
 import resources.support;
+import resources.ConnectDB;
 
 public class addProduct extends controller {
 	
@@ -254,14 +255,14 @@ public class addProduct extends controller {
        String bname = proddet.findBrandName().getText();
        System.out.println(bname);
        assertTrue(proddet.findBrandName().getText().contains(bname));
-	
+
 	}
 	
 	@AfterMethod
 	public void tearDown() {
 		if(driver!=null) {
 			System.out.println("Closing browser");
-			//driver.close();
+			driver.close();
 		}
 	}
 	

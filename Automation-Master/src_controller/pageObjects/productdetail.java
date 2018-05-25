@@ -159,7 +159,7 @@ public RemoteWebDriver driver=null;
 	}
 	
 	//filter sort
-	public WebElement clickFilterAgeProDet(){
+	public WebElement clickSortProDett(){
 		
 		return driver.findElement(getSortButton);
 	}
