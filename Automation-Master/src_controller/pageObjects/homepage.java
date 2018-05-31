@@ -8,7 +8,10 @@ public class homepage {
 	
 	public RemoteWebDriver driver=null;
 	
-	By joinletter=By.cssSelector("body > div:nth-child(7) > div > div > div.jsx-3828308350.modal-join-content-right > p:nth-child(3) > a");
+	By homepage=By.xpath("//*[@id='__next']/div/div/div[1]/a");
+	By footerBrand=By.linkText("Brands");
+	
+	By joinletter=By.xpath("/html/body/div[4]/div/div/div[2]/p[2]/a");
 	By joinletterReviewPage=By.cssSelector("body > div:nth-child(6) > div > div > div.jsx-3828308350.modal-join-content-right > p:nth-child(3) > a");
 	By pointaddproduct=By.cssSelector("#__next > div > div > div.jsx-550002916.gbheader > div.jsx-550002916.gbheader-right > div.gbheader-add-area");
 	By pointloginlogout=By.cssSelector("#__next > div > div > div.jsx-1986071017.gbheader > div.jsx-1986071017.gbheader-right > div.gbheader-userprofile");
@@ -91,6 +94,11 @@ public class homepage {
 	public WebElement pointUserLoginHeader(){
 		
 		return driver.findElement(pointloginlogout);
+	}
+	
+	public WebElement clickBrandFooter(){
+		
+		return driver.findElement(footerBrand);
 	}
 	
 

@@ -49,7 +49,7 @@ import pageObjects.productlist;
 import resources.controller;
 import resources.support;
 
-public class viewProfileReviewer extends controller {
+public class viewProfileDetailOwnUserProductDetail extends controller {
 	
 	String productName = "testing";
 	String brandName = "wardah";
@@ -64,6 +64,7 @@ public class viewProfileReviewer extends controller {
 	public String UrlReviewerReviewDesc = null;
 	
 	public String nameReviewer = null;
+	public String UrlLogin = null;
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -111,20 +112,39 @@ public class viewProfileReviewer extends controller {
 		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
-		WebElement getmenu= home.getMenuBody(); //xpath megamenu nya
+
+		WebElement getmenuAdd= home.getAddProduct(); //xpath megamenu nya  
 		Actions act = new Actions(driver);
-		act.moveToElement(getmenu).perform();
+		act.moveToElement(getmenuAdd).perform();
+		
+		asser.addproducttodisplay();
+		WebElement clickElement= home.clickAddProduct(); //xpath sub megamenu nya
+		act.moveToElement(clickElement).click().perform();
+		
+		UrlLogin = driver.getCurrentUrl();
+		Assert.assertEquals(UrlLogin, "http://account.femaledaily.com/" );	
+		
+		//login
+		logpro.fillusername().sendKeys("putwid");
+		logpro.fillpassword().sendKeys("tester123");
+		logpro.clickbuttonlogin().click();
+		
+		asser.loggedin();
+		
+		WebElement getmenu= home.getMenuBody(); //xpath megamenu nya
+		Actions act2 = new Actions(driver);
+		act2.moveToElement(getmenu).perform();
 		
 		(new WebDriverWait(driver, 3)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Hand Cream")));
 
-		WebElement clickElement= driver.findElement(By.linkText("Hand Cream"));//xpath sub megamenu nya
-		act.moveToElement(clickElement).click().perform();
+		WebElement clickElement2= driver.findElement(By.linkText("Hand Cream"));//xpath sub megamenu nya
+		act.moveToElement(clickElement2).click().perform();
 		
 		asser.getDataProductList();
 		
 		WebElement getaddreview= prodlist.pointAddReviewProdList();
-		Actions act2 = new Actions(driver);
-		act2.moveToElement(getaddreview).perform();
+		Actions act3 = new Actions(driver);
+		act3.moveToElement(getaddreview).perform();
 		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("ADD REVIEW")));
 		WebElement clickElemen2= driver.findElement(By.linkText("ADD REVIEW"));//xpath sub megamenu nya
 		act.moveToElement(clickElemen2).click().perform();
@@ -137,7 +157,7 @@ public class viewProfileReviewer extends controller {
 		nameReviewer= proddet.clickNameReviewer().getText();
 		System.out.println(nameReviewer);
 		proddet.clickReviewerProdDet().click();
-		asser.waitProfileTop();
+		asser.waitProfilePage();
 		UrlReviewerProdDetail = driver.getCurrentUrl();
 		System.out.println(UrlReviewerProdDetail);
 		Assert.assertTrue(UrlReviewerProdDetail.contains("reviews.femaledaily.net/user/"+nameReviewer));

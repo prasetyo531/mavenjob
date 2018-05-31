@@ -14,29 +14,36 @@ import com.jcraft.jsch.Session;
 import com.mysql.jdbc.Statement;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
+import java.io.IOException;
 import java.sql.Connection;
 
+	//172.12.2.71	 mysql host lama
+
+	
 public class ConnectDB {
 
 	private static Connection connection = null;
     private static Session session = null;
+    
 
-    private static void connectToServer(String dataBaseName) throws SQLException {
+    public static void connectToServer(String dataBaseName) throws SQLException {
         connectSSH();
         connectToDataBase(dataBaseName);
     }
 
     public static void connectSSH() throws SQLException {
-        String sshHost = "52.76.160.99";
+        String sshHost = "52.76.160.99";//"52.76.160.99"
         String sshuser = "root";
         String dbuserName = "serverteam";
         String dbpassword = "DDKW31Kr31";
         String SshKeyFilepath = "/Users/mac/.ssh/id_rsa";
 
         int localPort = 8740; // any free port can be used
-        String remoteHost = "172.12.2.71";
+//        String remoteHost = "172.12.2.71";
+        String remoteHost = "52.76.160.99";
         int remotePort = 3306;
-        String localSSHUrl = "localhost";
+//        String localSSHUrl = "52.76.160.99";
+        String localSSHUrl = "127.0.0.1";
         /***************/
         String driverName = "com.mysql.jdbc.Driver";
 
@@ -56,7 +63,7 @@ public class ConnectDB {
 
             int assinged_port = session.setPortForwardingL(localPort, remoteHost, remotePort);
 
-            System.out.println("localhost:" + assinged_port + " -> " + remoteHost + ":" + remotePort);
+            System.out.println(localSSHUrl + ":" + assinged_port + " -> " + remoteHost + ":" + remotePort);
             System.out.println("Port Forwarded");
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,13 +74,14 @@ public class ConnectDB {
         String dbuserName = "serverteam";
         String dbpassword = "DDKW31Kr31";
         int localPort = 8740; // any free port can be used
-        String localSSHUrl = "localhost";
+//        String localSSHUrl = "52.76.160.99";
+        String localSSHUrl = "172.12.2.71";
         try {
 
             //mysql database connectivity
             MysqlDataSource dataSource = new MysqlDataSource();
             dataSource.setServerName(localSSHUrl);
-            dataSource.setPortNumber(localPort);
+            //dataSource.setPortNumber(localPort);
             dataSource.setUser(dbuserName);
             dataSource.setAllowMultiQueries(true);
 
@@ -215,4 +223,86 @@ public class ConnectDB {
             closeConnections();
         }
     }
+      
+      public static Object getfromDatabaseBrands_totalProduct(String query, String database) {
+          Connection con = null;
+          Statement stmt = null;
+          ResultSet rs = null;
+          Object output = null;
+          try {
+              Class.forName("com.mysql.jdbc.Driver");
+              
+              switch (database) {
+                case "prod":
+                     con = (Connection) DriverManager.getConnection("jdbc:mysql://103.58.100.148/utstag2015", "qaeng", "7y@#ER7654#$%7ytf~!@#$%^87y");
+                     break;
+                 case "staging":
+                	 con = (Connection) DriverManager.getConnection("jdbc:mysql://54.169.68.90/staging_fdbr_salon", "serverteam", "DDKW31Kr31");
+                     break;
+                  default:
+                      throw new Exception("No Database with that name");
+              }
+
+              stmt = (Statement) con.createStatement();
+              rs = stmt.executeQuery(query);
+              if (rs.next()) {
+              	output = rs.getObject("brands_item");
+             }
+              
+          } catch (Exception e) {
+              return "Error:" + e.getMessage();
+          } finally {
+          	try {
+  				rs.close();
+  				stmt.close();
+  	            con.close();
+  			} catch (SQLException e) {
+  				// TODO Auto-generated catch block
+  				e.printStackTrace();
+  			}
+          }
+          
+          return output;
+      }     
+      
+      public static Object getfromDatabaseBrands_totalReview(String query, String database) {
+          Connection con = null;
+          Statement stmt = null;
+          ResultSet rs = null;
+          Object output = null;
+          try {
+              Class.forName("com.mysql.jdbc.Driver");
+              
+              switch (database) {
+                case "prod":
+                     con = (Connection) DriverManager.getConnection("jdbc:mysql://103.58.100.148/utstag2015", "qaeng", "7y@#ER7654#$%7ytf~!@#$%^87y");
+                     break;
+                 case "staging":
+                	 con = (Connection) DriverManager.getConnection("jdbc:mysql://54.169.68.90/staging_fdbr_salon", "serverteam", "DDKW31Kr31");
+                     break;
+                  default:
+                      throw new Exception("No Database with that name");
+              }
+
+              stmt = (Statement) con.createStatement();
+              rs = stmt.executeQuery(query);
+              if (rs.next()) {
+              	output = rs.getObject("brands_total_review_num");
+             }
+              
+          } catch (Exception e) {
+              return "Error:" + e.getMessage();
+          } finally {
+          	try {
+  				rs.close();
+  				stmt.close();
+  	            con.close();
+  			} catch (SQLException e) {
+  				// TODO Auto-generated catch block
+  				e.printStackTrace();
+  			}
+          }
+          
+          return output;
+      }     
 }

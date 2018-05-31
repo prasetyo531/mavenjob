@@ -144,10 +144,26 @@ public class AssertElement {
 	}
 	
 	//reviewer profile page
-	public void waitProfileTop(){
-		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div > div.jsx-265933352.proftop-cover")));
+	public void waitProfilePage(){
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div > div.jsx-1832169295.proftop-cover > div.jsx-1832169295.profile-beauty-id-container")));
 		
 	}
+	
+	//get post list
+	public void getdatapostlist(){
+		
+		List<WebElement> myList=driver.findElements(By.xpath("//div[@class='jsx-553015127 desktop-post']//div//img")); //get price from array, xpath sampe atributes yg mau diambil
+		List<String> url=new ArrayList<>();
+
+		for(int i=0; i<myList.size(); i++){
+
+		url.add(myList.get(i).getAttribute("src"));	//loading text of each element in to array all_elements_text
+		if (myList.get(i).getAttribute("src") != null){	//if there is null, will not printed
+
+		System.out.println(myList.get(i).getAttribute("src"));	//to print directly
+			}
+		 }
+		}
 	
 	//register warning
 	public void waitWarningRegister(){
@@ -199,7 +215,13 @@ public class AssertElement {
         }
 	}
 	
-	
+	//brand
+	public void waitBrandPage(){
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='__next']/div/div/div[3]/div[6]/div")));
+	}
+	public void waitBrandDetailPage(){
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='top-page']/div/div[1]")));
+	}
 	
 	//PRODUCT PAGE
 	public void waitmainimage(){
