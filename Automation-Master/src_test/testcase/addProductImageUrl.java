@@ -114,9 +114,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		
 		asser.loggedin();
 		
-		db.connectSSH();
-		db.connectToDataBase("staging_fdwp");
-		
 		Thread.sleep(5000);
 		
 		

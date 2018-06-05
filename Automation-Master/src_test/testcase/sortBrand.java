@@ -52,7 +52,7 @@ import resources.ConnectDB;
 import resources.controller;
 import resources.support;
 
-public class searchBrand extends controller {
+public class sortBrand extends controller {
 	
 public static Logger log =LogManager.getLogger(support.class.getName());
 	
@@ -109,10 +109,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		driver.manage().window().maximize();
 		String strPageTitle = driver.getTitle();
 		System.out.println(strPageTitle);
-		
-//		String getTextIseng = conn.getfromDatabaseBrands_productType("SELECT brands_item FROM nubr_brands WHERE brands_item LIKE'A%' ORDER BY brands_total_review_num DESC LIMIT 5;", "staging");
-//	    System.out.println("SASDAS"+" "+getTextIseng);
-	    
 		
 		String handle= driver.getWindowHandle(); //get window 1
 		System.out.println(handle);
@@ -180,24 +176,27 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	    		
 	    Assert.assertEquals(matchMostProduct, mostProductFromA);
 
-        brand.clickSortBrand().click();
-		brand.clickChooseMostReview().click();
-		
-		String matchMostReview = brand.getTextBrandMosProductFromA().getText();
-		System.out.println(matchMostReview);
-		
-		//verify most review
-		String mostReviewFromA = (String) conn.getfromDatabaseBrands_brandsItem("SELECT brands_item FROM nubr_brands WHERE brands_item LIKE'A%' ORDER BY brands_total_review_num DESC LIMIT 1;", "staging");
-	    System.out.println("database"+" "+mostReviewFromA);
+	    brand.getTextBrandMosProductFromA().click();
+	    asser.waitBrandDetailPage();
 	    
-	    Assert.assertEquals(matchMostReview, mostReviewFromA);
+	    String mostPopularProductBrand = (String) conn.getfromDatabaseBrands_productType("SELECT b.prod_item FROM nubr_reviews AS c INNER JOIN nubr_products AS b ON c.review_prod_id=b.prod_id INNER JOIN nubr_brands AS a ON c.review_brand_id=a.brands_id WHERE c.review_brand_id=2 ORDER BY c.review_num DESC LIMIT 1;", "staging");
+        System.out.println("database"+" "+mostPopularProductBrand);
+        
+        String matchPopularProductBrand = brand.getAlwaysFirstProduct().getText();
+	    System.out.println(matchPopularProductBrand);
 	    
-	    home.clickSearch().sendKeys(mostReviewFromA, Keys.ENTER);
+	    Assert.assertEquals(matchPopularProductBrand, mostPopularProductBrand); 
 	    
-	    asser.searchResultBrand();
+	    brand.clicksortBrandList().click();
+	    brand.chooseNewestSort().click();
 	    
-	    String getTextBrand = driver.findElement(By.xpath("//*[@id='top-page']/div[2]/div/div[2]/div[1]/div/div/div/div[2]/h1/a")).getText();
-	    Assert.assertEquals(getTextBrand, mostReviewFromA);
+	    String mostNewestProductBrand = (String) conn.getfromDatabaseBrands_productType("SELECT b.prod_item FROM nubr_reviews AS c INNER JOIN nubr_products AS b ON c.review_prod_id=b.prod_id INNER JOIN nubr_brands AS a ON c.review_brand_id=a.brands_id WHERE c.review_brand_id=2 ORDER BY c.review_date DESC LIMIT 1;", "staging");
+        System.out.println("database"+" "+mostNewestProductBrand);
+        
+        String matchNewestProductBrand = brand.getAlwaysFirstProductNewest().getText();
+	    System.out.println(matchNewestProductBrand);
+	    
+	    Assert.assertEquals(matchNewestProductBrand, mostNewestProductBrand); 
 	    
 	}
 	

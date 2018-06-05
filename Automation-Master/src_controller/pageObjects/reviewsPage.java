@@ -8,7 +8,7 @@ public class reviewsPage {
 	
 public static RemoteWebDriver driver=null;
 	
-	By addReviewButton=By.cssSelector("#top-page > div.jsx-2599477350.pr-btn-cv > button");
+	By addReviewButton=By.xpath("//*[@id='top-page']/div[1]/button");
 	
 	By getReviewerName=By.cssSelector("#top-page > div:nth-child(2) > div > div > div:nth-child(2) > div > div.card-review-new-detail > div.card-review-new-detail-row1 > div.card-review-new-userdet > div.card-review-new-username > a:nth-child(1)");
 	By getReviewDesc=By.cssSelector("#top-page > div:nth-child(2) > div > div > div:nth-child(2) > div > div.card-review-new-detail > div.card-review-new-coment");
@@ -17,6 +17,9 @@ public static RemoteWebDriver driver=null;
 	By getPrevPage=By.cssSelector("#top-page > div.jsx-2599477350.cover-pagination > div > div.jsx-557237353.paging-number > a:nth-child(1)");
 	By getNextPage3=By.cssSelector("#top-page > div.jsx-2599477350.cover-pagination > div > div.jsx-557237353.paging-number > a:nth-child(3)");
 	By backToTop=By.cssSelector("#top-page > div.jsx-2599477350.cover-pagination > div > div.jsx-557237353.paging-totop > img");	
+	
+	By alwaysGetPopularLastProduct=By.xpath("//*[@id='top-page']/div[2]/div[2]/div[20]/div[1]");	
+	By selectProduct=By.xpath("//*[@id='top-page']/div[2]/div[2]/div[20]/div[1]/div/button");	
 	
 	
 	public reviewsPage(RemoteWebDriver driver) {
@@ -60,6 +63,18 @@ public static RemoteWebDriver driver=null;
 		
 		return driver.findElement(backToTop);
 	}
+	
+	//write a reviews
+	public WebElement LastPopularProd(){
+		
+		return driver.findElement(alwaysGetPopularLastProduct);
+	}
+	
+	public WebElement clickSelectProduct(){
+		
+		return driver.findElement(selectProduct);
+	}
+	
 	
 
 }

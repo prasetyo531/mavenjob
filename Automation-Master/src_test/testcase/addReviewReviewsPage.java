@@ -56,8 +56,9 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	public static WebElement main= null;
 	public static Properties prop=null;
 	
-	public String UrlReviewsPage = null;
+	public String UrlLogin = null;
 	public String UrlPageDetail = null;
+	public String UrlReviewReviewsPage = null;
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -76,7 +77,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		addproductpage productpage = new addproductpage(driver);
 		productlist prodlist = new productlist(driver);
 		productdetail proddet = new productdetail(driver);
-		reviewsPage revpage = new reviewsPage(driver);
+		reviewsPage rev = new reviewsPage(driver);
 		
 		AssertElement asser = new AssertElement(driver);
 		CategoryPage cat = new CategoryPage(driver);
@@ -90,10 +91,10 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		String testenv=prop.getProperty("testlocation");
 		
 		if(testenv.equalsIgnoreCase("prod")){
-        	driver.navigate().to("http://reviews.femaledaily.com/");  //https://dev.uangteman.com/a/NHeHv
+        	driver.navigate().to("http://femaledaily.com/");  //https://dev.uangteman.com/a/NHeHv
              driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         	} else {
-        		driver.navigate().to("http://reviews.femaledaily.net/");  //https://dev.uangteman.com/a/NHeHv
+        		driver.navigate().to("http://femaledaily.net/");  //https://dev.uangteman.com/a/NHeHv
                 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         	}
 		
@@ -102,11 +103,13 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		System.out.println(strPageTitle);
 	
 		//on browser
-		asser.waitNewestReview();
-		asser.javascriptletmejoin();  
+		asser.waithomepagemodal();
+		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
 		home.clickLogin().click();
+		UrlLogin = driver.getCurrentUrl();
+		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/");
 		
 		logpro.fillusername().sendKeys("putwid");
 		logpro.fillpassword().sendKeys("tester123");
@@ -114,18 +117,24 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		
 		asser.loggedin();
 		
-		//homepage	
+		home.clickMenuReview().click();
 		asser.waitNewestReview();
+
+		UrlReviewReviewsPage = driver.getCurrentUrl();
+		Assert.assertEquals(UrlReviewReviewsPage, "http://reviews.femaledaily.net/");
 		
-		asser.getDataNewestReviewList();
+		rev.clickAddReview().click();
+		asser.waitPopularProducts();
 		
-		revpage.clickAddReview().click();
+		//scroll down
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", rev.LastPopularProd());
 		
-		asser.waitPopularProductReviewsPage();
-		
-		driver.findElement(By.linkText("Gentle Skin Cleanser"));
-		
-		asser.waitReviewForm();
+		WebElement getaddreview= rev.LastPopularProd();
+		Actions act = new Actions(driver);
+		act.moveToElement(getaddreview).perform();
+		(new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='top-page']/div[2]/div[2]/div[20]/div[1]/div/button")));
+		WebElement clickElemen= driver.findElement(By.xpath("//*[@id='top-page']/div[2]/div[2]/div[20]/div[1]/div/button"));//xpath sub megamenu nya
+		act.moveToElement(clickElemen).click().perform();
 		
 		
 		

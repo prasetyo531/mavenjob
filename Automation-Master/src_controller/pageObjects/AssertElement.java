@@ -41,6 +41,10 @@ public class AssertElement {
 		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#__next > div > div > div.jsx-550002916.gbheader > div.jsx-550002916.gbheader-right > div.gbheader-userprofile")));
 	}
 	
+	public void searchResultBrand(){
+		(new WebDriverWait(driver, 15)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='top-page']/div[2]/div/div[2]/div[1]/div/div")));
+	}
+	
 	
 	//myaccount element
 	public void loggedInAfterLogout(){
@@ -50,6 +54,10 @@ public class AssertElement {
 	//reviews page
 	public void waitNewestReview(){
 		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div:nth-child(2)")));
+	}
+	
+	public void waitPopularProducts(){
+		(new WebDriverWait(driver, 20)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#top-page > div.jsx-2475539403.add-review-item-container > div.jsx-2475539403.cardsi-list")));
 	}
 	
 	public void getDataNewestReviewList(){

@@ -13,9 +13,15 @@ public class brandPage {
 	By mostReview=By.xpath("//*[@id='__next']/div/div/div[3]/div[5]/div[1]/div/div/a[1]");
 	By logoHome=By.xpath("//*[@id='__next']/div/div/div[1]/a");
 	
+	By firstProduct=By.xpath("//*[@id='__next']/div/div/div[3]/div[3]/div/div/div[2]/div[1]/div/h1/a");
+	////*[@id="__next"]/div/div/div[3]/div[3]/div/div/div[2]/div[1]/div/h1/a
+	By sortBrandList=By.xpath("//*[@id='__next']/div/div/div[3]/div[3]/div/div/div[1]/div[2]/button");
+	
 	//matching query
 	By getTextbrandmosproductfromA=By.xpath("//*[@id='__next']/div/div/div[3]/div[6]/div/div[1]/div[1]/a");
 	By gettextbrandmostreviewFromA=By.xpath("//*[@id='__next']/div/div/div[3]/div[6]/div/div[1]/div[1]/a");
+	
+	By chooseNewestSort=By.xpath("//*[@id='__next']/div/div/div[3]/div[3]/div/div/div[1]/div[2]/div/a[2]");
 	
 
 	
@@ -41,9 +47,19 @@ public class brandPage {
 		return driver.findElement(topProductNivea);
 	}
 	
+	public WebElement clicksortBrandList(){
+		
+		return driver.findElement(sortBrandList);
+	}
+	
 	public WebElement clickLogoHome(){
 		
 		return driver.findElement(logoHome);
+	}
+	
+	public WebElement chooseNewestSort(){
+		
+		return driver.findElement(chooseNewestSort);
 	}
 	
 	
@@ -57,4 +73,17 @@ public class brandPage {
 		
 		return driver.findElement(gettextbrandmostreviewFromA);
 	}
+	
+	public WebElement getAlwaysFirstProduct(){
+		
+		return driver.findElement(firstProduct);
+	}
+	
+	//getAlwaysFirstProductNewest
+	public WebElement getAlwaysFirstProductNewest(){
+		
+		return driver.findElement(firstProduct);
+	}
+	
+	
 }
