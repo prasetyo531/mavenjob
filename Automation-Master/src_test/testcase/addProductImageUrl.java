@@ -104,6 +104,9 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
+		home.clickMenuReview();
+		asser.waitNewestReview();
+		
 		home.clickLogin().click();
 		UrlLogin = driver.getCurrentUrl();
 		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/" );
