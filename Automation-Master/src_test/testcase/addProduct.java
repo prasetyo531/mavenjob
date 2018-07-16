@@ -120,6 +120,9 @@ public class addProduct extends controller {
 		
 		asser.loggedin();
 		
+		home.clickMenuReview();
+		asser.waitNewestReview();
+		
 		WebElement getmenu= home.getAddProduct(); //xpath megamenu nya  
 		Actions act = new Actions(driver);
 		act.moveToElement(getmenu).perform();

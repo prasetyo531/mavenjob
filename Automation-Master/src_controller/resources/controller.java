@@ -13,6 +13,8 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import resources.ConnectDB;
+
 //import net.jsourcerer.webdriver.jserrorcollector.JavaScriptError;
 
 
