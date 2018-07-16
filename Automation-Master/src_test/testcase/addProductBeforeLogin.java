@@ -94,6 +94,9 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
+		home.clickMenuReview();
+		asser.waitNewestReview();
+		
 		WebElement getmenu= home.getAddProduct(); //xpath megamenu nya  
 		Actions act = new Actions(driver);
 		act.moveToElement(getmenu).perform();
