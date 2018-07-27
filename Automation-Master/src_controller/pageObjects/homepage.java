@@ -9,7 +9,7 @@ public class homepage {
 	public RemoteWebDriver driver=null;
 	
 	//tooltip
-	By tooltip=By.cssSelector("body > div:nth-child(3) > div > i");
+	By tooltip=By.cssSelector("body > div:nth-child(4) > div > i");
 	
 	// hamburger element
 	By hamburger=By.cssSelector("#__next > div > div > div.jsx-2916613107.header-cover-desktop > div > div.jsx-1524203951.main-header > div.jsx-1524203951.gbheader-left > span");
