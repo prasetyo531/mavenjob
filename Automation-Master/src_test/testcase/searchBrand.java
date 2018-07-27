@@ -172,7 +172,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", brand.clickSortBrand());
         
         //verify most product
-        String mostProductFromA = (String) conn.getfromDatabaseBrands_brandsItem("SELECT brands_item FROM nubr_brands WHERE brands_item LIKE'A%' ORDER BY brands_total_product DESC LIMIT 1;", "staging");
+        String mostProductFromA = (String) conn.db_brandsItem("SELECT brands_item FROM nubr_brands WHERE brands_item LIKE'A%' ORDER BY brands_total_product DESC LIMIT 1;", "staging");
         System.out.println("database"+" "+mostProductFromA);
 	    
 	    String matchMostProduct = brand.getTextBrandMosProductFromA().getText();
@@ -187,7 +187,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		System.out.println(matchMostReview);
 		
 		//verify most review
-		String mostReviewFromA = (String) conn.getfromDatabaseBrands_brandsItem("SELECT brands_item FROM nubr_brands WHERE brands_item LIKE'A%' ORDER BY brands_total_review_num DESC LIMIT 1;", "staging");
+		String mostReviewFromA = (String) conn.db_brandsItem("SELECT brands_item FROM nubr_brands WHERE brands_item LIKE'A%' ORDER BY brands_total_review_num DESC LIMIT 1;", "staging");
 	    System.out.println("database"+" "+mostReviewFromA);
 	    
 	    Assert.assertEquals(matchMostReview, mostReviewFromA);

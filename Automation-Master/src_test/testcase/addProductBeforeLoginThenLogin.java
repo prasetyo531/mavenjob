@@ -56,6 +56,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	public static Properties prop=null;
 	
 	public String UrlLogin = null;
+	public String UrlPageDetail = null;
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -92,16 +93,11 @@ public static Logger log =LogManager.getLogger(support.class.getName());
                 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         	}
 		
-		driver.manage().window().maximize();
-		String strPageTitle = driver.getTitle();
-		System.out.println(strPageTitle);
-	
-		//on browser
-		asser.waithomepagemodal();
-		asser.javascriptletmejoin();
-		home.letmejoinletter().click();
+		//click hamburger
+		home.closeTooltip().click();
+		home.Hamburger().click();;
 		
-		home.clickMenuReview();
+		home.clickMenuReview().click();
 		asser.waitNewestReview();
 		
 		WebElement getmenu= home.getAddProduct(); //xpath megamenu nya  
@@ -111,23 +107,31 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.addproducttodisplay();
 		WebElement clickElement= home.clickAddProduct(); //xpath sub megamenu nya
 		act.moveToElement(clickElement).click().perform();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		UrlLogin = driver.getCurrentUrl();
-		Assert.assertEquals(UrlLogin, "http://account.femaledaily.com/" );	
 		
-		//login
+		Assert.assertEquals(UrlLogin, "http://account.femaledaily.com/" );
+		
 		logpro.fillusername().sendKeys("putwid");
 		logpro.fillpassword().sendKeys("tester123");
 		logpro.clickbuttonlogin().click();
 		
 		asser.loggedin();
 		
-		//get add product again
-		act.moveToElement(getmenu).perform();
+		WebElement getmenu2= home.getAddProduct(); //xpath megamenu nya  
+		Actions act2 = new Actions(driver);
+		act2.moveToElement(getmenu2).perform();
 		
+		asser.addproducttodisplay();
+		WebElement clickElement2= home.clickAddProduct(); //xpath sub megamenu nya
+		act2.moveToElement(clickElement2).click().perform();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
-		System.out.println(UrlLogin);
+		asser.modalAddproduct();
+		
+		//on page add product
+		productpage.clickCloseModal().click();
 		
 		//step 1
 		productpage.clickUploadPhoto().click();
@@ -232,7 +236,15 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        productpage.inputDescription().sendKeys("huba huba");
        productpage.clickSubmit().click();
 		
-		
+       asser.waitPageDetail();
+       
+       UrlPageDetail = driver.getCurrentUrl();
+       System.out.println(UrlPageDetail);
+       if (UrlPageDetail.contains("/fragrance/edp/wardah")) {//asert contain expected text
+    	   System.out.println("pass");
+       } else {
+    	   System.out.println("fail");
+       }
 		
 		
 

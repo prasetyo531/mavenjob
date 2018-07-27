@@ -168,7 +168,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", brand.clickSortBrand());
         
         //verify most product
-        String mostProductFromA = (String) conn.getfromDatabaseBrands_brandsItem("SELECT brands_item FROM nubr_brands WHERE brands_item LIKE'A%' ORDER BY brands_total_product DESC LIMIT 1;", "staging");
+        String mostProductFromA = (String) conn.db_productItem("SELECT brands_item FROM nubr_brands WHERE brands_item LIKE'A%' ORDER BY brands_total_product DESC LIMIT 1;", "staging");
         System.out.println("database"+" "+mostProductFromA);
 	    
 	    String matchMostProduct = brand.getTextBrandMosProductFromA().getText();
@@ -179,7 +179,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	    brand.getTextBrandMosProductFromA().click();
 	    asser.waitBrandDetailPage();
 	    
-	    String mostPopularProductBrand = (String) conn.getfromDatabaseBrands_productType("SELECT b.prod_item FROM nubr_reviews AS c INNER JOIN nubr_products AS b ON c.review_prod_id=b.prod_id INNER JOIN nubr_brands AS a ON c.review_brand_id=a.brands_id WHERE c.review_brand_id=2 ORDER BY c.review_num DESC LIMIT 1;", "staging");
+	    String mostPopularProductBrand = (String) conn.db_productItem("SELECT b.prod_item FROM nubr_reviews AS c INNER JOIN nubr_products AS b ON c.review_prod_id=b.prod_id INNER JOIN nubr_brands AS a ON c.review_brand_id=a.brands_id WHERE c.review_brand_id=2 ORDER BY c.review_num DESC LIMIT 1;", "staging");
         System.out.println("database"+" "+mostPopularProductBrand);
         
         String matchPopularProductBrand = brand.getAlwaysFirstProduct().getText();
@@ -190,7 +190,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	    brand.clicksortBrandList().click();
 	    brand.chooseNewestSort().click();
 	    
-	    String mostNewestProductBrand = (String) conn.getfromDatabaseBrands_productType("SELECT b.prod_item FROM nubr_reviews AS c INNER JOIN nubr_products AS b ON c.review_prod_id=b.prod_id INNER JOIN nubr_brands AS a ON c.review_brand_id=a.brands_id WHERE c.review_brand_id=2 ORDER BY c.review_date DESC LIMIT 1;", "staging");
+	    String mostNewestProductBrand = (String) conn.db_productItem("SELECT b.prod_item FROM nubr_reviews AS c INNER JOIN nubr_products AS b ON c.review_prod_id=b.prod_id INNER JOIN nubr_brands AS a ON c.review_brand_id=a.brands_id WHERE c.review_brand_id=2 ORDER BY c.review_date DESC LIMIT 1;", "staging");
         System.out.println("database"+" "+mostNewestProductBrand);
         
         String matchNewestProductBrand = brand.getAlwaysFirstProductNewest().getText();

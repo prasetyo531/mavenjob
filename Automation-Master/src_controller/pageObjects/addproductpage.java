@@ -8,11 +8,13 @@ public class addproductpage {
 	
 	public RemoteWebDriver driver=null;
 	
+	By yessure=By.cssSelector("body > div:nth-child(7) > div > div.jsx-1750402829.modal-add-product-contain > form > div > input");
+	
 	//step1
-	By uploadphoto=By.cssSelector("#top-page > div.jsx-434510772 > div.jsx-434510772.ap-accord > form > div.jsx-434510772.ap-section1 > div.jsx-434510772.ap-image-action > div.jsx-434510772.ap-btn-upload > button");
+	By uploadphoto=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-accord > form > div.jsx-3686042703.ap-section1 > div.jsx-3686042703.ap-image-action > div.jsx-3686042703.ap-btn-upload > button");
 	By inserturlphoto=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-accord > form > div.jsx-3686042703.ap-section1 > div.jsx-3686042703.ap-image-action > div.jsx-3686042703.ap-image-url > input");
 	By croparea=By.cssSelector("#modal-crop-showed > div > div.ReactCrop.ReactCrop--fixed-aspect > img");
-	By crop=By.cssSelector("#modal-crop-showed > div > div.jsx-434510772.modal-crop-button > button.jsx-434510772.modal-button.crop-button");
+	By crop=By.cssSelector("#modal-crop-showed > div > div.jsx-3686042703.modal-crop-button > button.jsx-3686042703.modal-button.crop-button");
 	By show=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-accord > form > div.jsx-3686042703.ap-section1 > div.jsx-3686042703.ap-image-action > div.jsx-3686042703.ap-image-url > button");
 	By nextstep1=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-accord > form > div.jsx-3686042703.ap-btn-next > input");
 	
@@ -25,23 +27,23 @@ public class addproductpage {
 	By nextstep2=By.cssSelector("#top-page > div.jsx-573540586 > div.jsx-573540586.ap-accord > form > div.jsx-573540586.ap-btn-next > input");
 	
 	//step3
-	By rating=By.cssSelector("#top-page > div.jsx-4237973997 > div.jsx-4237973997.ap-accord > form > div.jsx-4237973997.ap-section2 > div.jsx-4237973997.ap-starlist > i:nth-child(5)");
-	By packagequality=By.cssSelector("#top-page > div.jsx-4237973997 > div.jsx-4237973997.ap-accord > form > div.jsx-4237973997.ap-section2 > div:nth-child(6) > button.jsx-4237973997.selected");
-	By repurchase=By.cssSelector("#top-page > div.jsx-4237973997 > div.jsx-4237973997.ap-accord > form > div.jsx-4237973997.ap-section2 > div:nth-child(8) > button.jsx-4237973997.right");
-	By writereview=By.cssSelector("#top-page > div.jsx-4237973997 > div.jsx-4237973997.ap-accord > form > div.jsx-4237973997.ap-section2 > textarea");
-	By nextstep3=By.cssSelector("#top-page > div.jsx-4237973997 > div.jsx-4237973997.ap-accord > form > div.jsx-4237973997.ap-btn-next > input");
+	By rating=By.cssSelector("#top-page > div.jsx-2152963813 > div.jsx-2152963813.ap-accord > form > div.jsx-2152963813.ap-section2 > div.jsx-2152963813.ap-starlist > i:nth-child(4)");
+	By packagequality=By.cssSelector("#top-page > div.jsx-2152963813 > div.jsx-2152963813.ap-accord > form > div.jsx-2152963813.ap-section2 > div:nth-child(6) > button:nth-child(3)");
+	By repurchase=By.cssSelector("#top-page > div.jsx-2152963813 > div.jsx-2152963813.ap-accord > form > div.jsx-2152963813.ap-section2 > div:nth-child(8) > button.jsx-2152963813.right");
+	By writereview=By.cssSelector("#top-page > div.jsx-2152963813 > div.jsx-2152963813.ap-accord > form > div.jsx-2152963813.ap-section2 > textarea");
+	By nextstep3=By.cssSelector("#top-page > div.jsx-2152963813 > div.jsx-2152963813.ap-accord > form > div.jsx-2152963813.ap-btn-next > input");
 	
 	//step4
 	By matauang=By.cssSelector("#react-select-5--value > div.Select-value");
-	By price=By.cssSelector("#top-page > div.jsx-2147195116 > div.jsx-2147195116.ap-accord > form > div.jsx-2147195116.ap-section2 > div:nth-child(2) > input[type='text']");
-	By descr=By.cssSelector("#top-page > div.jsx-2147195116 > div.jsx-2147195116.ap-accord > form > div.jsx-2147195116.ap-section2 > textarea");
+	By price=By.cssSelector("#top-page > div.jsx-3624267886 > div.jsx-3624267886.ap-accord > form > div.jsx-3624267886.ap-section2 > div:nth-child(2) > input[type='text']");
+	By descr=By.cssSelector("#top-page > div.jsx-3624267886 > div.jsx-3624267886.ap-accord > form > div.jsx-3624267886.ap-section2 > textarea");
 	By producttags=By.cssSelector("#react-select-6--value > div.Select-placeholder");
-	By submit=By.cssSelector("#top-page > div.jsx-2147195116 > div.jsx-2147195116.ap-accord > form > div.jsx-2147195116.ap-btn-next > input");
+	By submit=By.cssSelector("#top-page > div.jsx-3624267886 > div.jsx-3624267886.ap-accord > form > div.jsx-3624267886.ap-btn-next > input");
 	
 	//header label
-	By header1=By.cssSelector("#top-page > div.jsx-434510772 > div.jsx-434510772.ap-title > span");
-	By header2=By.cssSelector("#top-page > div.jsx-573540586 > div.jsx-573540586.ap-title > span");
-	By header3=By.cssSelector("#top-page > div.jsx-4237973997 > div.jsx-4237973997.ap-title > span");
+	By headerstep1=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-title > span");
+	By headerstep2=By.cssSelector("#top-page > div.jsx-573540586 > div.jsx-573540586.ap-title > span");
+	By headerstep3=By.cssSelector("#top-page > div.jsx-2152963813 > div.jsx-2152963813.ap-title > span");
 
 	
 	public addproductpage(RemoteWebDriver driver) {
@@ -49,6 +51,11 @@ public class addproductpage {
 		
 		this.driver=driver;
 		
+	}
+	
+	public WebElement clickCloseModal(){
+		
+		return driver.findElement(yessure);
 	}
 	
 	//=================================STEP 1======================================//
@@ -174,17 +181,17 @@ public class addproductpage {
 	
 	public WebElement editStep1(){
 		
-		return driver.findElement(header1);
+		return driver.findElement(headerstep1);
 	}
 	
 	public WebElement editStep2(){
 		
-		return driver.findElement(header2);
+		return driver.findElement(headerstep2);
 	}
 	
 	public WebElement editStep3(){
 		
-		return driver.findElement(header3);
+		return driver.findElement(headerstep3);
 	}
 	
 }

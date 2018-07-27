@@ -38,11 +38,20 @@ public class AssertElement {
 	}
 	
 	public void loggedin(){
-		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#__next > div > div > div.jsx-550002916.gbheader > div.jsx-550002916.gbheader-right > div.gbheader-userprofile")));
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#__next > div > div > div.jsx-2916613107.header-cover-desktop > div > div.jsx-1524203951.main-header > div.jsx-1524203951.gbheader-right > div.gbheader-userprofile")));
 	}
 	
 	public void searchResultBrand(){
 		(new WebDriverWait(driver, 15)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='top-page']/div[2]/div/div[2]/div[1]/div/div")));
+	}
+	
+	public void hamburgerMenu(){
+		(new WebDriverWait(driver, 15)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("body > div:nth-child(7) > div > div.jsx-1757651050.new-menu > div.jsx-1757651050.new-menu-header")));
+	}
+	
+	//confirmation modal add product
+	public void modalAddproduct(){
+		(new WebDriverWait(driver, 15)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("body > div:nth-child(7) > div > div.jsx-1750402829.modal-add-product-contain > form")));
 	}
 	
 	

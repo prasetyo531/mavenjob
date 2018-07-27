@@ -85,16 +85,11 @@ public static Logger log =LogManager.getLogger(support.class.getName());
                 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         	}
 		
-		driver.manage().window().maximize();
-		String strPageTitle = driver.getTitle();
-		System.out.println(strPageTitle);
-	
-		//on browser
-		asser.waithomepagemodal();
-		asser.javascriptletmejoin();
-		home.letmejoinletter().click();
+		//click hamburger
+		home.closeTooltip().click();
+		home.Hamburger().click();;
 		
-		home.clickMenuReview();
+		home.clickMenuReview().click();
 		asser.waitNewestReview();
 		
 		WebElement getmenu= home.getAddProduct(); //xpath megamenu nya  
@@ -104,6 +99,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.addproducttodisplay();
 		WebElement clickElement= home.clickAddProduct(); //xpath sub megamenu nya
 		act.moveToElement(clickElement).click().perform();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
 		UrlLogin = driver.getCurrentUrl();
 		

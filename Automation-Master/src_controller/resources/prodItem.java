@@ -10,8 +10,5 @@ public class prodItem {
 
 	public String getProdId() {
 		return prodId;
-	}
-
-	
-	
+	}	
 }

@@ -52,12 +52,12 @@ import resources.controller;
 import resources.support;
 import resources.ConnectDB;
 
-public class addProduct extends controller {
+public class addProductEditBrand extends controller {
 	
 	String productName = "testing";
 	String brandName = "wardah";
 	private static final char[] characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-	private static final Random random = new Random(new Date().getTime());
+	 private static final Random random = new Random(new Date().getTime());
 	
 	public static Logger log =LogManager.getLogger(support.class.getName());
 	
@@ -98,7 +98,7 @@ public class addProduct extends controller {
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
 		productlist prodlist = new productlist(driver);
-		productdetail proddet = new productdetail(driver);
+		productdetail proddet = new productdetail(driver);;
 		
 		AssertElement asser = new AssertElement(driver);
 		CategoryPage cat = new CategoryPage(driver);
@@ -256,16 +256,23 @@ public class addProduct extends controller {
        productpage.inputPrice().click();
        productpage.inputPrice().sendKeys("100000");
        productpage.inputDescription().click();
-       productpage.inputDescription().sendKeys("huba huba");
+       productpage.inputDescription().sendKeys("add product edit brand");
        
-       //submit
+       //edit step 2
+       productpage.editStep2().click();
+       WebElement focuseditbrand= productpage.selectBrand(); //xpath megamenu nya  
+       Actions onfocuseditbrand = new Actions(driver);
+       onfocusbrand.moveToElement(focuseditbrand).click();
+       onfocusbrand.sendKeys("goldwell", Keys.ENTER);
+       onfocusbrand.build().perform();
+       
        productpage.clickSubmit().click();
        
        asser.waitPageDetail();
        
        UrlPageDetail = driver.getCurrentUrl();
        System.out.println(UrlPageDetail);
-       if (UrlPageDetail.contains("/fragrance/edp/wardah")) {//asert contain expected text
+       if (UrlPageDetail.contains("/fragrance/edp/goldwell")) {//asert contain expected text
     	   System.out.println("pass");
        } else {
     	   System.out.println("fail");

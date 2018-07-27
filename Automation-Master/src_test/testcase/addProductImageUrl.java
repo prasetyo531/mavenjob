@@ -58,6 +58,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	public static Properties prop=null;
 	
 	public String UrlLogin = null;
+	public String UrlPageDetail = null;
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -98,14 +99,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		driver.manage().window().maximize();
 		String strPageTitle = driver.getTitle();
 		System.out.println(strPageTitle);
-	
-		//on browser
-		asser.waithomepagemodal();
-		asser.javascriptletmejoin();
-		home.letmejoinletter().click();
-		
-		home.clickMenuReview();
-		asser.waitNewestReview();
 		
 		home.clickLogin().click();
 		UrlLogin = driver.getCurrentUrl();
@@ -117,8 +110,12 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		
 		asser.loggedin();
 		
-		Thread.sleep(5000);
+		//click hamburger
+		home.closeTooltip().click();
+		home.Hamburger().click();;
 		
+		home.clickMenuReview().click();
+		asser.waitNewestReview();
 		
 		WebElement getmenu= home.getAddProduct(); //xpath megamenu nya  
 		Actions act = new Actions(driver);
@@ -127,8 +124,12 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		asser.addproducttodisplay();
 		WebElement clickElement= home.clickAddProduct(); //xpath sub megamenu nya
 		act.moveToElement(clickElement).click().perform();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
-		System.out.println(UrlLogin);
+		asser.modalAddproduct();
+		
+		//on page add product
+		productpage.clickCloseModal().click();
 		
 		//step 1
 		WebElement focusInputUrl= productpage.insertUrl(); //insert invalid url
@@ -202,17 +203,17 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        productpage.inputPrice().click();
        productpage.inputPrice().sendKeys("100000");
        productpage.inputDescription().click();
-       
-       WebElement focusProductDesc= productpage.inputDescription(); //xpath megamenu nya  
-       Actions onfocusProductDesc = new Actions(driver);
-       onfocusProductDesc.moveToElement(focusProductDesc).click();
-       onfocusProductDesc.sendKeys("description of test");
-       onfocusProductDesc.build().perform();
-       
-       //productpage.inputDescription().sendKeys("huba huba");
-       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       productpage.inputDescription().sendKeys("add product using url of image");
        
        productpage.clickSubmit().click();
+       
+       UrlPageDetail = driver.getCurrentUrl();
+       System.out.println(UrlPageDetail);
+       if (UrlPageDetail.contains("/fragrance/edp/wardah")) {//asert contain expected text
+    	   System.out.println("pass");
+       } else {
+    	   System.out.println("fail");
+       }
 
 	}
      

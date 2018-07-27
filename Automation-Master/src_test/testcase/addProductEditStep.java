@@ -44,6 +44,8 @@ import pageObjects.ProductPage;
 import pageObjects.addproductpage;
 import pageObjects.homepage;
 import pageObjects.login;
+import pageObjects.productdetail;
+import resources.ConnectDB;
 import resources.controller;
 import resources.support;
 
@@ -56,6 +58,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	public static Properties prop=null;
 	
 	public String UrlLogin = null;
+	public String UrlPageDetail = null;
 	
 	@BeforeTest
 	@Parameters({ "browser" })
@@ -72,12 +75,8 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		homepage home = new homepage(driver);
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
-		
 		AssertElement asser = new AssertElement(driver);
-		CategoryPage cat = new CategoryPage(driver);
-		ProductPage prod = new ProductPage(driver);
-		CartPage cpage = new CartPage(driver);
-		CheckoutPage checkout = new CheckoutPage(driver);
+		productdetail proddet = new productdetail(driver);
 		
 		prop= new Properties();
 		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");
@@ -95,11 +94,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		driver.manage().window().maximize();
 		String strPageTitle = driver.getTitle();
 		System.out.println(strPageTitle);
-	
-		//on browser
-		asser.waithomepagemodal();
-		asser.javascriptletmejoin();
-		home.letmejoinletter().click();
 		
 		home.clickLogin().click();
 		UrlLogin = driver.getCurrentUrl();
@@ -111,7 +105,11 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		
 		asser.loggedin();
 		
-		home.clickMenuReview();
+		//click hamburger
+		home.closeTooltip().click();
+		home.Hamburger().click();;
+		
+		home.clickMenuReview().click();
 		asser.waitNewestReview();
 		
 		WebElement getmenu= home.getAddProduct(); //xpath megamenu nya  
@@ -123,7 +121,10 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		act.moveToElement(clickElement).click().perform();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
-		System.out.println(UrlLogin);
+		asser.modalAddproduct();
+		
+		//on page add product
+		productpage.clickCloseModal().click();
 		
 		//step 1
 		productpage.clickUploadPhoto().click();
@@ -224,15 +225,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        productpage.inputPrice().click();
        productpage.inputPrice().sendKeys("100000");
        productpage.inputDescription().click();
-       
-       WebElement focusProductDesc= productpage.inputDescription(); //xpath megamenu nya  
-       Actions onfocusProductDesc = new Actions(driver);
-       onfocusProductDesc.moveToElement(focusProductDesc).click();
-       onfocusProductDesc.sendKeys("description of test");
-       onfocusProductDesc.build().perform();
-       
-       //productpage.inputDescription().sendKeys("huba huba");
-       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       productpage.inputDescription().sendKeys("add product edit step");
        
        //edit step 1
        productpage.editStep1().click();
@@ -246,7 +239,38 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        productpage.editStep3().click();
        productpage.nextStep3().click();
        
+       //submit
        productpage.clickSubmit().click();
+       
+       asser.waitPageDetail();
+       
+       UrlPageDetail = driver.getCurrentUrl();
+       System.out.println(UrlPageDetail);
+       if (UrlPageDetail.contains("/fragrance/edp/wardah")) {//asert contain expected text
+    	   System.out.println("pass");
+       } else {
+    	   System.out.println("fail");
+       }
+//       
+//       String breadcrumb = proddet.findBreadcrumb().getText();
+//       System.out.println(breadcrumb);
+//       assertTrue(driver.findElement(By.cssSelector("#top-page > div.jsx-2093859422.contain-cover > div")).getText().contains("EDP"));
+//       
+//       String pname = proddet.findProductName().getText();
+//       System.out.println(pname);
+//       assertTrue(proddet.findProductName().getText().contains(pname));
+//       
+//       String bname = proddet.findBrandName().getText();
+//       System.out.println(bname);
+//       assertTrue(proddet.findBrandName().getText().contains(bname));
+//       
+//       //query check product name terkahir
+//       String matchesAddedProductName = (String) ConnectDB.db_productItem("SELECT nubr_products.prod_item FROM nubr_reviews INNER JOIN nubr_products ON nubr_reviews.review_prod_id=nubr_products.prod_id ORDER BY nubr_reviews.review_date DESC LIMIT 1", "staging");
+//       Assert.assertEquals(matchesAddedProductName, pname);
+//       
+//       //query check brands terkahir
+//       String matchesAddedBrandsName = (String) ConnectDB.db_brandsItem("SELECT nubr_brands.brands_item FROM nubr_reviews INNER JOIN nubr_brands ON nubr_reviews.review_brand_id=nubr_brands.brands_id ORDER BY nubr_reviews.review_date DESC LIMIT 1", "staging");
+//       Assert.assertEquals(matchesAddedBrandsName, bname);
        
 	}
 	
