@@ -21,9 +21,6 @@ pipeline {
 		 dir('/Users/mac/.jenkins/workspace/pipeline-script/Automation-Master') {
             sh 'mvn test'
         }
-		}
-
-        stage ('Email Notif') {
             steps {
                     emailext body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS.<br/>
                     <br/>
@@ -39,7 +36,7 @@ pipeline {
                     </pre>
                     --LOG-END--''', subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'qatestingsatu01@gmail.com'
         }
-        }
+		}
          
         }
     }
