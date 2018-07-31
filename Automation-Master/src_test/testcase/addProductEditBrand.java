@@ -260,7 +260,7 @@ public class addProductEditBrand extends controller {
        
        //edit step 2
        productpage.editStep2().click();
-       WebElement focuseditbrand= productpage.selectBrand(); //xpath megamenu nya  
+       WebElement focuseditbrand= productpage.editBrand(); //xpath megamenu nya  
        Actions onfocuseditbrand = new Actions(driver);
        onfocusbrand.moveToElement(focuseditbrand).click();
        onfocusbrand.sendKeys("goldwell", Keys.ENTER);
