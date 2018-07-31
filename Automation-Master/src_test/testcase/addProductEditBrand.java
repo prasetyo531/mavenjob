@@ -233,7 +233,6 @@ public class addProductEditBrand extends controller {
        onfocusProductName.sendKeys(createRandomString(8));
        onfocusProductName.build().perform();
        
-       
        WebElement focusProductShade= productpage.insertProductShade(); //xpath megamenu nya  
        Actions onfocusProductShade = new Actions(driver);
        onfocusProductShade.moveToElement(focusProductShade).click();
@@ -265,6 +264,13 @@ public class addProductEditBrand extends controller {
        onfocusbrand.moveToElement(focuseditbrand).click();
        onfocusbrand.sendKeys("goldwell", Keys.ENTER);
        onfocusbrand.build().perform();
+       
+       //click next step 2
+       productpage.nextStep2().click();
+       driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       
+       //click next step 3
+       productpage.nextStep3().click();
        
        productpage.clickSubmit().click();
        
