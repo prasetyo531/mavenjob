@@ -13,7 +13,7 @@ public class homepage {
 	
 	// hamburger element
 	By hamburger=By.cssSelector("#__next > div > div > div.jsx-2916613107.header-cover-desktop > div > div.jsx-1524203951.main-header > div.jsx-1524203951.gbheader-left > span");
-	By reviews=By.linkText("Reviewss");
+	By reviews=By.linkText("Reviews");
 	//
 	
 	By homepage=By.xpath("//*[@id='__next']/div/div/div[1]/a");

@@ -19,7 +19,8 @@ public class addproductpage {
 	By nextstep1=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-accord > form > div.jsx-3686042703.ap-btn-next > input");
 	
 	//step2
-	By brandname=By.cssSelector("#react-select-2--value > div.Select-placeholder");
+	By brandname=By.cssSelector("div[class='Select-placeholder'");
+	By selectedbrandname=By.cssSelector("div[class='Select-value'");
 	By productcat=By.cssSelector("#react-select-3--value > div.Select-placeholder");
 	By productsubcat=By.cssSelector("#react-select-4--value > div.Select-placeholder");
 	By productname=By.cssSelector("#top-page > div.jsx-573540586 > div.jsx-573540586.ap-accord > form > div.jsx-573540586.ap-section2 > div:nth-child(7) > input");
@@ -96,6 +97,11 @@ public class addproductpage {
 	public WebElement selectBrand(){
 		
 		return driver.findElement(brandname);
+	}
+	
+	public WebElement editBrand(){
+		
+		return driver.findElement(selectedbrandname);
 	}
 	
 	public WebElement selectProductCat(){
