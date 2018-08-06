@@ -113,11 +113,6 @@ public class createAccount extends controller {
 		driver.manage().window().maximize();
 		String strPageTitle = driver.getTitle();
 		System.out.println(strPageTitle);
-	
-		//on browser
-		asser.waithomepagemodal();
-		asser.javascriptletmejoin();
-		home.letmejoinletter().click();
 		
 		//login page
 		home.clickLogin().click();

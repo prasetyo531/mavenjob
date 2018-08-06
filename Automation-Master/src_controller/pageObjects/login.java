@@ -19,11 +19,11 @@ public class login {
 	By buttonloginFb=By.cssSelector("#__next > div > div > div.jsx-1965109485._1jmxl8o.login > form > div.jsx-1965109485.login-button-login-facebook > div > input");
 	
 	
-	By createaccount=By.cssSelector("#__next > div > div > div.jsx-1965109485._1jmxl8o.login > form > p > a");
-	By emailReg=By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div:nth-child(2) > input");
-	By usernameReg=By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div:nth-child(3) > input");
-	By passwordReg=By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div:nth-child(4) > input");
-	By confirmPasswordReg=By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div:nth-child(5) > input");
+	By createaccount=By.cssSelector("input[value='Create Account'");
+	By emailReg=By.cssSelector("input[placeholder='Username'");
+	By usernameReg=By.cssSelector("input[placeholder='Username'");
+	By passwordReg=By.cssSelector("input[placeholder='Password'");
+	By confirmPasswordReg=By.cssSelector("input[placeholder='Confirm Password'");
 	By checklistAgree=By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div.jsx-3296557956.register-text-extra > span");
 	By syaratKondisi=By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div.jsx-3296557956.register-text-extra > p > a");
 	By createAccountRegisterPage=By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div.jsx-3296557956.register-button-login > div > input");
