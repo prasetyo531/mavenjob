@@ -78,6 +78,8 @@ public class controller {
 	        LoggingPreferences loggingprefs = new LoggingPreferences();
 	        loggingprefs.enable(LogType.BROWSER, Level.ALL);
 	        capabilities.setCapability(CapabilityType.LOGGING_PREFS, loggingprefs);
+	        capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true); //handle http
+	        capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true); //handle ssl
 	        
 			return DesiredCapabilities.chrome();
 		case "IE":
