@@ -8,29 +8,24 @@ public class login {
 	
 	public RemoteWebDriver driver=null;
 
-	By username=By.cssSelector("#__next > div > div > div.jsx-2339613568._1jmxl8o.login > div > form > div:nth-child(2) > input");
-	By password=By.cssSelector("#__next > div > div > div.jsx-2339613568._1jmxl8o.login > div > form > div:nth-child(3) > input");
-	By rememberme=By.cssSelector("#__next > div > div > div.jsx-1965109485._1jmxl8o.login > form > div.jsx-1965109485.remember-forgot > div.jsx-1965109485.remember-forgot-left > div > span");
-	By forgotPassword=By.cssSelector("#__next > div > div > div.jsx-1965109485._1jmxl8o.login > form > div.jsx-1965109485.remember-forgot > div.jsx-1965109485.remember-forgot-right > p > a");
-	By emailForgotPassword=By.cssSelector("#__next > div > div > div.jsx-1521555844._1jmxl8o.forgot-password > form > div.jsx-483501933.desktop-taste-input > input");
-	By sendEmailForgotPass=By.cssSelector("#__next > div > div > div.jsx-1521555844._1jmxl8o.forgot-password > form > div.jsx-1521555844.forgot-password-button-login > div > input");
-	By warningMesssage=By.cssSelector("#__next > div > div > div.jsx-1521555844._1jmxl8o.forgot-password > form > div.jsx-1521555844.forgot-password-warning > p");
-	By buttonlogin=By.cssSelector("#__next > div > div > div.jsx-2339613568._1jmxl8o.login > div > form > div:nth-child(5) > div > input");
-	By buttonloginFb=By.cssSelector("#__next > div > div > div.jsx-1965109485._1jmxl8o.login > form > div.jsx-1965109485.login-button-login-facebook > div > input");
+	By username=By.cssSelector("input[placeholder='Email / Username'");
+	By password=By.cssSelector("input[placeholder='Password'");
+	By rememberme=By.xpath("//*[@id='__next']/div/div/div[2]/div/form/div[4]/div[1]/div/span");
+	By forgotPassword=By.linkText("Forgot Password?");
+	By emailForgotPassword=By.cssSelector("input[placeholder='Email'");
+	By sendEmailForgotPass=By.cssSelector("input[value='SEND AN EMAIL'");
+	By warningMesssage=By.xpath("//*[@id='__next']/div/div/div[2]/div/form/div[1]");
+	By buttonlogin=By.cssSelector("input[value='Login'");
+	By buttonloginFb=By.cssSelector("input[value='Login with Facebook'");
 	
 	
 	By createaccount=By.cssSelector("input[value='Create Account'");
-	By emailReg=By.cssSelector("input[placeholder='Username'");
+	By emailReg=By.cssSelector("input[placeholder='Email'");
 	By usernameReg=By.cssSelector("input[placeholder='Username'");
-	By passwordReg=By.cssSelector("input[placeholder='Password'");
 	By confirmPasswordReg=By.cssSelector("input[placeholder='Confirm Password'");
-	By checklistAgree=By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div.jsx-3296557956.register-text-extra > span");
-	By syaratKondisi=By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div.jsx-3296557956.register-text-extra > p > a");
-	By createAccountRegisterPage=By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div.jsx-3296557956.register-button-login > div > input");
-	
-	By clicklogin=By.cssSelector("#__next > div > div > div.jsx-550002916.gbheader > div.jsx-550002916.gbheader-right > div.jsx-1624868303.gbheader-login");
-	
-	By warningRegister=By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div.jsx-3296557956.register-warning > p");
+	By checklistAgree=By.cssSelector("span[data-element-id='register-checkbox'");
+	By syaratKondisi=By.linkText("Syarat & Kondisi");
+	By createAccountRegisterPage=By.cssSelector("input[value='create account'");
 	
 	public login(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
@@ -82,7 +77,7 @@ public class login {
 	
 	public WebElement fillPassword(){
 		
-		return driver.findElement(passwordReg);
+		return driver.findElement(password);
 	}
 	
 	public WebElement fillConfirmPasword(){
@@ -107,7 +102,7 @@ public class login {
 	
 	public WebElement getWarningRegister(){
 		
-		return driver.findElement(warningRegister);
+		return driver.findElement(warningMesssage);
 	}
 	
 	public WebElement fillEmailForgotPass(){
