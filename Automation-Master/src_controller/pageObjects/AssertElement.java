@@ -184,13 +184,12 @@ public class AssertElement {
 	
 	//register warning
 	public void waitWarningRegister(){
-		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div.jsx-3296557956.register-warning > p")));
-		
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#__next > div > div > div.jsx-3296557956._1jmxl8o.register > form > div.jsx-3296557956.register-warning > p")));
 	}
 	
 	//register success
 	public void registerIsSuccess(){
-		(new WebDriverWait(driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#skin-type > div.jsx-1967182530.completing-list-container")));
+		(new WebDriverWait(driver, 30)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='birthday']/div[2]/div/div[1]/div")));
 	}
 
 	//forgot password success
