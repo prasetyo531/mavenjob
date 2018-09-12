@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.os.WindowsUtils;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -80,6 +81,8 @@ public class controller {
 	        capabilities.setCapability(CapabilityType.LOGGING_PREFS, loggingprefs);
 	        capabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true); //handle http
 	        capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true); //handle ssl
+	        
+	        //WindowsUtils.killByName("");
 	        
 			return DesiredCapabilities.chrome();
 		case "IE":
