@@ -102,6 +102,11 @@ public class CompleteProfile {
 	By edit_bodcon=By.xpath("//*[@id='summary']/form/div[1]/div[3]/div/div[2]/p/a");
 	By edit_haircon=By.xpath("//*[@id='summary']/form/div[1]/div[3]/div/div[3]/p/a");
 	
+	//find_friends
+	By btn_done=By.cssSelector("input[data-element-id='button-red'");
+	
+	By btn_startmybeautyjourney=By.cssSelector("input[data-element-id='button-red'");
+	
 	public CompleteProfile(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
 		
