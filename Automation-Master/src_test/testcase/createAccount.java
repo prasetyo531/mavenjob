@@ -46,6 +46,7 @@ import pageObjects.homepage;
 import pageObjects.login;
 import pageObjects.productdetail;
 import pageObjects.productlist;
+import resources.ConnectDB;
 import resources.controller;
 import resources.support;
 
@@ -130,6 +131,15 @@ public class createAccount extends controller {
 		logpro.clickCreateAccountRe().click();
 		
 		asser.registerIsSuccess();
+		
+		//check beaut points after signup = 10
+		Integer beautyPoints = (int) ConnectDB.get_dataPoint("select user_total_point FROM nubr_userappos ORDER BY usrapo_id DESC LIMIT 1", "staging");
+		
+		if(beautyPoints.equals(10)){
+			System.out.println("signup point is correct the points="+""+beautyPoints);
+		}
+		
+		
 	
 	}
 	

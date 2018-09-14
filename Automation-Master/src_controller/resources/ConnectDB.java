@@ -25,6 +25,47 @@ public class ConnectDB {
     private static Session session = null;
     public static ArrayList list = new ArrayList();  
     
+    public static Object get_dataUsername(String query, String database) {
+        Connection con = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        Object username = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            
+            switch (database) {
+              case "prod":
+                   con = (Connection) DriverManager.getConnection("jdbc:mysql://103.58.100.148/utstag2015", "qaeng", "7y@#ER7654#$%7ytf~!@#$%^87y");
+                   break;
+               case "staging":
+              	 con = (Connection) DriverManager.getConnection("jdbc:mysql://54.169.68.90/staging_fdbr_salon", "serverteam", "DDKW31Kr31");
+                   break;
+                default:
+                    throw new Exception("No Database with that name");
+            }
+
+            stmt = (Statement) con.createStatement();
+            rs = stmt.executeQuery(query);
+            if (rs.next()) {
+            	username = rs.getObject("username");
+           }
+            
+        } catch (Exception e) {
+            return "Error:" + e.getMessage();
+        } finally {
+        	try {
+				rs.close();
+				stmt.close();
+	            con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+        
+        return username;
+    }     
+    
       public static Object db_brandsItem(String query, String database) {
           Connection con = null;
           Statement stmt = null;
@@ -157,5 +198,47 @@ public class ConnectDB {
 // 	          prnt = output.toString();
 
  	        return prodname;
+      }   
+      
+      
+      public static Object get_dataPoint(String query, String database) {
+          Connection con = null;
+          Statement stmt = null;
+          ResultSet rs = null;
+          Object sumpoint = null;
+          try {
+              Class.forName("com.mysql.jdbc.Driver");
+              
+              switch (database) {
+                case "prod":
+                     con = (Connection) DriverManager.getConnection("jdbc:mysql://103.58.100.148/utstag2015", "qaeng", "7y@#ER7654#$%7ytf~!@#$%^87y");
+                     break;
+                 case "staging":
+                	 con = (Connection) DriverManager.getConnection("jdbc:mysql://54.169.68.90/staging_fdbr_salon", "serverteam", "DDKW31Kr31");
+                     break;
+                  default:
+                      throw new Exception("No Database with that name");
+              }
+
+              stmt = (Statement) con.createStatement();
+              rs = stmt.executeQuery(query);
+              if (rs.next()) {
+            	  sumpoint = rs.getObject("user_total_point");
+             }
+              
+          } catch (Exception e) {
+              return "Error:" + e.getMessage();
+          } finally {
+          	try {
+  				rs.close();
+  				stmt.close();
+  	            con.close();
+  			} catch (SQLException e) {
+  				// TODO Auto-generated catch block
+  				e.printStackTrace();
+  			}
+          }
+          
+          return sumpoint;
       }     
 }
