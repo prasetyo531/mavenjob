@@ -236,6 +236,55 @@ public class CompleteProfile {
 		return driver.findElement(bthaircon_next);
 	}
 	
+	//-------------summary page--------------------------------------
+	public WebElement clickuploadphoto(){
+		
+		return driver.findElement(addphoto);
+		
+	}
+	
+	public WebElement fillfullname(){
+		
+		return driver.findElement(fullname);
+		
+	}
+	
+	public WebElement clickdob(){
+		
+		return driver.findElement(dobsummary);
+		
+	}
+	
+	public WebElement clicklocation(){
+		
+		return driver.findElement(location);
+		
+	}
+	
+	public WebElement fillphoneno(){
+		
+		return driver.findElement(phoneno);
+		
+	}
+
+	public WebElement fillbio(){
+	
+		return driver.findElement(bio);
+	
+	}
+
+	public WebElement choosefavbrand(){
+	
+		return driver.findElement(favbrand);
+	
+	}
+	
+	public WebElement clickfinishprofile(){
+		
+		return driver.findElement(finish);
+	
+	}
+	
 	
 	
 }
