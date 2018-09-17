@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="19349" started-at="2018-09-14T03:55:46Z" finished-at="2018-09-14T03:56:05Z">
+  <suite name="Suite" duration-ms="13909" started-at="2018-09-17T11:20:05Z" finished-at="2018-09-17T11:20:18Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="19349" started-at="2018-09-14T03:55:46Z" finished-at="2018-09-14T03:56:05Z">
+    <test name="Test" duration-ms="13909" started-at="2018-09-17T11:20:05Z" finished-at="2018-09-17T11:20:18Z">
       <class name="testcase.createAccount">
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:testcase.createAccount@3a883ce7]" name="setUp" is-config="true" duration-ms="3660" started-at="2018-09-14T10:55:46Z" finished-at="2018-09-14T10:55:50Z">
+        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:testcase.createAccount@3a883ce7]" name="setUp" is-config="true" duration-ms="1903" started-at="2018-09-17T18:20:05Z" finished-at="2018-09-17T18:20:06Z">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="scenario_satu(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testcase.createAccount@3a883ce7]" name="scenario_satu" duration-ms="15446" started-at="2018-09-14T10:55:50Z" data-provider="existingCust" finished-at="2018-09-14T10:56:05Z">
+        <test-method status="PASS" signature="scenario_satu(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testcase.createAccount@3a883ce7]" name="scenario_satu" duration-ms="11774" started-at="2018-09-17T18:20:07Z" data-provider="existingCust" finished-at="2018-09-17T18:20:18Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[qaselenium15@mailinator.com]]>
+                <![CDATA[qaselenium40@mailinator.com]]>
               </value>
             </param>
             <param index="1">
@@ -37,14 +37,14 @@
             </param>
             <param index="3">
               <value>
-                <![CDATA[qa015]]>
+                <![CDATA[qa040]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- scenario_satu -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testcase.createAccount@3a883ce7]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-14T10:56:05Z" finished-at="2018-09-14T10:56:05Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testcase.createAccount@3a883ce7]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-09-17T18:20:18Z" finished-at="2018-09-17T18:20:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

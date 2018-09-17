@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -36,6 +37,7 @@ import org.testng.annotations.Test;
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
+import pageObjects.CompleteProfile;
 import pageObjects.AssertElement;
 import pageObjects.CartPage;
 import pageObjects.CategoryPage;
@@ -92,6 +94,7 @@ public class createAccount extends controller {
 		productlist prodlist = new productlist(driver);
 		productdetail proddet = new productdetail(driver);;
 		
+		CompleteProfile comprof = new CompleteProfile(driver);
 		AssertElement asser = new AssertElement(driver);
 		CategoryPage cat = new CategoryPage(driver);
 		ProductPage prod = new ProductPage(driver);
@@ -133,12 +136,62 @@ public class createAccount extends controller {
 		asser.registerIsSuccess();
 		
 		//check beaut points after signup = 10
-		Integer beautyPoints = (int) ConnectDB.get_dataPoint("select user_total_point FROM nubr_userappos ORDER BY usrapo_id DESC LIMIT 1", "staging");
+		Integer beautyPoints =  (Integer) ConnectDB.get_dataPoint("select user_total_point FROM nubr_userappos ORDER BY usrapo_id DESC LIMIT 1", "staging");
 		
 		if(beautyPoints.equals(10)){
 			System.out.println("signup point is correct the points="+""+beautyPoints);
 		}
 		
+		comprof.fillmonthdob().click();
+		
+		String dobsummonth = driver.findElement(By.xpath("//*[@id='birthday']/div[2]/div/div[1]/div/div[2]")).getText();
+		if(dobsummonth.contains("January")){
+			System.out.println(dobsummonth);
+			comprof.filldatedob().click();
+			String dobsumdate = driver.findElement(By.xpath("//*[@id='birthday']/div[2]/div/div[2]/div/div[2]")).getText();
+				if(dobsumdate.contains("1")){
+				System.out.println(dobsumdate);
+				comprof.fillyeardob().click();
+				String dobsumyear = driver.findElement(By.xpath("//*[@id='birthday']/div[2]/div/div[3]/div/div[2]")).getText();
+				System.out.println(dobsumyear);
+					if(dobsumyear.contains("1940")){
+				    comprof.clicknextdob();
+					}else{
+						driver.close();
+					}
+				}else{
+					driver.close();
+				}
+				
+		}else{
+			driver.close();
+		}
+		
+		comprof.clicknextdob().click();
+		
+		//skin_type page
+		comprof.choosenormal().click();
+		comprof.clicknextskin_type().click();
+		
+		//skin_tone page
+		comprof.chooselight().click();
+		comprof.clicknextskin_tone().click();
+		
+		//skin_undertone
+		comprof.choosecool().click();
+		comprof.clicknextskin_undertone().click();
+		
+		//hair_type
+		comprof.choosewavy().click();
+		comprof.clicknexthair_type().click();
+		
+		//hair_color
+		comprof.choosecoloredhair_yes().click();
+		comprof.clicknexthair_color().click();
+		
+		//hijab
+		comprof.choosewearhijab_yes().click();
+		comprof.clicknexthijab().click();
 		
 	
 	}
