@@ -285,6 +285,52 @@ public class CompleteProfile {
 	
 	}
 	
+	//-------------------choosen detail skin----------------
+	public WebElement editskintype(){
+		
+		return driver.findElement(edit_skintype);
+		
+	}
 	
+	public WebElement editskintone(){
+		
+		return driver.findElement(edit_skintone);
+		
+	}
+	
+	public WebElement editskinutone(){
+		
+		return driver.findElement(edit_skinuntone);
+		
+	}
+	
+	public WebElement edithairtype(){
+		
+		return driver.findElement(edit_hairtype);
+		
+	}
+	
+	public WebElement editcolhair(){
+		
+		return driver.findElement(edit_colhair);
+		
+	}
+	
+	
+	
+	
+	
+//	By edit_skintype=By.xpath("//*[@id='summary']/form/div[1]/div[2]/div[1]/div[1]/p/a");
+//	By edit_skintone=By.xpath("//*[@id='summary']/form/div[1]/div[2]/div[1]/div[2]/p/a");
+//	By edit_skinuntone=By.xpath("//*[@id='summary']/form/div[1]/div[2]/div[1]/div[3]/p/a");
+//	By edit_hairtype=By.xpath("//*[@id='summary']/form/div[1]/div[2]/div[2]/div[1]/p/a");
+//	By edit_colhair=By.xpath("//*[@id='summary']/form/div[1]/div[2]/div[2]/div[2]/p/a");
+//	By edit_hijaber=By.xpath("//*[@id='summary']/form/div[1]/div[2]/div[2]/div[3]/p/a");
+//	
+//	//edit beauty concern
+//	By edit_skincon=By.xpath("//*[@id='summary']/form/div[1]/div[3]/div/div[1]/p/a");
+//	By edit_bodcon=By.xpath("//*[@id='summary']/form/div[1]/div[3]/div/div[2]/p/a");
+//	By edit_haircon=By.xpath("//*[@id='summary']/form/div[1]/div[3]/div/div[3]/p/a");
+//	
 	
 }
