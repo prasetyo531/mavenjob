@@ -105,6 +105,7 @@ public class CompleteProfile {
 	//find_friends
 	By btn_done=By.cssSelector("input[data-element-id='button-red'");
 	
+	//beauty journey
 	By btn_startmybeautyjourney=By.cssSelector("input[data-element-id='button-red'");
 	
 	public CompleteProfile(RemoteWebDriver driver) {
@@ -114,14 +115,127 @@ public class CompleteProfile {
 		
 	}
 	
-	public WebElement fillusername(){
+	//birthday page
+	public WebElement filldatedob(){
+		
+		return driver.findElement(dob_date);
+	}
+	
+	public WebElement fillmonthdob(){
 		
 		return driver.findElement(dob_month);
 	}
 	
-	public WebElement fillpassword(){
+	public WebElement fillyeardob(){
 		
-		return driver.findElement(dob_month);
+		return driver.findElement(dob_year);
 	}
 
+	public WebElement clicknextdob(){
+		
+		return driver.findElement(btdob_next);
+	}
+	
+	//skin_type page
+	public WebElement choosenormal(){
+		
+		return driver.findElement(skintype_normal);
+		
+	}
+	
+	public WebElement clicknextskin_type(){
+		
+		return driver.findElement(btstype_next);
+	}
+	
+	//skin_tone page
+	public WebElement chooselight(){
+		
+		return driver.findElement(skintone_light);
+	}
+	
+	public WebElement clicknextskin_tone(){
+		
+		return driver.findElement(btstone_next);
+	}
+	
+	//skin_undertone
+	public WebElement choosecool(){
+		
+		return driver.findElement(skinundertone_cool);
+	}
+	
+	public WebElement clicknextskin_undertone(){
+		
+		return driver.findElement(btsutone_next);
+	}
+	
+	//hair type
+	public WebElement choosewavy(){
+		
+		return driver.findElement(hairtype_wavy);
+	}
+	
+	public WebElement clicknexthair_type(){
+		
+		return driver.findElement(bthairtype_next);
+	}
+	
+	//hair_color
+	public WebElement choosecoloredhair_yes(){
+		
+		return driver.findElement(haircolor_yes);
+	}
+	
+	public WebElement clicknexthair_color(){
+		
+		return driver.findElement(bthaircolor_next);
+	}
+	
+	//hijab
+	public WebElement choosewearhijab_yes(){
+		
+		return driver.findElement(hijab_yes);
+	}
+
+	public WebElement clickhijab_yes(){
+		
+		return driver.findElement(bthijab_next);
+	}
+	
+	//skin_concerns
+	public WebElement chooseskinacne(){
+		
+		return driver.findElement(skincon_acne);
+	}
+	
+	public WebElement clicknextskin_concern(){
+		
+		return driver.findElement(btskincon_next);
+	}
+	
+	//body_concerns
+	public WebElement choosebodyacne(){
+		
+		return driver.findElement(bodycon_acne);
+	}
+	
+	public WebElement clicknextbody_concern(){
+		
+		return driver.findElement(btbodycon_next);
+	}
+	
+	//hair_concerns
+	public WebElement choosedamaged(){
+		
+		return driver.findElement(haircon_damaged);
+	}
+	
+	public WebElement clicknexthair_concern(){
+		
+		return driver.findElement(bthaircon_next);
+	}
+	
+	
+	
 }
