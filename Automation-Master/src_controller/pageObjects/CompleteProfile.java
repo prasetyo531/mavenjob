@@ -316,21 +316,28 @@ public class CompleteProfile {
 		
 	}
 	
+	public WebElement edithijaber(){
+		
+		return driver.findElement(edit_hijaber);
+		
+	}
 	
+	public WebElement editskincon(){
+		
+		return driver.findElement(edit_skincon);
+		
+	}
 	
+	public WebElement editbodcan(){
+		
+		return driver.findElement(edit_bodcon);
+		
+	}
 	
-	
-//	By edit_skintype=By.xpath("//*[@id='summary']/form/div[1]/div[2]/div[1]/div[1]/p/a");
-//	By edit_skintone=By.xpath("//*[@id='summary']/form/div[1]/div[2]/div[1]/div[2]/p/a");
-//	By edit_skinuntone=By.xpath("//*[@id='summary']/form/div[1]/div[2]/div[1]/div[3]/p/a");
-//	By edit_hairtype=By.xpath("//*[@id='summary']/form/div[1]/div[2]/div[2]/div[1]/p/a");
-//	By edit_colhair=By.xpath("//*[@id='summary']/form/div[1]/div[2]/div[2]/div[2]/p/a");
-//	By edit_hijaber=By.xpath("//*[@id='summary']/form/div[1]/div[2]/div[2]/div[3]/p/a");
-//	
-//	//edit beauty concern
-//	By edit_skincon=By.xpath("//*[@id='summary']/form/div[1]/div[3]/div/div[1]/p/a");
-//	By edit_bodcon=By.xpath("//*[@id='summary']/form/div[1]/div[3]/div/div[2]/p/a");
-//	By edit_haircon=By.xpath("//*[@id='summary']/form/div[1]/div[3]/div/div[3]/p/a");
-//	
+	public WebElement edithaircon(){
+		
+		return driver.findElement(edit_haircon);
+		
+	}
 	
 }
