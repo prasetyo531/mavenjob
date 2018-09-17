@@ -198,7 +198,7 @@ public class CompleteProfile {
 		return driver.findElement(hijab_yes);
 	}
 
-	public WebElement clickhijab_yes(){
+	public WebElement clicknexthijab_yes(){
 		
 		return driver.findElement(bthijab_next);
 	}

@@ -25,14 +25,68 @@ public class AssertElement {
 
 	//female daily
 	//homepage
-	public void javascriptletmejoin(){
+	
+	//skin_type
+	public void waitskintypeload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-3828308350 modal-join-content-right']")));
 	}
 	
-	public void waithomepagemodal(){
+	//skin_tone
+	public void waitskintoneload(){
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-3828308350 modal-join-content-right']")));
+	}
+	
+	//skin_undertone
+	public void waitskinundertoneload(){
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-3828308350 modal-join-content-right']")));
+	}
+	
+	//hair_type
+	public void waithairtypeload(){
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-3828308350 modal-join-content-right']")));
+	}
+	
+	//hair_color
+	public void waithaircolorload(){
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-3828308350 modal-join-content-right']")));
+	}
+	
+	//hijab
+	public void waithijabload(){
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-3828308350 modal-join-content-right']")));
+	}
+	
+	//skin_concerns
+	public void waitskinconcernsload(){
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-3828308350 modal-join-content-right']")));
+	}
+	
+	//body_concerns
+	public void waitbodyconcernsload(){
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-3828308350 modal-join-content-right']")));
+	}
+	
+	//hair_concerns
+	public void waithair_concernsload(){
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-3828308350 modal-join-content-right']")));
+	}
+	
+	//summary page
+	public void waitsummaryload(){
 		(new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-1787593642 home-content']")));
 	}
 	
+	//follow
+	public void waitsuggestfollowload(){
+		(new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-1787593642 home-content']")));
+	}
+	
+	//start my beuty journey
+	public void waitbeautyjourneyload(){
+		(new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-1787593642 home-content']")));
+	}
+	
+	//---------------add product
 	public void addproducttodisplay(){
 		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Add Product")));
 	}

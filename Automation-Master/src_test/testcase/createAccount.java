@@ -135,8 +135,10 @@ public class createAccount extends controller {
 		
 		asser.registerIsSuccess();
 		
+		String getDataUsername = (String) ConnectDB.get_dataUsername("SELECT username FROM nubr_userappos ORDER BY usrapo_id DESC LIMIT 1", "staging");
+		
 		//check beaut points after signup = 10
-		Integer beautyPoints =  (Integer) ConnectDB.get_dataPoint("select user_total_point FROM nubr_userappos ORDER BY usrapo_id DESC LIMIT 1", "staging");
+		Integer beautyPoints =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='"+getDataUsername+"'", "staging");
 		
 		if(beautyPoints.equals(10)){
 			System.out.println("signup point is correct the points="+""+beautyPoints);
@@ -191,8 +193,79 @@ public class createAccount extends controller {
 		
 		//hijab
 		comprof.choosewearhijab_yes().click();
-		comprof.clicknexthijab().click();
+		comprof.clicknexthijab_yes().click();
 		
+		//cek db beuty points
+		Integer beautyPoints1 =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='"+getDataUsername+"'", "staging");
+		
+		if(beautyPoints1.equals(20)){
+			System.out.println("signup point is correct the points="+""+beautyPoints);
+		}
+		
+		//skin_concerns
+		comprof.chooseskinacne().click();
+		comprof.clicknextskin_concern().click();
+		
+		//body_concerns
+		comprof.choosebodyacne().click();
+		comprof.clicknextbody_concern().click();
+		
+		//hair_concern
+		comprof.choosedamaged().click();
+		comprof.clicknexthair_concern().click();
+		
+		//cek db beuty points
+		Integer beautyPoints2 =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='"+getDataUsername+"'", "staging");
+		
+		if(beautyPoints2.equals(30)){
+			System.out.println("signup point is correct the points="+""+beautyPoints);
+		}
+		
+		//upload photo
+		comprof.clickuploadphoto().click();
+		
+		File photo = new File("/Users/mac/Documents/multimedia/background/product-test.jpg");
+        StringSelection stringSelection1= new StringSelection(photo.getAbsolutePath());
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection1, null);
+		
+        Robot robot1 = new Robot();
+        
+        // Cmd + Tab is needed since it launches a Java app and the browser looses focus
+       
+       robot1.keyPress(KeyEvent.VK_META);
+       robot1.keyPress(KeyEvent.VK_TAB);
+       robot1.keyRelease(KeyEvent.VK_META);
+       robot1.keyRelease(KeyEvent.VK_TAB);
+       robot1.delay(800);
+       //Open Goto window
+       robot1.keyPress(KeyEvent.VK_META);
+       robot1.keyPress(KeyEvent.VK_SHIFT);
+       robot1.keyPress(KeyEvent.VK_G);
+       robot1.keyRelease(KeyEvent.VK_META);
+       robot1.keyRelease(KeyEvent.VK_SHIFT);
+       robot1.keyRelease(KeyEvent.VK_G);
+       //Paste the clipboard value
+       robot1.keyPress(KeyEvent.VK_META);
+       robot1.keyPress(KeyEvent.VK_V);
+       robot1.keyRelease(KeyEvent.VK_META);
+       robot1.keyRelease(KeyEvent.VK_V);
+       //Press Enter key to close the Goto window and Upload window
+       robot1.keyPress(KeyEvent.VK_ENTER);
+       robot1.keyRelease(KeyEvent.VK_ENTER);
+       robot1.delay(800);
+       robot1.keyPress(KeyEvent.VK_ENTER);
+       robot1.keyRelease(KeyEvent.VK_ENTER);
+       Thread.sleep(5000);
+       //fill username
+       comprof.fillfullname().sendKeys("usernametest");
+       //fill loc
+       comprof.clicklocation().sendKeys("jak", Keys.ENTER);
+       
+       comprof.fillphoneno().sendKeys("081284915951");
+       
+       comprof.fillbio().sendKeys("ikigai");
+       
+       comprof.clickfinishprofile().click();	
 	
 	}
 	
