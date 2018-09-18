@@ -144,6 +144,7 @@ public class createAccount extends controller {
 		
 		if(beautyPoints.equals(10)){
 			System.out.println("signup point is correct the points="+""+beautyPoints);
+			assertTrue(beautyPoints.equals(10));
 		}
 		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -218,7 +219,8 @@ public class createAccount extends controller {
 		Integer beautyPoints1 =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='"+getDataUsername+"'", "staging");
 		
 		if(beautyPoints1.equals(20)){
-			System.out.println("signup point is correct the points="+""+beautyPoints);
+			System.out.println("signup point is correct the points="+""+beautyPoints1);
+			assertTrue(beautyPoints1.equals(20));
 		}
 		
 		//skin_concerns
@@ -243,7 +245,8 @@ public class createAccount extends controller {
 		Integer beautyPoints2 =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='"+getDataUsername+"'", "staging");
 		
 		if(beautyPoints2.equals(30)){
-			System.out.println("signup point is correct the points="+""+beautyPoints);
+			System.out.println("signup point is correct the points="+""+beautyPoints2);
+			assertTrue(beautyPoints2.equals(30));
 		}
 		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
