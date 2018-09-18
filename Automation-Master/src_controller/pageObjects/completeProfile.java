@@ -285,6 +285,12 @@ public class completeProfile {
 	
 	}
 	
+	public WebElement clickstartjourney(){
+		
+		return driver.findElement(btn_startmybeautyjourney);
+	
+	}
+	
 	//-------------------choosen detail skin----------------
 	public WebElement editskintype(){
 		

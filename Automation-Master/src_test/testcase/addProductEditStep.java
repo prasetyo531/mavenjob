@@ -33,10 +33,10 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import assertObject.assertHome;
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
-import pageObjects.AssertElement;
 import pageObjects.cartPage;
 import pageObjects.categoryPage;
 import pageObjects.checkoutPage;
@@ -75,7 +75,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		homepage home = new homepage(driver);
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
-		AssertElement asser = new AssertElement(driver);
+		assertHome asser = new assertHome(driver);
 		productdetail proddet = new productdetail(driver);
 		
 		prop= new Properties();

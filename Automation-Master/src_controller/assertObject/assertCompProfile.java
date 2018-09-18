@@ -36,62 +36,62 @@ public RemoteWebDriver driver= null;
 	//complete profile
 	//skin_type
 	public void waitskintypeload(){
-		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id='skin-type']")));
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=skin_type"));
 	}
 		
 		//skin_tone
 	public void waitskintoneload(){
-		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id='skin-tone']")));
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=skin_tone"));
 	}
 		
 	//skin_undertone
 	public void waitskinundertoneload(){
-		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id='skin-undertone']")));
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=skin_undertone"));
 	}
 		
 	//hair_type
 	public void waithairtypeload(){
-		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id='hair-type']")));
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=hair_type"));
 	}
 		
 	//hair_color
 	public void waithaircolorload(){
-		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id='colored-hair']")));
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=hair_color"));
 	}
 		
 	//hijab
 	public void waithijabload(){
-		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id='hijaber']")));
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=hijab"));
 	}
 		
 	//skin_concerns
 	public void waitskinconcernsload(){
-		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id='skin-concern']")));
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=skin_concerns"));
 	}
 		
 	//body_concerns
 	public void waitbodyconcernsload(){
-		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id='body-concern']")));
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=body_concerns"));
 	}
 		
 	//hair_concerns
 	public void waithair_concernsload(){
-		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id='hair-concern']")));
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=hair_concerns"));
 	}
 		
 	//summary page
 	public void waitsummaryload(){
-		(new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id='summary']")));
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=summary"));
 	}
 		
 	//follow
 	public void waitsuggestfollowload(){
-		(new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id='find-friends']")));
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=find_friends"));
 	}
 		
 	//start my beuty journey
 	public void waitbeautyjourneyload(){
-		(new WebDriverWait(driver, 10)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[id='last-step']")));
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=last_step"));
 	}
 
 }

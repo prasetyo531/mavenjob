@@ -38,7 +38,6 @@ import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 import pageObjects.completeProfile;
-import pageObjects.AssertElement;
 import pageObjects.cartPage;
 import pageObjects.categoryPage;
 import pageObjects.checkoutPage;
@@ -51,6 +50,7 @@ import pageObjects.productlist;
 import resources.ConnectDB;
 import resources.controller;
 import resources.support;
+import assertObject.assertHome;
 import assertObject.assertCompProfile;
 
 public class createAccount extends controller {
@@ -135,7 +135,7 @@ public class createAccount extends controller {
 		logpro.tickAggrement().click();
 		logpro.clickCreateAccountRe().click();
 		
-		asser.registerIsSuccess();
+		asserComProf.registerIsSuccess();
 		
 		String getDataUsername = (String) ConnectDB.get_dataUsername("SELECT username FROM nubr_userappos ORDER BY usrapo_id DESC LIMIT 1", "staging");
 		
@@ -173,26 +173,39 @@ public class createAccount extends controller {
 		comprof.clicknextdob().click();
 		
 		//skin_type page
+//		asserComProf.waitskintypeload();
+		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=skin_type"));
+		
 		comprof.choosenormal().click();
 		comprof.clicknextskin_type().click();
 		
 		//skin_tone page
+		asserComProf.waitskintoneload();
+		
 		comprof.chooselight().click();
 		comprof.clicknextskin_tone().click();
 		
 		//skin_undertone
+		asserComProf.waitskinundertoneload();
+		
 		comprof.choosecool().click();
 		comprof.clicknextskin_undertone().click();
 		
 		//hair_type
+		asserComProf.waithairtypeload();
+		
 		comprof.choosewavy().click();
 		comprof.clicknexthair_type().click();
 		
 		//hair_color
+		asserComProf.waithaircolorload();
+		
 		comprof.choosecoloredhair_yes().click();
 		comprof.clicknexthair_color().click();
 		
 		//hijab
+		asserComProf.waithijabload();
+		
 		comprof.choosewearhijab_yes().click();
 		comprof.clicknexthijab_yes().click();
 		
@@ -204,14 +217,20 @@ public class createAccount extends controller {
 		}
 		
 		//skin_concerns
+		asserComProf.waitskinconcernsload();
+		
 		comprof.chooseskinacne().click();
 		comprof.clicknextskin_concern().click();
 		
 		//body_concerns
+		asserComProf.waitbodyconcernsload();
+		
 		comprof.choosebodyacne().click();
 		comprof.clicknextbody_concern().click();
 		
 		//hair_concern
+		asserComProf.waithair_concernsload();
+		
 		comprof.choosedamaged().click();
 		comprof.clicknexthair_concern().click();
 		
@@ -223,6 +242,8 @@ public class createAccount extends controller {
 		}
 		
 		//upload photo
+		asserComProf.waitsummaryload();
+		
 		comprof.clickuploadphoto().click();
 		
 		File photo = new File("/Users/mac/Documents/multimedia/background/product-test.jpg");
@@ -266,7 +287,11 @@ public class createAccount extends controller {
        
        comprof.fillbio().sendKeys("ikigai");
        
-       comprof.clickfinishprofile().click();	
+       comprof.clickfinishprofile().click();
+       
+       asserComProf.waitsuggestfollowload();
+       
+       comprof.clickstartjourney().click();
 	
 	}
 	

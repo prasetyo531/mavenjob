@@ -34,10 +34,10 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import assertObject.assertHome;
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
-import pageObjects.AssertElement;
 import pageObjects.cartPage;
 import pageObjects.categoryPage;
 import pageObjects.checkoutPage;
@@ -83,7 +83,7 @@ public class commentLastAddedProductAnother extends controller {
 		productlist prodlist = new productlist(driver);
 		productdetail proddet = new productdetail(driver);
 		
-		AssertElement asser = new AssertElement(driver);
+		assertHome asser = new assertHome(driver);
 		categoryPage cat = new categoryPage(driver);
 		ProductPage prod = new ProductPage(driver);
 		cartPage cpage = new cartPage(driver);
