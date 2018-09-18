@@ -32,8 +32,8 @@ public class completeProfile {
 	By btstone_back=By.xpath("//*[@id='skin-tone']/div[2]/button[1]");
 	By btstone_next=By.xpath("//*[@id='skin-tone']/div[2]/button[2]");
 	
-	//skin_undertone
-	By skinundertone_cool=By.cssSelector("div[data-value='1']");
+	//skin_undertone 
+	By skinundertone_cool=By.cssSelector("div[data-value='1']"); 
 	By skinundertone_neutral=By.cssSelector("div[data-value='2']");
 	By skinundertone_warm=By.cssSelector("div[data-value='3']");
 	By btsutone_back=By.xpath("//*[@id='skin-undertone']/div[2]/button[1]");
@@ -44,7 +44,7 @@ public class completeProfile {
 	By hairtype_straight=By.cssSelector("div[data-value='2']");
 	By hairtype_curly=By.cssSelector("div[data-value='3']");
 	By bthairtype_back=By.xpath("//*[@id='hair-type']/div[2]/button[1]");
-	By bthairtype_next=By.xpath("//*[@id='hair-type']/div[2]/button[1]");
+	By bthairtype_next=By.xpath("//*[@id='hair-type']/div[2]/button[2]");
 	
 	//hair_color
 	By haircolor_yes=By.cssSelector("div[data-value='1']");
@@ -86,7 +86,7 @@ public class completeProfile {
 	By location=By.cssSelector("div[class='Select-placeholder'");
 	By phoneno=By.cssSelector("input[placeholder='Phone Number'");
 	By bio=By.xpath("//*[@id='summary']/form/div[1]/div[1]/div[4]/div[1]/div/textarea");
-	By favbrand=By.xpath("//*[@id='react-select-21--value']/div[1]");
+	By favbrand=By.xpath("//*[@id='react-select-19--value']/div[1]");
 	By finish=By.cssSelector("input[data-element-id='button-red']");
 	
 	//edit beauty profile
@@ -282,6 +282,12 @@ public class completeProfile {
 	public WebElement clickfinishprofile(){
 		
 		return driver.findElement(finish);
+	
+	}
+	
+	public WebElement clickdonefindfriends(){
+		
+		return driver.findElement(btn_done);
 	
 	}
 	

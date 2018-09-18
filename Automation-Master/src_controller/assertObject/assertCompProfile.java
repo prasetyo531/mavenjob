@@ -67,6 +67,8 @@ public RemoteWebDriver driver= null;
 	//skin_concerns
 	public void waitskinconcernsload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=skin_concerns"));
+		
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='skin-concern']/div[2]/button[2]")));
 	}
 		
 	//body_concerns

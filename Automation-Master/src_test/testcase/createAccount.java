@@ -146,16 +146,21 @@ public class createAccount extends controller {
 			System.out.println("signup point is correct the points="+""+beautyPoints);
 		}
 		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
 		comprof.fillmonthdob().click();
 		String dobsummonth = driver.findElement(By.xpath("//*[@id='birthday']/div[2]/div/div[1]/div/div[2]")).getText();
+		assertTrue(dobsummonth.contains("January"));
 		if(dobsummonth.contains("January")){
 			System.out.println(dobsummonth);
 			comprof.filldatedob().click();
 			String dobsumdate = driver.findElement(By.xpath("//*[@id='birthday']/div[2]/div/div[2]/div/div[2]")).getText();
+			assertTrue(dobsumdate.contains("1"));
 				if(dobsumdate.contains("1")){
 				System.out.println(dobsumdate);
 				comprof.fillyeardob().click();
 				String dobsumyear = driver.findElement(By.xpath("//*[@id='birthday']/div[2]/div/div[3]/div/div[2]")).getText();
+				assertTrue(dobsumyear.contains("1940"));
 				System.out.println(dobsumyear);
 					if(dobsumyear.contains("1940")){
 				    comprof.clicknextdob();
@@ -241,12 +246,14 @@ public class createAccount extends controller {
 			System.out.println("signup point is correct the points="+""+beautyPoints);
 		}
 		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
 		//upload photo
 		asserComProf.waitsummaryload();
 		
 		comprof.clickuploadphoto().click();
 		
-		File photo = new File("/Users/mac/Documents/multimedia/background/product-test.jpg");
+		File photo = new File("/Users/mac/Documents/multimedia/background/DMDIKcyWsAEsKDj.jpg");
         StringSelection stringSelection1= new StringSelection(photo.getAbsolutePath());
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection1, null);
 		
@@ -278,19 +285,36 @@ public class createAccount extends controller {
        robot1.keyPress(KeyEvent.VK_ENTER);
        robot1.keyRelease(KeyEvent.VK_ENTER);
        Thread.sleep(5000);
+       
        //fill username
        comprof.fillfullname().sendKeys("usernametest");
-       //fill loc
-       comprof.clicklocation().sendKeys("jak", Keys.ENTER);
        
+       //fill locations
+       comprof.clicklocation().click();
+       String cityloc = driver.findElement(By.xpath("//*[@id='summary']/form/div[1]/div[1]/div[3]/div[2]/div/div[2]")).getText();
+       assertTrue(cityloc.contains("Yogyakarta"));
+       
+       //fill phone no
        comprof.fillphoneno().sendKeys("081284915951");
        
        comprof.fillbio().sendKeys("ikigai");
        
+//       comprof.choosefavbrand().click();
+//       comprof.choosefavbrand().sendKeys("body", Keys.ENTER);
+       
+       //scroll to element
+       JavascriptExecutor je = (JavascriptExecutor) driver;
+       WebElement element = comprof.clickfinishprofile();
+       je.executeScript("arguments[0].scrollIntoView(true);",element);
+       
        comprof.clickfinishprofile().click();
        
+       //find_friends
        asserComProf.waitsuggestfollowload();
+       comprof.clickdonefindfriends().click();
        
+       //last_step
+       asserComProf.waitbeautyjourneyload();
        comprof.clickstartjourney().click();
 	
 	}
