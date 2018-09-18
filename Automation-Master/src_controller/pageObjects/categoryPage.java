@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class CategoryPage {
+public class categoryPage {
 
 	public String product = "product-8602";
 	
@@ -18,7 +18,7 @@ public class CategoryPage {
 	By sortreset=By.cssSelector(".nav.navbar-nav.navbar-right>li>a");
 	By productId=By.id(this.product);
 	
-	public CategoryPage(RemoteWebDriver driver) {
+	public categoryPage(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
 		
 		this.driver=driver;

@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class CartPage {
+public class cartPage {
 
 	
 	public RemoteWebDriver driver=null;
@@ -18,7 +18,7 @@ public class CartPage {
 	
 	
 	
-	public CartPage(RemoteWebDriver driver) {
+	public cartPage(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
 		
 		this.driver=driver;

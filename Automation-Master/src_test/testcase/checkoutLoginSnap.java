@@ -27,9 +27,9 @@ import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 import pageObjects.AssertElement;
-import pageObjects.CartPage;
-import pageObjects.CategoryPage;
-import pageObjects.CheckoutPage;
+import pageObjects.cartPage;
+import pageObjects.categoryPage;
+import pageObjects.checkoutPage;
 import pageObjects.ProductPage;
 import resources.controller;
 import resources.support;
@@ -55,10 +55,10 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		
 		support supp= new support();
 		AssertElement asser = new AssertElement(driver);
-		CategoryPage cat = new CategoryPage(driver);
+		categoryPage cat = new categoryPage(driver);
 		ProductPage prod = new ProductPage(driver);
-		CartPage cpage = new CartPage(driver);
-		CheckoutPage checkout = new CheckoutPage(driver);
+		cartPage cpage = new cartPage(driver);
+		checkoutPage checkout = new checkoutPage(driver);
 		
 		prop= new Properties();
 		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");

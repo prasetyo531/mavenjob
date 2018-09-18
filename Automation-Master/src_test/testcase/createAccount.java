@@ -37,11 +37,11 @@ import org.testng.annotations.Test;
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
-import pageObjects.CompleteProfile;
+import pageObjects.completeProfile;
 import pageObjects.AssertElement;
-import pageObjects.CartPage;
-import pageObjects.CategoryPage;
-import pageObjects.CheckoutPage;
+import pageObjects.cartPage;
+import pageObjects.categoryPage;
+import pageObjects.checkoutPage;
 import pageObjects.ProductPage;
 import pageObjects.addproductpage;
 import pageObjects.homepage;
@@ -51,6 +51,7 @@ import pageObjects.productlist;
 import resources.ConnectDB;
 import resources.controller;
 import resources.support;
+import assertObject.assertCompProfile;
 
 public class createAccount extends controller {
 	
@@ -94,12 +95,13 @@ public class createAccount extends controller {
 		productlist prodlist = new productlist(driver);
 		productdetail proddet = new productdetail(driver);;
 		
-		CompleteProfile comprof = new CompleteProfile(driver);
-		AssertElement asser = new AssertElement(driver);
-		CategoryPage cat = new CategoryPage(driver);
+		completeProfile comprof = new completeProfile(driver);
+		categoryPage cat = new categoryPage(driver);
 		ProductPage prod = new ProductPage(driver);
-		CartPage cpage = new CartPage(driver);
-		CheckoutPage checkout = new CheckoutPage(driver);
+		cartPage cpage = new cartPage(driver);
+		
+		assertCompProfile asserComProf = new assertCompProfile(driver);
+//		AssertElement asser = new AssertElement(driver);
 		
 		prop= new Properties();
 		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");
@@ -145,7 +147,6 @@ public class createAccount extends controller {
 		}
 		
 		comprof.fillmonthdob().click();
-		
 		String dobsummonth = driver.findElement(By.xpath("//*[@id='birthday']/div[2]/div/div[1]/div/div[2]")).getText();
 		if(dobsummonth.contains("January")){
 			System.out.println(dobsummonth);

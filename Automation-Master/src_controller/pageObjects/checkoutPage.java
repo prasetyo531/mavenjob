@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class CheckoutPage {
+public class checkoutPage {
 
 	
 	public RemoteWebDriver driver;
@@ -34,7 +34,7 @@ public class CheckoutPage {
 	By orderId=By.cssSelector("#maincontent > div.columns > div > div.checkout-success.col-lg-12.col-md-12.col-12 > div > div.success-message-wrapper.col-lg-12.col-md-12.col-12 > label");
 	
 	
-	public CheckoutPage(RemoteWebDriver driver) {
+	public checkoutPage(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
 		
 		this.driver=driver;

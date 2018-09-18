@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class CompleteProfile {
+public class completeProfile {
 	
 	public RemoteWebDriver driver=null;
 
@@ -108,7 +108,7 @@ public class CompleteProfile {
 	//beauty journey
 	By btn_startmybeautyjourney=By.cssSelector("input[data-element-id='button-red'");
 	
-	public CompleteProfile(RemoteWebDriver driver) {
+	public completeProfile(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
 		
 		this.driver=driver;
