@@ -118,8 +118,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		System.out.println(handle);
 	
 		//on browser
-		asser.waithomepagemodal();
-		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", home.clickBrandFooter());
@@ -147,8 +145,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
         Assert.assertEquals(UrlBrand1, "http://reviews.femaledaily.net/brands/nivea?tab=products&page=1");
         
         brand.clickLogoHome().click(); //go bck to homepage
-        asser.waithomepagemodal();
-		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", home.clickBrandFooter());

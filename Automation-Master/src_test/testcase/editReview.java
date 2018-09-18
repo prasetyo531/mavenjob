@@ -105,8 +105,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		System.out.println(strPageTitle);
 	
 		//on browser
-		asser.waithomepagemodal();
-		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
 		home.clickLogin().click();

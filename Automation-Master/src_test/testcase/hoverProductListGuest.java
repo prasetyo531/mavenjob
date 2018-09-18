@@ -101,8 +101,6 @@ public class hoverProductListGuest extends controller {
 		System.out.println(strPageTitle);
 	
 		//on browser
-		asser.waithomepagemodal();
-		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
 		WebElement getmenu= home.getMenuBody(); //xpath megamenu nya

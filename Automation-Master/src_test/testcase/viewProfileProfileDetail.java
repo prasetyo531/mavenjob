@@ -109,8 +109,6 @@ public class viewProfileProfileDetail extends controller {
 		System.out.println(strPageTitle);
 	
 		//on browser
-		asser.waithomepagemodal();
-		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
 //		conn.connectToServer("staging_fdbr_salon");

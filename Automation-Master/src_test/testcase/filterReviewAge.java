@@ -102,8 +102,6 @@ public class filterReviewAge extends controller {
 		System.out.println(strPageTitle);
 	
 		//on browser
-		asser.waithomepagemodal();
-		asser.javascriptletmejoin();
 		home.letmejoinletter().click();
 		
 		home.clickLogin().click();

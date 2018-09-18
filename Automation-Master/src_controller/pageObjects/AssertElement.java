@@ -24,8 +24,7 @@ public class AssertElement {
 	}
 
 	//female daily
-	//homepage
-	
+	//complete profile
 	//skin_type
 	public void waitskintypeload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='jsx-3828308350 modal-join-content-right']")));
