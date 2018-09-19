@@ -308,8 +308,6 @@ public class createAccount extends controller {
        actions.sendKeys("body", Keys.ENTER);
        actions.build().perform();
        
-//       Thread.sleep(5000);
-       
        //scroll to element
        JavascriptExecutor je = (JavascriptExecutor) driver;
        WebElement element = comprof.clickfinishprofile();
