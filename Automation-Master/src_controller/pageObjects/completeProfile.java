@@ -86,7 +86,7 @@ public class completeProfile {
 	By location=By.cssSelector("div[class='Select-placeholder'");
 	By phoneno=By.cssSelector("input[placeholder='Phone Number'");
 	By bio=By.xpath("//*[@id='summary']/form/div[1]/div[1]/div[4]/div[1]/div/textarea");
-	By favbrand=By.xpath("//*[@id='react-select-19--value']/div[1]");
+	By favbrand=By.cssSelector("div[class='Select-placeholder']");
 	By finish=By.cssSelector("input[data-element-id='button-red']");
 	
 	//edit beauty profile

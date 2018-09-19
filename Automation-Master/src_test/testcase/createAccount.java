@@ -302,8 +302,13 @@ public class createAccount extends controller {
        
        comprof.fillbio().sendKeys("ikigai");
        
-//       comprof.choosefavbrand().click();
-//       comprof.choosefavbrand().sendKeys("body", Keys.ENTER);
+       Actions actions = new Actions(driver);
+       actions.moveToElement(comprof.choosefavbrand());
+       actions.click();
+       actions.sendKeys("body", Keys.ENTER);
+       actions.build().perform();
+       
+//       Thread.sleep(5000);
        
        //scroll to element
        JavascriptExecutor je = (JavascriptExecutor) driver;
@@ -311,6 +316,11 @@ public class createAccount extends controller {
        je.executeScript("arguments[0].scrollIntoView(true);",element);
        
        comprof.clickfinishprofile().click();
+       
+       //cek db beuty points after fill photo,location
+       Integer beautyPoints3 =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='"+getDataUsername+"'", "staging");
+       System.out.println(beautyPoints3);
+       assertTrue(beautyPoints3.equals(40));
        
        //find_friends
        asserComProf.waitsuggestfollowload();
