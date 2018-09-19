@@ -37,53 +37,71 @@ public RemoteWebDriver driver= null;
 	//skin_type
 	public void waitskintypeload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=skin_type"));
+		
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[data-value='4']")));
 	}
 		
 		//skin_tone
 	public void waitskintoneload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=skin_tone"));
+		
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[data-value='1']")));
 	}
 		
 	//skin_undertone
 	public void waitskinundertoneload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=skin_undertone"));
+		
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[data-value='1']")));
 	}
 		
 	//hair_type
 	public void waithairtypeload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=hair_type"));
+		
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[data-value='1']")));
 	}
 		
 	//hair_color
 	public void waithaircolorload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=hair_color"));
+		
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[data-value='2']")));
 	}
 		
 	//hijab
 	public void waithijabload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=hijab"));
+		
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[data-value='1']")));
 	}
 		
 	//skin_concerns
 	public void waitskinconcernsload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=skin_concerns"));
 		
-		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='skin-concern']/div[2]/button[2]")));
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[data-value='3']")));
 	}
 		
 	//body_concerns
 	public void waitbodyconcernsload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=body_concerns"));
+		
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[data-value='6']")));
 	}
 		
 	//hair_concerns
 	public void waithair_concernsload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=hair_concerns"));
+		
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[data-value='8']")));
 	}
 		
 	//summary page
 	public void waitsummaryload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=summary"));
+		
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[data-element-id='desktop-taste-input-field']")));
 	}
 		
 	//follow

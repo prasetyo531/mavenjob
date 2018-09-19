@@ -4,7 +4,7 @@
   <test name="Test">
   <parameter name="browser" value="chrome"/>
         <classes>
-      <class name="testcase.createAccountConfirmPasswordDifferent"/>
+      <class name="testcase.createAccount"/>
      </classes>
   </test>
 </suite> <!-- Suite -->
