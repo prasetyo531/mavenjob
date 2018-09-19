@@ -33,6 +33,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import assertObject.assertCompProfile;
 import assertObject.assertHome;
 import jxl.Cell;
 import jxl.Sheet;
@@ -40,6 +41,7 @@ import jxl.Workbook;
 import pageObjects.cartPage;
 import pageObjects.categoryPage;
 import pageObjects.checkoutPage;
+import pageObjects.completeProfile;
 import pageObjects.ProductPage;
 import pageObjects.addproductpage;
 import pageObjects.homepage;
@@ -76,7 +78,7 @@ public class createAccountUsernameLess3 extends controller {
 		
 	}
 	
-	@Test(dataProvider="existingCust")
+	@Test(dataProvider="usernameless")
 	public void scenario_satu(String email,String password,String confirm_password,String username) throws Exception {
 		
 		support supp= new support();
@@ -86,11 +88,12 @@ public class createAccountUsernameLess3 extends controller {
 		productlist prodlist = new productlist(driver);
 		productdetail proddet = new productdetail(driver);;
 		
-		assertHome asser = new assertHome(driver);
+		completeProfile comprof = new completeProfile(driver);
 		categoryPage cat = new categoryPage(driver);
 		ProductPage prod = new ProductPage(driver);
 		cartPage cpage = new cartPage(driver);
-		checkoutPage checkout = new checkoutPage(driver);
+		
+		assertCompProfile asserComProf = new assertCompProfile(driver);
 		
 		prop= new Properties();
 		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");
@@ -108,9 +111,6 @@ public class createAccountUsernameLess3 extends controller {
 		driver.manage().window().maximize();
 		String strPageTitle = driver.getTitle();
 		System.out.println(strPageTitle);
-	
-		//on browser
-		home.letmejoinletter().click();
 		
 		//login page
 		home.clickLogin().click();
@@ -127,10 +127,14 @@ public class createAccountUsernameLess3 extends controller {
 		logpro.tickAggrement().click();
 		logpro.clickCreateAccountRe().click();
 		
-		messageErrorRegister = logpro.getWarningRegister().getText();
-		System.out.println(messageErrorRegister);
-		Assert.assertEquals(messageErrorRegister, "Username should be 3-20 characters in length");
+		String errormessage = logpro.GetWarningMessage().getText();
+		Assert.assertEquals(errormessage, "Username should be 3-20 characters in length");
 	
+		logpro.fillUsername().sendKeys("usernamethanusernamethanusernamethanusernamethan");
+		logpro.clickCreateAccountRe().click();
+		
+		String errormessage2 = logpro.GetWarningMessage().getText();
+		Assert.assertEquals(errormessage2, "Username should be 3-20 characters in length");
 	}
 	
 	@AfterMethod
@@ -149,7 +153,7 @@ public class createAccountUsernameLess3 extends controller {
     }
 	
 	@DataProvider	  
-	public Object[][] existingCust() throws Exception {
+	public Object[][] usernameless() throws Exception {
 	     
 		FileInputStream filepath = new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//Workbook1.xls");
 
@@ -175,4 +179,6 @@ public class createAccountUsernameLess3 extends controller {
 		     filepath.close();
 		     return Testdata;
 		     }
+	
+	
 }

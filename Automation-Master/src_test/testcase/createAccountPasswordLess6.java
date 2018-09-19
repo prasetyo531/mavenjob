@@ -33,6 +33,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import assertObject.assertCompProfile;
 import assertObject.assertHome;
 import jxl.Cell;
 import jxl.Sheet;
@@ -40,6 +41,7 @@ import jxl.Workbook;
 import pageObjects.cartPage;
 import pageObjects.categoryPage;
 import pageObjects.checkoutPage;
+import pageObjects.completeProfile;
 import pageObjects.ProductPage;
 import pageObjects.addproductpage;
 import pageObjects.homepage;
@@ -86,11 +88,12 @@ public class createAccountPasswordLess6 extends controller {
 		productlist prodlist = new productlist(driver);
 		productdetail proddet = new productdetail(driver);;
 		
-		assertHome asser = new assertHome(driver);
+		completeProfile comprof = new completeProfile(driver);
 		categoryPage cat = new categoryPage(driver);
 		ProductPage prod = new ProductPage(driver);
 		cartPage cpage = new cartPage(driver);
-		checkoutPage checkout = new checkoutPage(driver);
+		
+		assertCompProfile asserComProf = new assertCompProfile(driver);
 		
 		prop= new Properties();
 		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");
@@ -108,9 +111,6 @@ public class createAccountPasswordLess6 extends controller {
 		driver.manage().window().maximize();
 		String strPageTitle = driver.getTitle();
 		System.out.println(strPageTitle);
-	
-		//on browser
-		home.letmejoinletter().click();
 		
 		//login page
 		home.clickLogin().click();
@@ -127,9 +127,16 @@ public class createAccountPasswordLess6 extends controller {
 		logpro.tickAggrement().click();
 		logpro.clickCreateAccountRe().click();
 		
-		messageErrorRegister = logpro.getWarningRegister().getText();
-		System.out.println(messageErrorRegister);
-		Assert.assertEquals(messageErrorRegister, "Password should be 6-20 characters in length");
+		String errormessage = logpro.GetWarningMessage().getText();
+		Assert.assertEquals(errormessage, "Password should be 6-20 characters in length");
+		
+		logpro.fillPassword().sendKeys("test123test123test123test123");
+		logpro.fillConfirmPasword().sendKeys("test123test123test123test123");
+		logpro.clickCreateAccountRe().click();
+		
+		String errormessage1 = logpro.GetWarningMessage().getText();
+		Assert.assertEquals(errormessage1, "Password should be 6-20 characters in length");
+
 	
 	}
 	

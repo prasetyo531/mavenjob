@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="13837" started-at="2018-09-19T04:08:07Z" finished-at="2018-09-19T04:08:21Z">
+  <suite name="Suite" duration-ms="11210" started-at="2018-09-19T06:27:59Z" finished-at="2018-09-19T06:28:10Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="13837" started-at="2018-09-19T04:08:07Z" finished-at="2018-09-19T04:08:21Z">
-      <class name="testcase.createAccountUsingRegisteredEmail">
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:testcase.createAccountUsingRegisteredEmail@3a883ce7]" name="setUp" is-config="true" duration-ms="2257" started-at="2018-09-19T11:08:07Z" finished-at="2018-09-19T11:08:09Z">
+    <test name="Test" duration-ms="11210" started-at="2018-09-19T06:27:59Z" finished-at="2018-09-19T06:28:10Z">
+      <class name="testcase.createAccountConfirmPasswordDifferent">
+        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:testcase.createAccountConfirmPasswordDifferent@3a883ce7]" name="setUp" is-config="true" duration-ms="2183" started-at="2018-09-19T13:27:59Z" finished-at="2018-09-19T13:28:01Z">
           <params>
             <param index="0">
               <value>
@@ -18,16 +18,16 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="scenario_satu(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testcase.createAccountUsingRegisteredEmail@3a883ce7]" name="scenario_satu" duration-ms="11289" started-at="2018-09-19T11:08:10Z" data-provider="existingCust" finished-at="2018-09-19T11:08:21Z">
+        <test-method status="PASS" signature="scenario_satu(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testcase.createAccountConfirmPasswordDifferent@3a883ce7]" name="scenario_satu" duration-ms="8588" started-at="2018-09-19T13:28:01Z" data-provider="existingCust" finished-at="2018-09-19T13:28:10Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[myjne001@gmail.com]]>
+                <![CDATA[myjne004@gmail.com]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[test123]]>
+                <![CDATA[test1234]]>
               </value>
             </param>
             <param index="2">
@@ -37,18 +37,18 @@
             </param>
             <param index="3">
               <value>
-                <![CDATA[emailregistered]]>
+                <![CDATA[passwordbeda]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- scenario_satu -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testcase.createAccountUsingRegisteredEmail@3a883ce7]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-19T11:08:21Z" finished-at="2018-09-19T11:08:21Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testcase.createAccountConfirmPasswordDifferent@3a883ce7]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-09-19T13:28:10Z" finished-at="2018-09-19T13:28:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testcase.createAccountUsingRegisteredEmail -->
+      </class> <!-- testcase.createAccountConfirmPasswordDifferent -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

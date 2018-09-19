@@ -33,6 +33,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import assertObject.assertCompProfile;
 import assertObject.assertHome;
 import jxl.Cell;
 import jxl.Sheet;
@@ -40,6 +41,7 @@ import jxl.Workbook;
 import pageObjects.cartPage;
 import pageObjects.categoryPage;
 import pageObjects.checkoutPage;
+import pageObjects.completeProfile;
 import pageObjects.ProductPage;
 import pageObjects.addproductpage;
 import pageObjects.homepage;
@@ -86,11 +88,12 @@ public class createAccountUsingRegisteredUsername extends controller {
 		productlist prodlist = new productlist(driver);
 		productdetail proddet = new productdetail(driver);;
 		
-		assertHome asser = new assertHome(driver);
+		completeProfile comprof = new completeProfile(driver);
 		categoryPage cat = new categoryPage(driver);
 		ProductPage prod = new ProductPage(driver);
 		cartPage cpage = new cartPage(driver);
-		checkoutPage checkout = new checkoutPage(driver);
+		
+		assertCompProfile asserComProf = new assertCompProfile(driver);
 		
 		prop= new Properties();
 		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");
@@ -108,9 +111,6 @@ public class createAccountUsingRegisteredUsername extends controller {
 		driver.manage().window().maximize();
 		String strPageTitle = driver.getTitle();
 		System.out.println(strPageTitle);
-	
-		//on browser
-		home.letmejoinletter().click();
 		
 		//login page
 		home.clickLogin().click();
@@ -128,11 +128,8 @@ public class createAccountUsingRegisteredUsername extends controller {
 		Thread.sleep(2000);
 		logpro.clickCreateAccountRe().click();
 		
-		asser.waitWarningRegister();
-		
-		messageErrorRegister = logpro.getWarningRegister().getText();
-		System.out.println(messageErrorRegister);
-		Assert.assertEquals(messageErrorRegister, "Username taken");
+		String errormessage = logpro.GetWarningMessage().getText();
+		Assert.assertEquals(errormessage, "Username taken");
 	
 	}
 	
