@@ -27,6 +27,8 @@ public class login {
 	By syaratKondisi=By.linkText("Syarat & Kondisi");
 	By createAccountRegisterPage=By.cssSelector("input[value='create account']");
 	
+	By clickfacebook=By.cssSelector("input[value='Login with Facebook']");
+	
 	public login(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
 		
@@ -114,5 +116,10 @@ public class login {
 		
 		return driver.findElement(warningMesssage);
 	}	
+	
+	public WebElement registerFacebook(){
+		
+		return driver.findElement(clickfacebook);
+	}
 }
 
