@@ -80,6 +80,8 @@ public RemoteWebDriver driver= null;
 	public void waitskinconcernsload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=skin_concerns"));
 		
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='skin-concern']/p[2]/span/a")));
+		
 		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[data-value='3']")));
 	}
 		
@@ -87,12 +89,16 @@ public RemoteWebDriver driver= null;
 	public void waitbodyconcernsload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=body_concerns"));
 		
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='body-concern']/p[2]/span/a")));
+		
 		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[data-value='6']")));
 	}
 		
 	//hair_concerns
 	public void waithair_concernsload(){
 		(new WebDriverWait(driver, 50)).until(ExpectedConditions.urlContains("/completing-profile?step=hair_concerns"));
+		
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='hair-concern']/p[2]/span/a")));
 		
 		(new WebDriverWait(driver, 5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("div[data-value='8']")));
 	}

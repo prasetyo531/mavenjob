@@ -62,6 +62,7 @@ public class completeProfile {
 	By skincon_acne=By.cssSelector("div[data-value='3']");
 	By skincon_scars=By.cssSelector("div[data-value='11']");
 	By skincon_bwheads=By.cssSelector("div[data-value='14']");
+	By skipchooseskin=By.xpath("//*[@id='skin-concern']/p[2]/span/a");
 	By btskincon_back=By.xpath("//*[@id='skin-concern']/div[2]/button[1]");
 	By btskincon_next=By.xpath("//*[@id='skin-concern']/div[2]/button[2]");
 	
@@ -69,6 +70,7 @@ public class completeProfile {
 	By bodycon_acne=By.cssSelector("div[data-value='6']");
 	By bodycon_cellulite=By.cssSelector("div[data-value='5']");
 	By bodycon_dryness=By.cssSelector("div[data-value='3']");
+	By skipchoosebody=By.xpath("//*[@id='body-concern']/p[2]/span/a");
 	By btbodycon_back=By.xpath("//*[@id='body-concern']/div[2]/button[1]");
 	By btbodycon_next=By.xpath("//*[@id='body-concern']/div[2]/button[2]");
 	
@@ -76,6 +78,7 @@ public class completeProfile {
 	By haircon_damaged=By.cssSelector("div[data-value='8']");
 	By haircon_dandruf=By.cssSelector("div[data-value='1']");
 	By haircon_dryness=By.cssSelector("div[data-value='3']");
+	By skipchoosehair=By.xpath("//*[@id='hair-concern']/p[2]/span/a");;
 	By bthaircon_back=By.xpath("//*[@id='hair-concern']/div[2]/button[1]");
 	By bthaircon_next=By.xpath("//*[@id='hair-concern']/div[2]/button[2]");
 	
@@ -209,6 +212,11 @@ public class completeProfile {
 		return driver.findElement(skincon_acne);
 	}
 	
+	public WebElement fillthislaterskin(){
+		
+		return driver.findElement(skipchooseskin);
+	}
+	
 	public WebElement clicknextskin_concern(){
 		
 		return driver.findElement(btskincon_next);
@@ -220,6 +228,11 @@ public class completeProfile {
 		return driver.findElement(bodycon_acne);
 	}
 	
+	public WebElement fillthislaterbody(){
+		
+		return driver.findElement(skipchoosebody);
+	}
+	
 	public WebElement clicknextbody_concern(){
 		
 		return driver.findElement(btbodycon_next);
@@ -229,6 +242,11 @@ public class completeProfile {
 	public WebElement choosedamaged(){
 		
 		return driver.findElement(haircon_damaged);
+	}
+	
+	public WebElement fillthislaterhair(){
+		
+		return driver.findElement(skipchoosehair);
 	}
 	
 	public WebElement clicknexthair_concern(){

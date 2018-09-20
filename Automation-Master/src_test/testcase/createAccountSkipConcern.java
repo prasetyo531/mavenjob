@@ -52,7 +52,7 @@ import resources.ConnectDB;
 import resources.controller;
 import resources.support;
 
-public class createAccountSkipConcern {
+public class createAccountSkipConcern extends controller {
 	
 	String productName = "testing";
 	String brandName = "wardah";
@@ -219,28 +219,20 @@ public class createAccountSkipConcern {
 		//skin_concerns
 		asserComProf.waitskinconcernsload();
 		
-		comprof.chooseskinacne().click();
-		comprof.clicknextskin_concern().click();
+		comprof.fillthislaterskin().click();
 		
 		//body_concerns
 		asserComProf.waitbodyconcernsload();
 		
-		comprof.choosebodyacne().click();
-		comprof.clicknextbody_concern().click();
+		comprof.fillthislaterbody().click();
 		
 		//hair_concern
 		asserComProf.waithair_concernsload();
 		
-		comprof.choosedamaged().click();
-		comprof.clicknexthair_concern().click();
+		comprof.fillthislaterhair().click();
 		
 		//cek db beuty points
 		Integer beautyPoints2 =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='"+getDataUsername+"'", "staging");
-		
-		if(beautyPoints2.equals(30)){
-			System.out.println("signup point is correct the points="+""+beautyPoints2);
-			assertTrue(beautyPoints2.equals(30));
-		}
 		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
@@ -311,7 +303,7 @@ public class createAccountSkipConcern {
        //cek db beuty points after fill photo,location
        Integer beautyPoints3 =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='"+getDataUsername+"'", "staging");
        System.out.println(beautyPoints3);
-       assertTrue(beautyPoints3.equals(40));
+       assertTrue(beautyPoints3.equals(30));
        
        //find_friends
        asserComProf.waitsuggestfollowload();
