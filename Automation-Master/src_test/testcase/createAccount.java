@@ -143,8 +143,8 @@ public class createAccount extends controller {
 		Integer beautyPoints =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='"+getDataUsername+"'", "staging");
 		
 		if(beautyPoints.equals(10)){
-			System.out.println("signup point is correct the points="+""+beautyPoints);
 			assertTrue(beautyPoints.equals(10));
+			System.out.println("signup point is correct the points="+""+beautyPoints);
 		}
 		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -219,8 +219,8 @@ public class createAccount extends controller {
 		Integer beautyPoints1 =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='"+getDataUsername+"'", "staging");
 		
 		if(beautyPoints1.equals(20)){
-			System.out.println("signup point is correct the points="+""+beautyPoints1);
 			assertTrue(beautyPoints1.equals(20));
+			System.out.println("signup point is correct the points="+""+beautyPoints1);
 		}
 		
 		//skin_concerns
@@ -245,8 +245,8 @@ public class createAccount extends controller {
 		Integer beautyPoints2 =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='"+getDataUsername+"'", "staging");
 		
 		if(beautyPoints2.equals(30)){
-			System.out.println("signup point is correct the points="+""+beautyPoints2);
 			assertTrue(beautyPoints2.equals(30));
+			System.out.println("signup point is correct the points="+""+beautyPoints2);
 		}
 		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -317,8 +317,8 @@ public class createAccount extends controller {
        
        //cek db beuty points after fill photo,location
        Integer beautyPoints3 =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='"+getDataUsername+"'", "staging");
-       System.out.println(beautyPoints3);
        assertTrue(beautyPoints3.equals(40));
+       System.out.println(beautyPoints3);
        
        //find_friends
        asserComProf.waitsuggestfollowload();
