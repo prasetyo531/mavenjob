@@ -132,10 +132,7 @@ public class addProduct extends controller {
 		logpro.fillpassword().sendKeys("tester123");
 		logpro.clickbuttonlogin().click();
 		
-		asser.loggedin();
-		
 		//click hamburger
-		home.closeTooltip().click();
 		home.Hamburger().click();;
 		
 		home.clickMenuReview().click();
@@ -192,6 +189,7 @@ public class addProduct extends controller {
        Thread.sleep(5000);
        
        Actions crop = new Actions(driver);
+       Thread.sleep(2000);
        WebElement trycrop = driver.findElementByCssSelector("#modal-crop-showed > div > div.ReactCrop.ReactCrop--fixed-aspect > img");
 
        //Move to the desired co-ordinates of the image element, In the code below I am staring from bottom left corner of the image
@@ -270,27 +268,6 @@ public class addProduct extends controller {
        } else {
     	   System.out.println("fail");
        }
-       
-//       String breadcrumb = proddet.findBreadcrumb().getText();
-//       System.out.println(breadcrumb);
-//       assertTrue(driver.findElement(By.cssSelector("#top-page > div.jsx-2093859422.contain-cover > div")).getText().contains("EDP"));
-//       
-//       String pname = proddet.findProductName().getText();
-//       System.out.println(pname);
-//       assertTrue(proddet.findProductName().getText().contains(pname));
-//       
-//       String bname = proddet.findBrandName().getText();
-//       System.out.println(bname);
-//       assertTrue(proddet.findBrandName().getText().contains(bname));
-//       
-//       //query check product name terkahir
-//       String matchesAddedProductName = (String) ConnectDB.db_productItem("SELECT nubr_products.prod_item FROM nubr_reviews INNER JOIN nubr_products ON nubr_reviews.review_prod_id=nubr_products.prod_id ORDER BY nubr_reviews.review_date DESC LIMIT 1", "staging");
-//       Assert.assertEquals(matchesAddedProductName, pname);
-//       
-//       //query check brands terkahir
-//       String matchesAddedBrandsName = (String) ConnectDB.db_brandsItem("SELECT nubr_brands.brands_item FROM nubr_reviews INNER JOIN nubr_brands ON nubr_reviews.review_brand_id=nubr_brands.brands_id ORDER BY nubr_reviews.review_date DESC LIMIT 1", "staging");
-//       Assert.assertEquals(matchesAddedBrandsName, bname);
-       
 
 	}
 	

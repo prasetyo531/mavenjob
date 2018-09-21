@@ -117,7 +117,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		logpro.fillpassword().sendKeys("tester123");
 		logpro.clickbuttonlogin().click();
 		
-		asser.loggedin();
+		asser.welcomingpopup();
 		
 		WebElement getmenu2= home.getAddProduct(); //xpath megamenu nya  
 		Actions act2 = new Actions(driver);

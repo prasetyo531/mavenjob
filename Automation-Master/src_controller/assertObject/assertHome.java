@@ -19,17 +19,18 @@ public class assertHome {
 	public assertHome(RemoteWebDriver driver) {
 		// TODO Auto-generated constructor stub
 		
-		this.driver=driver;
+		this.driver=driver;    
 		
+	}
+	
+	//wait tooltip
+	public void welcomingpopup(){
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div")));
 	}
 	
 	//---------------add product
 	public void addproducttodisplay(){
 		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Add Product")));
-	}
-	
-	public void loggedin(){
-		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#__next > div > div > div.jsx-2916613107.header-cover-desktop > div > div.jsx-1524203951.main-header > div.jsx-1524203951.gbheader-right > div.gbheader-userprofile")));
 	}
 	
 	public void searchResultBrand(){

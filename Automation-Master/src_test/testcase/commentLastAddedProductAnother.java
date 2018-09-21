@@ -117,7 +117,7 @@ public class commentLastAddedProductAnother extends controller {
 		logpro.fillpassword().sendKeys("tester123");
 		logpro.clickbuttonlogin().click();
 		
-		asser.loggedin();
+		asser.welcomingpopup();
 		
 		WebElement getmenu= home.getAddProduct(); //xpath megamenu nya  
 		Actions act = new Actions(driver);

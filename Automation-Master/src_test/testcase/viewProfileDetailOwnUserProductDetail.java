@@ -126,7 +126,7 @@ public class viewProfileDetailOwnUserProductDetail extends controller {
 		logpro.fillpassword().sendKeys("tester123");
 		logpro.clickbuttonlogin().click();
 		
-		asser.loggedin();
+		asser.welcomingpopup();
 		
 		WebElement getmenu= home.getMenuBody(); //xpath megamenu nya
 		Actions act2 = new Actions(driver);

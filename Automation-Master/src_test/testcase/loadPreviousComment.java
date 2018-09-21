@@ -121,7 +121,7 @@ public class loadPreviousComment extends controller {
 		logpro.fillpassword().sendKeys("tester123");
 		logpro.clickbuttonlogin().click();
 		
-		asser.loggedin();
+		asser.welcomingpopup();
 		
 		//homepage
 		WebElement getmenu= home.getMenuSkincare(); //xpath megamenu nya

@@ -108,7 +108,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		logpro.fillpassword().sendKeys("tester123");
 		logpro.clickbuttonlogin().click();
 		
-		asser.loggedin();
+		asser.welcomingpopup();
 		
 		//click hamburger
 		home.closeTooltip().click();

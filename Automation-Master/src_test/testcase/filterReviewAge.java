@@ -112,7 +112,7 @@ public class filterReviewAge extends controller {
 		logpro.fillpassword().sendKeys("tester123");
 		logpro.clickbuttonlogin().click();
 		
-		asser.loggedin();
+		asser.welcomingpopup();
 		
 		//homepage
 		WebElement getmenu= home.getMenuBody(); //xpath megamenu nya

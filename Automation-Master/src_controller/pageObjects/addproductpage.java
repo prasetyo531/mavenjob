@@ -8,43 +8,55 @@ public class addproductpage {
 	
 	public RemoteWebDriver driver=null;
 	
-	By yessure=By.cssSelector("body > div:nth-child(7) > div > div.jsx-1750402829.modal-add-product-contain > form > div > input");
+	By yessure=By.cssSelector("input[value='Yes, I’m sure']");
 	
 	//step1
-	By uploadphoto=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-accord > form > div.jsx-3686042703.ap-section1 > div.jsx-3686042703.ap-image-action > div.jsx-3686042703.ap-btn-upload > button");
-	By inserturlphoto=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-accord > form > div.jsx-3686042703.ap-section1 > div.jsx-3686042703.ap-image-action > div.jsx-3686042703.ap-image-url > input");
+	By uploadphoto=By.id("addproduct-button-upload");
+	By inserturlphoto=By.id("addproduct-image-url");
 	By croparea=By.cssSelector("#modal-crop-showed > div > div.ReactCrop.ReactCrop--fixed-aspect > img");
-	By crop=By.cssSelector("#modal-crop-showed > div > div.jsx-3686042703.modal-crop-button > button.jsx-3686042703.modal-button.crop-button");
-	By show=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-accord > form > div.jsx-3686042703.ap-section1 > div.jsx-3686042703.ap-image-action > div.jsx-3686042703.ap-image-url > button");
-	By nextstep1=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-accord > form > div.jsx-3686042703.ap-btn-next > input");
+	By btncrop=By.xpath("//*[@id='modal-crop-showed']/div/div[2]/button[1]");
+	By show=By.id("addproduct-button-show-image");
+	By nextstep1=By.id("addproduct-button-next");
 	
 	//step2
-	By brandname=By.cssSelector("div[class='Select-placeholder'");
-	By selectedbrandname=By.cssSelector("div[class='Select-value'");
-	By productcat=By.cssSelector("#react-select-3--value > div.Select-placeholder");
-	By productsubcat=By.cssSelector("#react-select-4--value > div.Select-placeholder");
-	By productname=By.cssSelector("#top-page > div.jsx-573540586 > div.jsx-573540586.ap-accord > form > div.jsx-573540586.ap-section2 > div:nth-child(7) > input");
-	By productshade=By.cssSelector("#top-page > div.jsx-573540586 > div.jsx-573540586.ap-accord > form > div.jsx-573540586.ap-section2 > div:nth-child(9) > input");
-	By nextstep2=By.cssSelector("#top-page > div.jsx-573540586 > div.jsx-573540586.ap-accord > form > div.jsx-573540586.ap-btn-next > input");
+	By brandname=By.id("react-select-2--value");
+	By productcat=By.id("react-select-3--value");
+	By productsubcat=By.id("react-select-4--value");
+	By productsubcat2=By.id("react-select-5--value");
+	By productname=By.id("addproduct-input-product-name");
+	By productshade=By.id("addproduct-input-product-shade");
+	By nextstep2=By.id("addproduct-button-submit");
 	
 	//step3
-	By rating=By.cssSelector("#top-page > div.jsx-2152963813 > div.jsx-2152963813.ap-accord > form > div.jsx-2152963813.ap-section2 > div.jsx-2152963813.ap-starlist > i:nth-child(4)");
-	By packagequality=By.cssSelector("#top-page > div.jsx-2152963813 > div.jsx-2152963813.ap-accord > form > div.jsx-2152963813.ap-section2 > div:nth-child(6) > button:nth-child(3)");
-	By repurchase=By.cssSelector("#top-page > div.jsx-2152963813 > div.jsx-2152963813.ap-accord > form > div.jsx-2152963813.ap-section2 > div:nth-child(8) > button.jsx-2152963813.right");
-	By writereview=By.cssSelector("#top-page > div.jsx-2152963813 > div.jsx-2152963813.ap-accord > form > div.jsx-2152963813.ap-section2 > textarea");
-	By nextstep3=By.cssSelector("#top-page > div.jsx-2152963813 > div.jsx-2152963813.ap-accord > form > div.jsx-2152963813.ap-btn-next > input");
+	By rating1=By.id("star-1");
+	By rating2=By.id("star-2");
+	By rating3=By.id("star-3");
+	By rating4=By.id("star-4");
+	By rating5=By.id("star-5");
+	By productpricevalurformoney=By.id("rating-price-1");
+	By productpricejsutright=By.id("rating-price-2");
+	By productpricexpensive=By.id("rating-price-3");
+	By packagequalitypoor=By.id("rating-quality-1");
+	By packagequalityimproved=By.id("rating-quality-2");
+	By packagequalityokay=By.id("rating-quality-3");
+	By packagequalitygood=By.id("rating-quality-4");
+	By packagequalityperfect=By.id("rating-quality-5");
+	By repurchaseyes=By.id("repurchase-yes");
+	By repurchaseno=By.id("repurchase-no");
+	By writereview=By.id("review-field");
+	By nextstep3=By.id("product-rating-button-submit");
 	
 	//step4
-	By matauang=By.cssSelector("#react-select-5--value > div.Select-value");
-	By price=By.cssSelector("#top-page > div.jsx-3624267886 > div.jsx-3624267886.ap-accord > form > div.jsx-3624267886.ap-section2 > div:nth-child(2) > input[type='text']");
-	By descr=By.cssSelector("#top-page > div.jsx-3624267886 > div.jsx-3624267886.ap-accord > form > div.jsx-3624267886.ap-section2 > textarea");
-	By producttags=By.cssSelector("#react-select-6--value > div.Select-placeholder");
-	By submit=By.cssSelector("#top-page > div.jsx-3624267886 > div.jsx-3624267886.ap-accord > form > div.jsx-3624267886.ap-btn-next > input");
+	By matauang=By.id("react-select-8--value");
+	By price=By.id("number-format");
+	By descr=By.id("description-field");
+	By producttags=By.xpath("//*[@id='top-page']/div[5]/div[2]/form/div[1]/div[5]");
+	By submit=By.id("product-info-button-submit");
 	
 	//header label
-	By headerstep1=By.cssSelector("#top-page > div.jsx-3686042703 > div.jsx-3686042703.ap-title > span");
-	By headerstep2=By.cssSelector("#top-page > div.jsx-573540586 > div.jsx-573540586.ap-title > span");
-	By headerstep3=By.cssSelector("#top-page > div.jsx-2152963813 > div.jsx-2152963813.ap-title > span");
+	By headerstep1=By.xpath("//*[@id='top-page']/div[2]/div[1]/span");
+	By headerstep2=By.xpath("//*[@id='top-page']/div[3]/div[1]/span");
+	By headerstep3=By.xpath("//*[@id='top-page']/div[4]/div[1]/span");
 
 	
 	public addproductpage(RemoteWebDriver driver) {
@@ -79,7 +91,7 @@ public class addproductpage {
 	
 	public WebElement cropPicture(){
 		
-		return driver.findElement(crop);
+		return driver.findElement(btncrop);
 	}
 	
 	public WebElement clickShowLinkImage(){
@@ -101,7 +113,7 @@ public class addproductpage {
 	
 	public WebElement editBrand(){
 		
-		return driver.findElement(selectedbrandname);
+		return driver.findElement(brandname);
 	}
 	
 	public WebElement selectProductCat(){
@@ -133,17 +145,17 @@ public class addproductpage {
 	
 	public WebElement chooseRating(){
 		
-		return driver.findElement(rating);
+		return driver.findElement(rating2);
 	}
 	
 	public WebElement choosePackagequality(){
 		
-		return driver.findElement(packagequality);
+		return driver.findElement(packagequalitypoor);
 	}
 	
 	public WebElement chooseRepurchase(){
 		
-		return driver.findElement(repurchase);
+		return driver.findElement(repurchaseyes);
 	}
 	
 	public WebElement inputWritereview(){
