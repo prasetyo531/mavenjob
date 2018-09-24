@@ -264,9 +264,7 @@ public class addProductEditBrand extends controller {
        Integer beautyPointsactual =  beautyPointscurrent+10;
        System.out.println(beautyPointsactual);
        assertTrue(beautyPointsactual.equals(beautyPointexpected));
-
        
-
 	}
 	
 	@AfterMethod

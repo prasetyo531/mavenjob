@@ -34,6 +34,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import assertObject.assertAddProduct;
 import assertObject.assertHome;
 import jxl.Cell;
 import jxl.Sheet;
@@ -77,11 +78,13 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
 		
-		assertHome asser = new assertHome(driver);
 		categoryPage cat = new categoryPage(driver);
 		ProductPage prod = new ProductPage(driver);
 		cartPage cpage = new cartPage(driver);
 		checkoutPage checkout = new checkoutPage(driver);
+		
+		assertHome asser = new assertHome(driver);
+		assertAddProduct asserAddProd = new assertAddProduct(driver);
 		
 		prop= new Properties();
 		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");
@@ -108,10 +111,15 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		logpro.fillpassword().sendKeys("tester123");
 		logpro.clickbuttonlogin().click();
 		
+		//query check beauty points before add product
+		Integer beautyPointsnow =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='putwid'", "staging");
+		System.out.println(beautyPointsnow);
+		Integer beautyPointexpected =  beautyPointsnow+25+10;
+		System.out.println(beautyPointexpected);
+		
 		asser.welcomingpopup();
 		
 		//click hamburger
-		home.closeTooltip().click();
 		home.Hamburger().click();;
 		
 		home.clickMenuReview().click();
@@ -149,14 +157,19 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 	    onfocusInputUrl.sendKeys("https://i.kinja-img.com/gawker-media/image/upload/s--nncnCKWW--/c_scale,f_auto,fl_progressive,q_80,w_800/17hyh5lm9yhjvjpg.jpg");
 	    onfocusInputUrl.build().perform();
 		
-		productpage.clickShowLinkImage().click();
+	    productpage.clickShowLinkImage().click();
+		
+		asserAddProd.buttonnext1enable();
+		
+		JavascriptExecutor je = (JavascriptExecutor) driver;
+	    WebElement elementnext = productpage.nextStep1();
+	    je.executeScript("arguments[0].scrollIntoView(true);",elementnext);
        
 //       JavascriptExecutor js = (JavascriptExecutor) driver;
 //       js.executeScript("window.scrollBy(0,1000)");
        
        productpage.nextStep1().click();
        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-       
        //step 2
        WebElement focusbrand= productpage.selectBrand(); //xpath megamenu nya  
        Actions onfocusbrand = new Actions(driver);

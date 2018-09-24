@@ -4,7 +4,7 @@
   <test name="Test">
   <parameter name="browser" value="chrome"/>
         <classes>
-      <class name="testcase.addProductEditBrand"/>
+      <class name="testcase.addProductImageUrl"/>
      </classes>
   </test>
 </suite> <!-- Suite -->
