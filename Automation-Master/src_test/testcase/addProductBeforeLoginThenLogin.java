@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -33,6 +34,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import assertObject.assertAddProduct;
 import assertObject.assertHome;
 import jxl.Cell;
 import jxl.Sheet;
@@ -44,6 +46,7 @@ import pageObjects.ProductPage;
 import pageObjects.addproductpage;
 import pageObjects.homepage;
 import pageObjects.login;
+import resources.ConnectDB;
 import resources.controller;
 import resources.support;
 
@@ -73,12 +76,14 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		homepage home = new homepage(driver);
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
-		
-		assertHome asser = new assertHome(driver);
+	
 		categoryPage cat = new categoryPage(driver);
 		ProductPage prod = new ProductPage(driver);
 		cartPage cpage = new cartPage(driver);
 		checkoutPage checkout = new checkoutPage(driver);
+		
+		assertHome asser = new assertHome(driver);
+		assertAddProduct asserAddProd = new assertAddProduct(driver);
 		
 		prop= new Properties();
 		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");
@@ -94,7 +99,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
         	}
 		
 		//click hamburger
-		home.closeTooltip().click();
 		home.Hamburger().click();;
 		
 		home.clickMenuReview().click();
@@ -111,13 +115,19 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		
 		UrlLogin = driver.getCurrentUrl();
 		
-		Assert.assertEquals(UrlLogin, "http://account.femaledaily.com/" );
+		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/" );
 		
 		logpro.fillusername().sendKeys("putwid");
 		logpro.fillpassword().sendKeys("tester123");
 		logpro.clickbuttonlogin().click();
 		
-		asser.welcomingpopup();
+		//query check beauty points before add product
+		Integer beautyPointsnow =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='putwid'", "staging");
+		System.out.println(beautyPointsnow);
+		Integer beautyPointexpected =  beautyPointsnow+25+10;
+		System.out.println(beautyPointexpected);
+		
+//		asser.welcomingpopup();
 		
 		WebElement getmenu2= home.getAddProduct(); //xpath megamenu nya  
 		Actions act2 = new Actions(driver);
@@ -128,57 +138,25 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		act2.moveToElement(clickElement2).click().perform();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
-		asser.modalAddproduct();
+		asserAddProd.attentionmodal();
 		
 		//on page add product
 		productpage.clickCloseModal().click();
 		
 		//step 1
-		productpage.clickUploadPhoto().click();
+		WebElement focusInputUrl= productpage.insertUrl(); //insert invalid url
+	    Actions onfocusInputUrl = new Actions(driver);
+	    onfocusInputUrl.moveToElement(focusInputUrl).click();	//insert valid url
+	    onfocusInputUrl.sendKeys("https://i.kinja-img.com/gawker-media/image/upload/s--nncnCKWW--/c_scale,f_auto,fl_progressive,q_80,w_800/17hyh5lm9yhjvjpg.jpg");
+	    onfocusInputUrl.build().perform();
 		
-		File file1 = new File("/Users/mac/Documents/multimedia/background/product-test.jpg");
-        StringSelection stringSelection1= new StringSelection(file1.getAbsolutePath());
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection1, null);
+		productpage.clickShowLinkImage().click();
 		
-        Robot robot1 = new Robot();
-        
-        // Cmd + Tab is needed since it launches a Java app and the browser looses focus
-       
-       robot1.keyPress(KeyEvent.VK_META);
-       robot1.keyPress(KeyEvent.VK_TAB);
-       robot1.keyRelease(KeyEvent.VK_META);
-       robot1.keyRelease(KeyEvent.VK_TAB);
-       robot1.delay(800);
-       //Open Goto window
-       robot1.keyPress(KeyEvent.VK_META);
-       robot1.keyPress(KeyEvent.VK_SHIFT);
-       robot1.keyPress(KeyEvent.VK_G);
-       robot1.keyRelease(KeyEvent.VK_META);
-       robot1.keyRelease(KeyEvent.VK_SHIFT);
-       robot1.keyRelease(KeyEvent.VK_G);
-       //Paste the clipboard value
-       robot1.keyPress(KeyEvent.VK_META);
-       robot1.keyPress(KeyEvent.VK_V);
-       robot1.keyRelease(KeyEvent.VK_META);
-       robot1.keyRelease(KeyEvent.VK_V);
-       //Press Enter key to close the Goto window and Upload window
-       robot1.keyPress(KeyEvent.VK_ENTER);
-       robot1.keyRelease(KeyEvent.VK_ENTER);
-       robot1.delay(800);
-       robot1.keyPress(KeyEvent.VK_ENTER);
-       robot1.keyRelease(KeyEvent.VK_ENTER);
-       Thread.sleep(7000);
-       
-       Actions crop = new Actions(driver);
-       WebElement trycrop = driver.findElementByCssSelector("#modal-crop-showed > div > div.ReactCrop.ReactCrop--fixed-aspect > img");
-
-       //Move to the desired co-ordinates of the image element, In the code below I am staring from bottom left corner of the image
-       crop.moveToElement(productpage.findCropArea(),0,0);
-
-       //locate the co-ordinates of image you want to move by and perform the click   and hold which mimics the crop action 
-       crop.clickAndHold().moveByOffset(196,238).release().build().perform();
-       
-       productpage.cropPicture().click();
+		asserAddProd.buttonnext1enable();
+		
+		JavascriptExecutor je = (JavascriptExecutor) driver;
+	    WebElement elementnext = productpage.nextStep1();
+	    je.executeScript("arguments[0].scrollIntoView(true);",elementnext);
        
 //       JavascriptExecutor js = (JavascriptExecutor) driver;
 //       js.executeScript("window.scrollBy(0,1000)");
@@ -234,9 +212,9 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        productpage.inputPrice().sendKeys("100000");
        productpage.inputDescription().click();
        productpage.inputDescription().sendKeys("huba huba");
+       
+       //submit
        productpage.clickSubmit().click();
-		
-       asser.waitPageDetail();
        
        UrlPageDetail = driver.getCurrentUrl();
        System.out.println(UrlPageDetail);
@@ -246,7 +224,12 @@ public static Logger log =LogManager.getLogger(support.class.getName());
     	   System.out.println("fail");
        }
 		
-		
+       //check beauuty points after add product
+       Integer beautyPointscurrent =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='putwid'", "staging");
+       Integer beautyPointsactual =  beautyPointscurrent+10;
+       System.out.println(beautyPointsactual);
+       assertTrue(beautyPointsactual.equals(beautyPointexpected));
+       
 
 	}
 	

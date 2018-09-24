@@ -35,6 +35,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import assertObject.assertAddProduct;
 import assertObject.assertHome;
 import jxl.Cell;
 import jxl.Sheet;
@@ -99,12 +100,14 @@ public class addProduct extends controller {
 		addproductpage productpage = new addproductpage(driver);
 		productlist prodlist = new productlist(driver);
 		productdetail proddet = new productdetail(driver);
-		
-		assertHome asser = new assertHome(driver);
+	
 		categoryPage cat = new categoryPage(driver);
 		ProductPage prod = new ProductPage(driver);
 		cartPage cpage = new cartPage(driver);
 		checkoutPage checkout = new checkoutPage(driver);
+		
+		assertHome asser = new assertHome(driver);
+		assertAddProduct asserAddProd = new assertAddProduct(driver);
 		
 		prop= new Properties();
 		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");
@@ -132,6 +135,12 @@ public class addProduct extends controller {
 		logpro.fillpassword().sendKeys("tester123");
 		logpro.clickbuttonlogin().click();
 		
+		//query check beauty points before add product
+		Integer beautyPointsnow =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='putwid'", "staging");
+		System.out.println(beautyPointsnow);
+		Integer beautyPointexpected =  beautyPointsnow+25+10;
+		System.out.println(beautyPointexpected);
+		
 		//click hamburger
 		home.Hamburger().click();;
 		
@@ -147,7 +156,7 @@ public class addProduct extends controller {
 		act.moveToElement(clickElement).click().perform();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
-		asser.modalAddproduct();
+		asserAddProd.attentionmodal();
 		
 		//on page add product
 		productpage.clickCloseModal().click();
@@ -202,6 +211,12 @@ public class addProduct extends controller {
        
 //       JavascriptExecutor js = (JavascriptExecutor) driver;
 //       js.executeScript("window.scrollBy(0,1000)");
+       
+		asserAddProd.buttonnext1enable();
+		
+		JavascriptExecutor je = (JavascriptExecutor) driver;
+	    WebElement elementnext = productpage.nextStep1();
+	    je.executeScript("arguments[0].scrollIntoView(true);",elementnext);
        
        productpage.nextStep1().click();
        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -259,8 +274,6 @@ public class addProduct extends controller {
        //submit
        productpage.clickSubmit().click();
        
-       asser.waitPageDetail();
-       
        UrlPageDetail = driver.getCurrentUrl();
        System.out.println(UrlPageDetail);
        if (UrlPageDetail.contains("/fragrance/edp/wardah")) {//asert contain expected text
@@ -268,6 +281,12 @@ public class addProduct extends controller {
        } else {
     	   System.out.println("fail");
        }
+       
+       //check beauuty points after add product
+       Integer beautyPointscurrent =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='putwid'", "staging");
+       Integer beautyPointsactual =  beautyPointscurrent+10;
+       System.out.println(beautyPointsactual);
+       assertTrue(beautyPointsactual.equals(beautyPointexpected));
 
 	}
 	

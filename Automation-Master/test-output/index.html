@@ -102,7 +102,7 @@
                     <div class="method-list-content failed suite-Suite">
                       <span>
                         <img width="3%" src="failed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="testcase.addProduct" hash-for-method="scenario_satu(myjne003@gmail.com, test123, test123, automationfirst)">scenario_satu(myjne003@gmail.com, test123, test123, automationfirst)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="testcase.addProductEditBrand" hash-for-method="scenario_satu(myjne003@gmail.com, test123, test123, automationfirst)">scenario_satu(myjne003@gmail.com, test123, test123, automationfirst)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Suite -->
@@ -120,7 +120,7 @@
           <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">testcase.addProduct</span>
+              <span class="class-name">testcase.addProductEditBrand</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
@@ -129,10 +129,11 @@
                   </a> <!-- scenario_satu(myjne003@gmail.com, test123, test123, automationfirst) -->
                   <span class="method-name">scenario_satu</span>
                   <span class="parameters">(myjne003@gmail.com, test123, test123, automationfirst)</span>
-                  <div class="stack-trace">java.lang.Error: Unresolved compilation problem: 
-	onfocusbrand cannot be resolved
-
-	at testcase.addProduct.scenario_satu(addProduct.java:210)
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.cssSelector: #top-page &gt; div.jsx-2790062022.cover-tabrev &gt; div.jsx-2790062022.prodlist-review-cover &gt; div &gt; div (tried for 30 second(s) with 500 MILLISECONDS interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:232)
+	at assertObject.assertHome.waitPageDetail(assertHome.java:138)
+	at testcase.addProductEditBrand.scenario_satu(addProductEditBrand.java:252)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -153,6 +154,19 @@
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.cssSelector: #top-page &gt; div.jsx-2790062022.cover-tabrev &gt; div.jsx-2790062022.prodlist-review-cover &gt; div &gt; div
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.5.3&apos;, revision: &apos;a88d25fe6b&apos;, time: &apos;2017-08-29T12:42:44.417Z&apos;
+System info: host: &apos;MacBook-Pro-Pras.local&apos;, ip: &apos;fe80:0:0:0:1c48:6c3c:433a:d352%en0&apos;, os.name: &apos;Mac OS X&apos;, os.arch: &apos;x86_64&apos;, os.version: &apos;10.13.6&apos;, java.version: &apos;1.8.0_131&apos;
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:883)
+	at java.util.Optional.orElseThrow(Optional.java:290)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:882)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:206)
+	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:202)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
+	... 22 more
 
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
@@ -172,7 +186,7 @@
   &lt;test name=&quot;Test&quot;&gt;
     &lt;parameter name=&quot;browser&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;testcase.addProduct&quot;/&gt;
+      &lt;class name=&quot;testcase.addProductEditBrand&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -215,13 +229,13 @@ data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'scenario_satu')
-data.setCell(0, 2, 'testcase.addProduct')
-data.setCell(0, 3, 11);
+data.setCell(0, 2, 'testcase.addProductEditBrand')
+data.setCell(0, 3, 67909);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 11 ms</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -247,7 +261,7 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">testcase.addProduct</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">testcase.addProductEditBrand</div> <!-- chronological-class-name -->
               <div class="configuration-test before">
                 <span class="method-name">setUp(chrome)</span>
                 <span class="method-start">0 ms</span>
@@ -256,11 +270,11 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">scenario_satu(myjne003@gmail.com, test123, test123, automationfirst)</span>
-                <span class="method-start">2995 ms</span>
+                <span class="method-start">1869 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">3024 ms</span>
+                <span class="method-start">69785 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

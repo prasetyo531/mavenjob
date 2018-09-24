@@ -26,6 +26,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import assertObject.assertAddProduct;
 import assertObject.assertHome;
 import jxl.Cell;
 import jxl.Sheet;
@@ -66,11 +67,13 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		login logpro = new login(driver);
 		addproductpage productpage = new addproductpage(driver);
 		
-		assertHome asser = new assertHome(driver);
 		categoryPage cat = new categoryPage(driver);
 		ProductPage prod = new ProductPage(driver);
 		cartPage cpage = new cartPage(driver);
 		checkoutPage checkout = new checkoutPage(driver);
+		
+		assertHome asser = new assertHome(driver);
+		assertAddProduct asserAddProd = new assertAddProduct(driver);
 		
 		prop= new Properties();
 		FileInputStream fis=new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//src_controller//resources//data.properties");
@@ -86,7 +89,6 @@ public static Logger log =LogManager.getLogger(support.class.getName());
         	}
 		
 		//click hamburger
-		home.closeTooltip().click();
 		home.Hamburger().click();;
 		
 		home.clickMenuReview().click();
@@ -103,7 +105,7 @@ public static Logger log =LogManager.getLogger(support.class.getName());
 		
 		UrlLogin = driver.getCurrentUrl();
 		
-		Assert.assertEquals(UrlLogin, "http://account.femaledaily.com/" );	
+		Assert.assertEquals(UrlLogin, "http://account.femaledaily.net/" );	
 		
 		
 	}

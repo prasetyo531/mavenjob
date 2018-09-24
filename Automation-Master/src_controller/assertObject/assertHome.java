@@ -23,9 +23,9 @@ public class assertHome {
 		
 	}
 	
-	//wait tooltip
+	//wait Welcome username !
 	public void welcomingpopup(){
-		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div")));
+		(new WebDriverWait(driver, 5)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='__next']/div/div/div[2]/h1")));
 	}
 	
 	//---------------add product

@@ -20,6 +20,7 @@ public class addproductpage {
 	
 	//step2
 	By brandname=By.id("react-select-2--value");
+	By editbrandname=By.xpath("//*[@id='react-select-7--value']/div[1]");
 	By productcat=By.id("react-select-3--value");
 	By productsubcat=By.id("react-select-4--value");
 	By productsubcat2=By.id("react-select-5--value");
@@ -113,7 +114,7 @@ public class addproductpage {
 	
 	public WebElement editBrand(){
 		
-		return driver.findElement(brandname);
+		return driver.findElement(editbrandname);
 	}
 	
 	public WebElement selectProductCat(){
