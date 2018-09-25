@@ -227,6 +227,12 @@ public static Logger log =LogManager.getLogger(support.class.getName());
        } else {
     	   System.out.println("fail");
        }
+       
+       //check beauuty points after add product
+       Integer beautyPointscurrent =  (Integer) ConnectDB.get_dataPoint("SELECT user_total_point FROM nubr_userappos WHERE username='putwid'", "staging");
+       Integer beautyPointsactual =  beautyPointscurrent+10;
+       System.out.println(beautyPointsactual);
+       assertTrue(beautyPointsactual.equals(beautyPointexpected));
 
 	}
      
