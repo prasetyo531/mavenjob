@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="1" guice-stage="DEVELOPMENT" verbose="2" name="Failed suite [Suite]" parallel="tests">
-  <test name="Test(failed)" parallel="tests">
+  <test thread-count="1" verbose="2" name="Test(failed)" parallel="tests">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="testcase.addProductEditStep">
+      <class name="testcase.addProductImageUrl">
         <methods>
-          <include name="scenario_satu" invocation-numbers="0"/>
           <include name="setUp"/>
           <include name="tearDown"/>
+          <include name="scenario_satu" invocation-numbers="0"/>
         </methods>
-      </class> <!-- testcase.addProductEditStep -->
+      </class> <!-- testcase.addProductImageUrl -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

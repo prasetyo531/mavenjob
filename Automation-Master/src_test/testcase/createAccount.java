@@ -294,7 +294,7 @@ public class createAccount extends controller {
        
        //fill locations
        comprof.clicklocation().click();
-       String cityloc = driver.findElement(By.xpath("//*[@id='summary']/form/div[1]/div[1]/div[3]/div[2]/div/div[2]")).getText();
+       String cityloc = comprof.getTextLocationField();;
        assertTrue(cityloc.contains("Yogyakarta"));
        
        //fill phone no

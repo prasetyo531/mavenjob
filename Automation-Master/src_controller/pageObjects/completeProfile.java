@@ -369,5 +369,10 @@ public class completeProfile {
 		return driver.findElement(edit_haircon);
 		
 	}
+
+	public String getTextLocationField() {
+		// TODO Auto-generated method stub
+		return driver.findElement(edit_haircon).getText();
+	}
 	
 }

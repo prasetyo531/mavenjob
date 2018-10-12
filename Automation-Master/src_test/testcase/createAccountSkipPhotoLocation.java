@@ -34,16 +34,14 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import assertObject.assertCompProfile;
-import assertObject.assertHome;
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
-import pageObjects.cartPage;
-import pageObjects.categoryPage;
-import pageObjects.checkoutPage;
-import pageObjects.completeProfile;
 import pageObjects.ProductPage;
 import pageObjects.addproductpage;
+import pageObjects.cartPage;
+import pageObjects.categoryPage;
+import pageObjects.completeProfile;
 import pageObjects.homepage;
 import pageObjects.login;
 import pageObjects.productdetail;
@@ -52,8 +50,8 @@ import resources.ConnectDB;
 import resources.controller;
 import resources.support;
 
-public class createAccountSkipConcern extends controller {
-	
+public class createAccountSkipPhotoLocation extends controller{
+
 	String productName = "testing";
 	String brandName = "wardah";
 	
@@ -236,50 +234,16 @@ public class createAccountSkipConcern extends controller {
 		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
-		//upload photo
 		asserComProf.waitsummaryload();
 		
-		comprof.clickuploadphoto().click();
+		//upload photo
 		
-		File photo = new File("/Users/mac/Documents/multimedia/background/DMDIKcyWsAEsKDj.jpg");
-        StringSelection stringSelection1= new StringSelection(photo.getAbsolutePath());
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection1, null);
-		
-        Robot robot1 = new Robot();
-        
-        // Cmd + Tab is needed since it launches a Java app and the browser looses focus
-       
-       robot1.keyPress(KeyEvent.VK_META);
-       robot1.keyPress(KeyEvent.VK_TAB);
-       robot1.keyRelease(KeyEvent.VK_META);
-       robot1.keyRelease(KeyEvent.VK_TAB);
-       robot1.delay(800);
-       //Open Goto window
-       robot1.keyPress(KeyEvent.VK_META);
-       robot1.keyPress(KeyEvent.VK_SHIFT);
-       robot1.keyPress(KeyEvent.VK_G);
-       robot1.keyRelease(KeyEvent.VK_META);
-       robot1.keyRelease(KeyEvent.VK_SHIFT);
-       robot1.keyRelease(KeyEvent.VK_G);
-       //Paste the clipboard value
-       robot1.keyPress(KeyEvent.VK_META);
-       robot1.keyPress(KeyEvent.VK_V);
-       robot1.keyRelease(KeyEvent.VK_META);
-       robot1.keyRelease(KeyEvent.VK_V);
-       //Press Enter key to close the Goto window and Upload window
-       robot1.keyPress(KeyEvent.VK_ENTER);
-       robot1.keyRelease(KeyEvent.VK_ENTER);
-       robot1.delay(800);
-       robot1.keyPress(KeyEvent.VK_ENTER);
-       robot1.keyRelease(KeyEvent.VK_ENTER);
-       Thread.sleep(5000);
-       
        //fill username
        comprof.fillfullname().sendKeys("usernametest");
        
        //fill locations
        comprof.clicklocation().click();
-       String cityloc = comprof.getTextLocationField();;
+       String cityloc = comprof.getTextLocationField();
        assertTrue(cityloc.contains("Yogyakarta"));
        
        //fill phone no
@@ -333,10 +297,10 @@ public class createAccountSkipConcern extends controller {
 	@DataProvider	  
 	public Object[][] existingCust() throws Exception {
 	     
-		FileInputStream filepath = new FileInputStream("//Users//mac//Documents//Automation//mavenjob//Automation-Master//Workbook1.xls");
+		FileInputStream filepath = new FileInputStream("/Users/mac/Documents/Automation/fdn.automation.web/Automation-Master/Workbook1.xls");
 
 		Workbook wb = Workbook.getWorkbook(filepath);
-		Sheet sheet = wb.getSheet("Create account skip");
+		Sheet sheet = wb.getSheet("Create account skip location");
 
 		int row = sheet.getRows();
 		System.out.println("number of rows"+row);
